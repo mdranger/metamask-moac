@@ -59,7 +59,7 @@ InitializeMenuScreen.prototype.renderMenu = function (state) {
           color: '#7F8082',
           marginBottom: 10,
         },
-      }, 'MetaMaskMOAC'),
+      }, 'MoacMask'),
 
 
       h('div', [
@@ -72,7 +72,7 @@ InitializeMenuScreen.prototype.renderMenu = function (state) {
         }, 'Encrypt your new DEN'),
 
         h(Tooltip, {
-          title: 'Your DEN is your password-encrypted storage within MetaMaskMOAC.',
+          title: 'Your DEN is your password-encrypted storage within MoacMask.',
         }, [
           h('i.fa.fa-question-circle.pointer', {
             style: {
