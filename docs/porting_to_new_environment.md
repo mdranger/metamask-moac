@@ -10,11 +10,11 @@ The `metamask-background` describes the file at `app/scripts/background.js`, whi
 
 When a new site is visited, the WebExtension creates a new `ContentScript` in that page's context, which can be seen at `app/scripts/contentscript.js`. This script represents a per-page setup process, which creates the per-page `web3` api, connects it to the background script via the Port API (wrapped in a [stream abstraction](https://github.com/substack/stream-handbook)), and injected into the DOM before anything loads.
 
-The most confusing part about porting MetaMask to a new platform is the way we provide the Web3 API over a series of streams between contexts. Once you understand how we create the [InpageProvider](../app/scripts/lib/inpage-provider.js) in the [inpage.js script](../app/scripts/inpage.js), you will be able to understand how the [port-stream](../app/scripts/lib/port-stream.js) is just a thin wrapper around the [postMessage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage), and a similar stream API can be wrapped around any communication channel to communicate with the `MetaMaskController` via its `setupUntrustedCommunication(stream, domain)` method.
+The most confusing part about porting MetaMask to a new platform is the way we provide the Web3 API over a series of streams between contexts. Once you understand how we create the [InpageProvider](../app/scripts/lib/inpage-provider.js) in the [inpage.js script](../app/scripts/inpage.js), you will be able to understand how the [port-stream](../app/scripts/lib/port-stream.js) is just a thin wrapper around the [postMessage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage), and a similar stream API can be wrapped around any communication channel to communicate with the `MoacMaskController` via its `setupUntrustedCommunication(stream, domain)` method.
 
 ### The MetaMask Controller
 
-The core functionality of MetaMask all lives in what we call [The MetaMask Controller](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/metamask-controller.js). Our goal for this file is for it to eventually be its own javascript module that can be imported into any JS-compatible context, allowing it to fully manage an app's relationship to Ethereum.
+The core functionality of MetaMask all lives in what we call [The MetaMask Controller](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/moacmask-controller.js). Our goal for this file is for it to eventually be its own javascript module that can be imported into any JS-compatible context, allowing it to fully manage an app's relationship to Ethereum.
 
 #### Constructor
 
@@ -40,11 +40,11 @@ The `platform` object has a variety of options:
 - openWindow ({ url }) - Will be called when MetaMask would like to open a web page. It will be passed a single `options` object with a `url` key, with a string value.
 - getVersion() - Should return the current MetaMask version, as described in the current `CHANGELOG.md` or `app/manifest.json`.
 
-#### [metamask.getState()](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/metamask-controller.js#L241)
+#### [metamask.getState()](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/moacmask-controller.js#L241)
 
 This method returns a javascript object representing the current MetaMask state. This includes things like known accounts, sent transactions, current exchange rates, and more! The controller is also an event emitter, so you can subscribe to state updates via `metamask.on('update', handleStateUpdate)`. State examples available [here](https://github.com/MetaMask/metamask-extension/tree/master/development/states) under the `metamask` key. (Warning: some are outdated)
 
-#### [metamask.getApi()](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/metamask-controller.js#L274-L335)
+#### [metamask.getApi()](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/moacmask-controller.js#L274-L335)
 
 Returns a JavaScript object filled with callback functions representing every operation our user interface ever performs. Everything from creating new accounts, changing the current network, to sending a transaction, is provided via these API methods. We export this external API on an object because it allows us to easily expose this API over a port using [dnode](https://www.npmjs.com/package/dnode), which is how our WebExtension's UI works!
 
@@ -61,7 +61,7 @@ As an example, a WebExtension is always defined by a `manifest.json` file. [In o
 In that file, there's a lot going on, so it's maybe worth focusing on our MetaMask controller constructor to start. It looks something like this:
 
 ```javascript
-const controller = new MetamaskController({
+const controller = new MoacMaskController({
     // User confirmation callbacks:
     showUnconfirmedMessage: triggerUi,
     unlockAccountMessage: triggerUi,
@@ -82,8 +82,8 @@ Since `background.js` is essentially the Extension setup file, we can see it doi
 Everything so far has been enough to create a MetaMask wallet on virtually any platform that runs JS, but MetaMask's most unique feature isn't being a wallet, it's providing an Ethereum-enabled JavaScript context to websites.
 
 MetaMask has two kinds of [duplex stream APIs](https://github.com/substack/stream-handbook#duplex) that it exposes:
-- [metamask.setupTrustedCommunication(connectionStream, originDomain)](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/metamask-controller.js#L352) - This stream is used to connect the user interface over a remote port, and may not be necessary for contexts where the interface and the metamask-controller share a process.
-- [metamask.setupUntrustedCommunication(connectionStream, originDomain)](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/metamask-controller.js#L337) - This method is used to connect a new web site's web3 API to MetaMask's blockchain connection. Additionally, the `originDomain` is used to block detected phishing sites.
+- [metamask.setupTrustedCommunication(connectionStream, originDomain)](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/moacmask-controller.js#L352) - This stream is used to connect the user interface over a remote port, and may not be necessary for contexts where the interface and the moacmask-controller share a process.
+- [metamask.setupUntrustedCommunication(connectionStream, originDomain)](https://github.com/MetaMask/metamask-extension/blob/master/app/scripts/moacmask-controller.js#L337) - This method is used to connect a new web site's web3 API to MetaMask's blockchain connection. Additionally, the `originDomain` is used to block detected phishing sites.
 
 ### Web3 as a Stream
 
