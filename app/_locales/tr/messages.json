@@ -80,7 +80,7 @@
     "buy": {
       "message": "Satın al"
     },
-    "buyCoinbase": {
+    "buyCoinbene": {
       "message": "Coinbase'de satın al"
     },
     "buyCoinbaseExplainer": {
@@ -473,7 +473,7 @@
     "message": {
       "message": "Mesaj"
     },
-    "metamaskDescription": {
+    "moacmaskDescription": {
       "message": "MetaMask MOAC için güvenli bir kimlik kasasıdır."
     },
     "min": {

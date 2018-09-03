@@ -80,7 +80,7 @@
   "buy": {
     "message": "Koupit"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "Nákup na Coinbase"
   },
   "buyCoinbaseExplainer": {
@@ -473,7 +473,7 @@
   "message": {
     "message": "Zpráva"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "MetaMask je bezpečný osobní trezor pro MOAC."
   },
   "min": {

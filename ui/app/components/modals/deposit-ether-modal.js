@@ -47,7 +47,7 @@ function DepositEtherModal (props, context) {
   // need to set after i18n locale has loaded
   DIRECT_DEPOSIT_ROW_TITLE = context.t('directDepositMc')
   DIRECT_DEPOSIT_ROW_TEXT = context.t('directDepositEtherExplainer')
-  COINBASE_ROW_TITLE = context.t('buyCoinbase')
+  COINBASE_ROW_TITLE = context.t('buyCoinbene')
   COINBASE_ROW_TEXT = context.t('buyCoinbaseExplainer')
   // SHAPESHIFT_ROW_TITLE = context.t('depositShapeShift')
   // SHAPESHIFT_ROW_TEXT = context.t('depositShapeShiftExplainer')

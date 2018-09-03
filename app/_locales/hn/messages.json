@@ -77,7 +77,7 @@
   "buy": {
     "message": "खरीदें"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "कॉइनबेस पर खरीदें"
   },
   "buyCoinbaseExplainer": {
@@ -440,7 +440,7 @@
   "message": {
     "message": "संदेश"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "मेटामास्क इथीरियम के लिए एक सुरक्षित पहचान वॉल्ट है।"
   },
   "min": {

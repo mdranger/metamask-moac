@@ -77,7 +77,7 @@
   "buy": {
     "message": "Comprar"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "Comprar no Coinbase"
   },
   "buyCoinbaseExplainer": {
@@ -440,7 +440,7 @@
   "message": {
     "message": "Mensagem"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "O MetaMask é um lugar seguro para guardar a sua identidade em em MOAC."
   },
   "min": {

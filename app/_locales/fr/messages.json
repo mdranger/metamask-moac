@@ -28,7 +28,7 @@
     "description": "La description de l'application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "MasqueMoac",
     "description": "Le nom de l'application"
   },
   "attemptingConnect": {
@@ -59,7 +59,7 @@
   "buy": {
     "message": "Acheter"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "Acheter sur Coinbase"
   },
   "buyCoinbaseExplainer": {
@@ -535,7 +535,7 @@
     "message": "Prend trop de temps?"
   },
   "testFaucet": {
-    "message": "Test Faucet"
+    "message": "Robinet d'essai"
   },
   "to": {
     "message": "Destinataire"

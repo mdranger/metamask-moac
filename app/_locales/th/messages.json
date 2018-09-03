@@ -77,7 +77,7 @@
   "buy": {
     "message": "ซื้อ"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "ซื้อด้วย Coinbase"
   },
   "buyCoinbaseExplainer": {
@@ -440,7 +440,7 @@
   "message": {
     "message": "ข้อความ"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "MetaMask คือที่เก็บตัวตนนิรภัยสำหรับอีเธอเรียม"
   },
   "min": {

@@ -80,7 +80,7 @@
   "buy": {
     "message": "購買"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "在 Coinbase 上購買"
   },
   "buyCoinbaseExplainer": {
@@ -473,7 +473,7 @@
   "message": {
     "message": "訊息"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "MetaMask 是MOAC的安全身份識別金庫."
   },
   "min": {

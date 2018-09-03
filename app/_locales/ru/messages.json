@@ -80,7 +80,7 @@
   "buy": {
     "message": "Купить"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "Купить на Coinbase"
   },
   "buyCoinbaseExplainer": {
@@ -467,7 +467,7 @@
   "message": {
     "message": "Сообщение"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "MetaMask – безопасный кошелек для MOAC."
   },
   "min": {

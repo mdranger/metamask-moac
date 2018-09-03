@@ -2,11 +2,12 @@ const Component = require('react').Component
 const PropTypes = require('prop-types')
 const h = require('react-hyperscript')
 const actions = require('../../../ui/app/actions')
-const genAccountLink = require('etherscan-link').createAccountLink
+const genAccountLink = require('moac-link').createAccountLink
 const connect = require('react-redux').connect
 const Dropdown = require('./dropdown').Dropdown
 const DropdownMenuItem = require('./dropdown').DropdownMenuItem
 const Identicon = require('./identicon')
+const log = require('loglevel')
 const ethUtil = require('ethereumjs-util')
 const copyToClipboard = require('copy-to-clipboard')
 
@@ -245,7 +246,7 @@ class AccountDropdowns extends Component {
       [
         enableAccountsSelector && h(
           // 'i.fa.fa-angle-down',
-          'div.cursor-pointer.color-orange.accounts-selector',
+          'div.cursor-pointer.color-blue.accounts-selector',
           {
             style: {
               // fontSize: '1.8em',

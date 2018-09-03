@@ -25,7 +25,7 @@ class Info extends Component {
         h('div.settings__info-link-header', this.context.t('links')),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://metamask.io/privacy.html',
+            href: 'http://www.moacdapp.io/',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('privacyMsg')),
@@ -33,7 +33,7 @@ class Info extends Component {
         ]),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://metamask.io/terms.html',
+            href: 'http://www.moacdapp.io/',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('terms')),
@@ -41,7 +41,7 @@ class Info extends Component {
         ]),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://metamask.io/attributions.html',
+            href: 'http://www.moacdapp.io/',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('attributions')),
@@ -50,7 +50,7 @@ class Info extends Component {
         h('hr.settings__info-separator'),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://support.metamask.io',
+            href: 'http://www.moacdapp.io/',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('supportCenter')),
@@ -58,7 +58,7 @@ class Info extends Component {
         ]),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://metamask.io/',
+            href: 'http://www.moacdapp.io/',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('visitWebSite')),
@@ -67,7 +67,7 @@ class Info extends Component {
         h('div.settings__info-link-item', [
           h('a', {
             target: '_blank',
-            href: 'mailto:help@metamask.io?subject=Feedback',
+            href: 'http://www.moacdapp.io/',
           }, [
             h('span.settings__info-link', this.context.t('emailUs')),
           ]),

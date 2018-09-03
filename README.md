@@ -1,15 +1,15 @@
 # MoacMask Browser Extension for MOAC
-[![Build Status](https://circleci.com/gh/MetaMask/metamask-extension.svg?style=shield&circle-token=a1ddcf3cd38e29267f254c9c59d556d513e3a1fd)](https://circleci.com/gh/MetaMask/metamask-extension) [![Coverage Status](https://coveralls.io/repos/github/MetaMask/metamask-extension/badge.svg?branch=master)](https://coveralls.io/github/MetaMask/metamask-extension?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/MetaMask/metamask-extension.svg)](https://greenkeeper.io/) [![Stories in Ready](https://badge.waffle.io/MetaMask/metamask-extension.png?label=in%20progress&title=waffle.io)](https://waffle.io/MetaMask/metamask-extension)
 
 ## Support
 
-If you're a user seeking support, [here is our support site](https://metamask.helpscoutdocs.com/).
+If you're a user seeking support, [leave your feedbacks at our GIT site](https://github.com/MOACChain/MOACMask/issues).
 
 ## Introduction
 
-[Mission Statement](./MISSION.md)
+To let users and developers easily access MOAC blockchain, we modified provide software for users to manage accounts, for sites to easily propose actions to users, and for users to coherently review actions before approving them. We build on this rapidly evolving set of protocols with the goal of empowering the most people to the greatest degree, and aspire to continuously evolve our offering to pursue that goal.
 
-[Internal documentation](./docs/jsdocs)
+You can refer to MetaMask's introduction page to learn how this works. 
+https://metamask.io/
 
 ## Developing Compatible Dapps
 
@@ -18,7 +18,7 @@ If you're a web dapp developer, we've got two types of guides for you:
 ### New Dapp Developers
 
 - We recommend this [Learning Solidity](https://karl.tech/learning-solidity-part-1-deploy-a-contract/) tutorial series by Karl Floersch.
-- We wrote a (slightly outdated now) gentle introduction on [Developing Dapps with Truffle and MetaMask](https://medium.com/metamask/developing-ethereum-dapps-with-truffle-and-metamask-aa8ad7e363ba).
+- MetaMask team wrote a gentle introduction on [Developing Dapps with Truffle and MetaMask](https://medium.com/metamask/developing-ethereum-dapps-with-truffle-and-metamask-aa8ad7e363ba).
 
 ### Current Dapp Developers
 
@@ -46,10 +46,6 @@ Then just run `npm test`.
 You can also test with a continuously watching process, via `npm run watch`.
 
 You can run the linter by itself with `gulp lint`.
-
-## Architecture
-
-[![Architecture Diagram](./docs/architecture.png)][1]
 
 ## Development
 

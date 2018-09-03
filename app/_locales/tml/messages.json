@@ -80,7 +80,7 @@
   "buy": {
     "message": "வாங்க"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "கோஇன்பசே வாங்கவும்"
   },
   "buyCoinbaseExplainer": {
@@ -473,7 +473,7 @@
   "message": {
     "message": "செய்தி"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "மேடமஸ்க் என்பது ஒரு பாதுகாப்பான அடையாள வால்ட் எதெரியும்"
   },
   "min": {

@@ -77,7 +77,7 @@
   "buy": {
     "message": "Kopen"
   },
-  "buyCoinbase": {
+  "buyCoinbene": {
     "message": "Koop op Coinbase"
   },
   "buyCoinbaseExplainer": {
@@ -440,7 +440,7 @@
   "message": {
     "message": "Bericht"
   },
-  "metamaskDescription": {
+  "moacmaskDescription": {
     "message": "MetaMask is een veilige identiteitskluis voor MOAC."
   },
   "min": {
