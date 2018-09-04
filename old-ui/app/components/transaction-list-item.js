@@ -5,7 +5,8 @@ const connect = require('react-redux').connect
 
 const EthBalance = require('./eth-balance')
 const addressSummary = require('../util').addressSummary
-const explorerLink = require('etherscan-link').createExplorerLink
+// const explorerLink = require('etherscan-link').createExplorerLink
+const explorerLink = require('moac-link').createExplorerLink
 const CopyButton = require('./copyButton')
 const vreme = new (require('vreme'))()
 const Tooltip = require('./tooltip')
