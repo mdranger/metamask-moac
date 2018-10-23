@@ -258,5 +258,5 @@ async function verboseReportOnFailure(test) {
 
 async function requestEther(address) {
   const accounts = await eth.accounts()
-  await eth.sendTransaction({ from: accounts[0], to: address, value: 1 * 1e18, data: '0x0' })
+  await mc.sendTransaction({ from: accounts[0], to: address, value: 1 * 1e18, data: '0x0' })
 }

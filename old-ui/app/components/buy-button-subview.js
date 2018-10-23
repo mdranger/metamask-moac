@@ -157,7 +157,7 @@ BuyButtonSubview.prototype.primarySubview = function () {
           },
         }, [
           h('button.text-transform-uppercase', {
-            onClick: () => this.props.dispatch(actions.buyEth({ network })),
+            onClick: () => this.props.dispatch(actions.buyMc({ network })),
             style: {
               marginTop: '15px',
             },

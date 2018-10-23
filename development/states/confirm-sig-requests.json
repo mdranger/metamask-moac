@@ -74,7 +74,7 @@
         },
         "status": "unapproved",
         "time": 1537889069339,
-        "type": "eth_sign"
+        "type": "mc_sign"
       }
     },
     "unapprovedMsgCount": 1,
@@ -103,7 +103,7 @@
         },
         "status": "unapproved",
         "time": 1617889069339,
-        "type": "eth_signTypedData"
+        "type": "mc_signTypedData"
       }
     },
     "unapprovedTypedMessagesCount": 1,

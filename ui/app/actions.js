@@ -1,6 +1,6 @@
 const abi = require('human-standard-token-abi')
 const pify = require('pify')
-const getBuyEthUrl = require('../../app/scripts/lib/buy-eth-url')
+const getBuyMcUrl = require('../../app/scripts/lib/buy-mc-url')
 const { getTokenAddressFromTokenObject } = require('./util')
 const {
   calcGasTotal,
@@ -222,8 +222,8 @@ var actions = {
   onboardingBuyEthView,
   ONBOARDING_BUY_ETH_VIEW: 'ONBOARDING_BUY_ETH_VIEW',
   BUY_ETH: 'BUY_ETH',
-  buyEth: buyEth,
-  buyEthView: buyEthView,
+  buyMc: buyMc,
+  buyMcView: buyMcView,
   buyWithShapeShift,
   BUY_ETH_VIEW: 'BUY_ETH_VIEW',
   COINBASE_SUBVIEW: 'COINBASE_SUBVIEW',
@@ -1692,9 +1692,9 @@ function showSendTokenPage () {
   }
 }
 
-function buyEth (opts) {
+function buyMc (opts) {
   return (dispatch) => {
-    const url = getBuyEthUrl(opts)
+    const url = getBuyMcUrl(opts)
     global.platform.openWindow({ url })
     dispatch({
       type: actions.BUY_ETH,
@@ -1709,7 +1709,7 @@ function onboardingBuyEthView (address) {
   }
 }
 
-function buyEthView (address) {
+function buyMcView (address) {
   return {
     type: actions.BUY_ETH_VIEW,
     value: address,

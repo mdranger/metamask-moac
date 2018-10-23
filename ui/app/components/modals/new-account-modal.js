@@ -86,7 +86,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     toCoinbase: (address) => {
-      dispatch(actions.buyEth({ network: '1', address, amount: 0 }))
+      dispatch(actions.buyMc({ network: '1', address, amount: 0 }))
     },
     hideModal: () => {
       dispatch(actions.hideModal())

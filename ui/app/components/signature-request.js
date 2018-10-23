@@ -174,9 +174,9 @@ SignatureRequest.prototype.renderBody = function () {
 
   if (type === 'personal_sign') {
     rows = [{ name: this.context.t('message'), value: this.msgHexToText(data) }]
-  } else if (type === 'eth_signTypedData') {
+  } else if (type === 'mc_signTypedData') {
     rows = data
-  } else if (type === 'eth_sign') {
+  } else if (type === 'mc_sign') {
     rows = [{ name: this.context.t('message'), value: data }]
     notice = this.context.t('signNotice')
   }
@@ -189,8 +189,8 @@ SignatureRequest.prototype.renderBody = function () {
 
     h('div.request-signature__notice', {
       className: classnames({
-        'request-signature__notice': type === 'personal_sign' || type === 'eth_signTypedData',
-        'request-signature__warning': type === 'eth_sign',
+        'request-signature__notice': type === 'personal_sign' || type === 'mc_signTypedData',
+        'request-signature__warning': type === 'mc_sign',
       }),
     }, [notice]),
 
@@ -226,10 +226,10 @@ SignatureRequest.prototype.renderFooter = function () {
   if (type === 'personal_sign') {
     cancel = cancelPersonalMessage
     sign = signPersonalMessage
-  } else if (type === 'eth_signTypedData') {
+  } else if (type === 'mc_signTypedData') {
     cancel = cancelTypedMessage
     sign = signTypedMessage
-  } else if (type === 'eth_sign') {
+  } else if (type === 'mc_sign') {
     cancel = cancelMessage
     sign = signMessage
   }

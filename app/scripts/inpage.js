@@ -1,6 +1,6 @@
-/*global Web3*/
+/*global Chain3*/
 cleanContextForImports()
-require('web3/dist/web3.min.js')
+require('chain3')
 const log = require('loglevel')
 const LocalMessageDuplexStream = require('post-message-stream')
 const setupDappAutoReload = require('./lib/auto-reload.js')
@@ -23,32 +23,32 @@ var metamaskStream = new LocalMessageDuplexStream({
 var inpageProvider = new MetamaskInpageProvider(metamaskStream)
 
 //
-// setup web3
+// setup chain3
 //
 
-if (typeof window.web3 !== 'undefined') {
-  throw new Error(`MoacMask detected another web3.
-  MoacMask will not work reliably with another web3 extension.
+if (typeof window.chain3 !== 'undefined') {
+  throw new Error(`MoacMask detected another chain3.
+  MoacMask will not work reliably with another chain3 extension.
      This usually happens if you have two MoacMasks installed,
-     or MoacMask and another web3 extension. Please remove one
+     or MoacMask and another chain3 extension. Please remove one
      and try again.`)
 }
-var web3 = new Web3(inpageProvider)
-web3.setProvider = function () {
-  log.debug('MoacMask - overrode web3.setProvider')
+global.chain3 = new Chain3(inpageProvider)
+chain3.setProvider = function () {
+  log.debug('MoacMask - overrode chain3.setProvider')
 }
-log.debug('MoacMask - injected web3')
-// export global web3, with usage-detection
-setupDappAutoReload(web3, inpageProvider.publicConfigStore)
+log.debug('MoacMask - injected chain3')
+// export global chain3, with usage-detection
+setupDappAutoReload(chain3, inpageProvider.publicConfigStore)
 
-// set web3 defaultAccount
+// set chain3 defaultAccount
 inpageProvider.publicConfigStore.subscribe(function (state) {
-  web3.eth.defaultAccount = state.selectedAddress
+  chain3.mc.defaultAccount = state.selectedAddress
 })
 
 // need to make sure we aren't affected by overlapping namespaces
 // and that we dont affect the app with our namespace
-// mostly a fix for web3's BigNumber if AMD's "define" is defined...
+// mostly a fix for chain3's BigNumber if AMD's "define" is defined...
 var __define
 
 /**

@@ -188,13 +188,13 @@ class Home extends Component {
       //   log.debug('rendering info screen')
       //   return h(Settings, {key: 'info', tab: 'info'})
 
-      case 'buyEth':
+      case 'buyMc':
         log.debug('rendering buy ether screen')
-        return h(BuyView, {key: 'buyEthView'})
+        return h(BuyView, {key: 'buyMcView'})
 
       case 'onboardingBuyEth':
         log.debug('rendering onboarding buy ether screen')
-        return h(MascaraBuyEtherScreen, {key: 'buyEthView'})
+        return h(MascaraBuyEtherScreen, {key: 'buyMcView'})
 
       case 'qr':
         log.debug('rendering show qr screen')

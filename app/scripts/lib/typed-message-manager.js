@@ -87,7 +87,7 @@ module.exports = class TypedMessageManager extends EventEmitter {
       msgParams: msgParams,
       time: time,
       status: 'unapproved',
-      type: 'eth_signTypedData',
+      type: 'mc_signTypedData',
     }
     this.addMsg(msgData)
 

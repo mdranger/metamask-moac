@@ -38,7 +38,7 @@ const TokenRatesController = require('./controllers/token-rates')
 const ConfigManager = require('./lib/config-manager')
 const nodeify = require('./lib/nodeify')
 const accountImporter = require('./account-import-strategies')
-const getBuyEthUrl = require('./lib/buy-eth-url')
+const getBuyMcUrl = require('./lib/buy-mc-url')
 const Mutex = require('await-semaphore').Mutex
 const version = require('../manifest.json').version
 const BN = require('ethereumjs-util').BN
@@ -242,9 +242,9 @@ module.exports = class MoacMaskController extends EventEmitter {
   initializeProvider () {
     const providerOpts = {
       static: {
-        eth_syncing: false,
-        web3_clientVersion: `MetaMask/v${version}`,
-        eth_sendTransaction: (payload, next, end) => {
+        mc_syncing: false,
+        chain3_clientVersion: `MetaMask/v${version}`,
+        mc_sendTransaction: (payload, next, end) => {
           const origin = payload.origin
           const txParams = payload.params[0]
           nodeify(this.txController.newUnapprovedTransaction, this.txController)(txParams, { origin }, end)
@@ -353,7 +353,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       unMarkPasswordForgotten: this.unMarkPasswordForgotten.bind(this),
 
       // coinbase
-      buyEth: this.buyEth.bind(this),
+      buyMc: this.buyMc.bind(this),
       // shapeshift
       createShapeShiftTx: this.createShapeShiftTx.bind(this),
 
@@ -511,7 +511,7 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
   /**
    * @type Identity
    * @property {string} name - The account nickname.
-   * @property {string} address - The account's ethereum address, in lower case.
+   * @property {string} address - The account's MOAC address, in lower case.
    * @property {boolean} mayBeFauceting - Whether this account is currently
    * receiving funds from our automatic Ropsten faucet.
    */
@@ -640,7 +640,7 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
   /**
    * Imports an account with the specified import strategy.
    * These are defined in app/scripts/account-import-strategies
-   * Each strategy represents a different way of serializing an Ethereum key pair.
+   * Each strategy represents a different way of serializing an MOAC key pair.
    *
    * @param  {string} strategy - A unique identifier for an account import strategy.
    * @param  {any} args - The data required by that strategy to import an account.
@@ -1205,10 +1205,10 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
    * @param {string} address - The address to fund.
    * @param {string} amount - The amount of ether desired, as a base 10 string.
    */
-  buyEth (address, amount) {
+  buyMc (address, amount) {
     if (!amount) amount = '5'
     const network = this.networkController.getNetworkState()
-    const url = getBuyEthUrl({ network, address, amount })
+    const url = getBuyMcUrl({ network, address, amount })
     if (url) this.platform.openWindow({ url })
   }
 

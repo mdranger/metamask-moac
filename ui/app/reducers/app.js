@@ -577,7 +577,7 @@ function reduceApp (state, action) {
       return extend(appState, {
         transForward: true,
         currentView: {
-          name: 'buyEth',
+          name: 'buyMc',
           context: appState.currentView.name,
         },
         identity: state.metamask.identities[action.value],

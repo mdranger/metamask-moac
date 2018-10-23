@@ -120,7 +120,7 @@ ConfirmTxScreen.prototype.render = function () {
         unconfTxListLength,
         computedBalances,
         // Actions
-        buyEth: this.buyEth.bind(this, txParams.from || props.selectedAddress),
+        buyMc: this.buyMc.bind(this, txParams.from || props.selectedAddress),
         sendTransaction: this.sendTransaction.bind(this),
         cancelTransaction: this.cancelTransaction.bind(this, txData),
         cancelAllTransactions: this.cancelAllTransactions.bind(this, unconfTxList),
@@ -146,22 +146,22 @@ function currentTxView (opts) {
   } else if (msgParams) {
     log.debug('msgParams detected, rendering pending msg')
 
-    if (type === 'eth_sign') {
-      log.debug('rendering eth_sign message')
+    if (type === 'mc_sign') {
+      log.debug('rendering mc_sign message')
       return h(PendingMsg, opts)
     } else if (type === 'personal_sign') {
       log.debug('rendering personal_sign message')
       return h(PendingPersonalMsg, opts)
-    } else if (type === 'eth_signTypedData') {
-      log.debug('rendering eth_signTypedData message')
+    } else if (type === 'mc_signTypedData') {
+      log.debug('rendering mc_signTypedData message')
       return h(PendingTypedMsg, opts)
     }
   }
 }
 
-ConfirmTxScreen.prototype.buyEth = function (address, event) {
+ConfirmTxScreen.prototype.buyMc = function (address, event) {
   event.preventDefault()
-  this.props.dispatch(actions.buyEthView(address))
+  this.props.dispatch(actions.buyMcView(address))
 }
 
 ConfirmTxScreen.prototype.sendTransaction = function (txData, event) {

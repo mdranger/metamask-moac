@@ -6,7 +6,7 @@ import {qrcode} from 'qrcode-npm'
 import copyToClipboard from 'copy-to-clipboard'
 import ShapeShiftForm from '../shapeshift-form'
 import Identicon from '../../../../ui/app/components/identicon'
-import {buyEth, showAccountDetail} from '../../../../ui/app/actions'
+import {buyMc, showAccountDetail} from '../../../../ui/app/actions'
 
 class BuyEtherScreen extends Component {
   static OPTION_VALUES = {
@@ -194,7 +194,7 @@ export default connect(
     address: selectedAddress,
   }),
   dispatch => ({
-    goToCoinbase: address => dispatch(buyEth({ network: '1', address, amount: 0 })),
+    goToCoinbase: address => dispatch(buyMc({ network: '1', address, amount: 0 })),
     showAccountDetail: address => dispatch(showAccountDetail(address)),
   })
 )(BuyEtherScreen)

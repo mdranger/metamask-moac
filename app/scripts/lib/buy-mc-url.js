@@ -1,4 +1,4 @@
-module.exports = getBuyEthUrl
+module.exports = getBuyMcUrl
 
 /**
  * Gives the caller a url at which the user can acquire eth, depending on the network they are in
@@ -12,11 +12,11 @@ module.exports = getBuyEthUrl
  * network does not match any of the specified cases, or if no network is given, returns undefined.
  *
  */
-function getBuyEthUrl ({ network, amount, address }) {
+function getBuyMcUrl ({ network, amount, address }) {
   let url
   switch (network) {
     case '1':
-      url = `https://buy.coinbase.com/?code=9ec56d01-7e81-5017-930c-513daa27bb6a&amount=${amount}&address=${address}&crypto_currency=ETH`
+      url = `https://www.coinbene.com/#/market?pairId=MOACUSDT`
       break
 
     case '3':

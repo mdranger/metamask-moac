@@ -186,7 +186,7 @@ ConfirmTxScreen.prototype.render = function () {
     currentCurrency,
     blockGasLimit,
     // Actions
-    buyEth: this.buyEth.bind(this, txParams.from || props.selectedAddress),
+    buyMc: this.buyMc.bind(this, txParams.from || props.selectedAddress),
     sendTransaction: this.sendTransaction.bind(this),
     cancelTransaction: this.cancelTransaction.bind(this, txData),
     signMessage: this.signMessage.bind(this, txData),
@@ -226,9 +226,9 @@ function currentTxView (opts) {
   return h(Loading)
 }
 
-ConfirmTxScreen.prototype.buyEth = function (address, event) {
+ConfirmTxScreen.prototype.buyMc = function (address, event) {
   event.preventDefault()
-  this.props.dispatch(actions.buyEthView(address))
+  this.props.dispatch(actions.buyMcView(address))
 }
 
 ConfirmTxScreen.prototype.sendTransaction = function (txData, event) {

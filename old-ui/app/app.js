@@ -138,7 +138,7 @@ App.prototype.renderAppBar = function () {
   }
 
   // Do not render header if user is in mascara buy ether
-  if (isMascara && props.currentView.name === 'buyEth') {
+  if (isMascara && props.currentView.name === 'buyMc') {
     return null
   }
 
@@ -604,11 +604,11 @@ App.prototype.renderPrimary = function () {
 
     case 'buyMOAC':
       log.debug('rendering buy MOAC screen')
-      return h(BuyView, {key: 'buyEthView'})
+      return h(BuyView, {key: 'buyMcView'})
 
     case 'onboardingBuyEth':
       log.debug('rendering onboarding buy ether screen')
-      return h(MascaraBuyEtherScreen, {key: 'buyEthView'})
+      return h(MascaraBuyEtherScreen, {key: 'buyMcView'})
 
     case 'qr':
       log.debug('rendering show qr screen')

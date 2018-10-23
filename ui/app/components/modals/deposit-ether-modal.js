@@ -25,7 +25,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     toCoinbase: (address) => {
-      dispatch(actions.buyEth({ network: '1', address, amount: 0 }))
+      dispatch(actions.buyMc({ network: '1', address, amount: 0 }))
     },
     hideModal: () => {
       dispatch(actions.hideModal())
@@ -36,7 +36,7 @@ function mapDispatchToProps (dispatch) {
     showAccountDetailModal: () => {
       dispatch(actions.showModal({ name: 'ACCOUNT_DETAILS' }))
     },
-    toFaucet: network => dispatch(actions.buyEth({ network })),
+    toFaucet: network => dispatch(actions.buyMc({ network })),
   }
 }
 
