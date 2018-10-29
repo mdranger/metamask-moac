@@ -5,7 +5,7 @@ const {
   bnToHex,
 } = require('../../lib/util')
 const { addHexPrefix } = require('ethereumjs-util')
-const SIMPLE_GAS_COST = '0x03e8' // Hex for 1000, cost of a simple send, not ETHEREUM'S 0x5208
+const SIMPLE_GAS_COST = '0x103e8' // Hex for 1000, cost of a simple send, not ETHEREUM'S 0x5208
 
 /**
 tx-gas-utils are gas utility methods for Transaction manager
