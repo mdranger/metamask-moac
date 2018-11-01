@@ -1,0 +1,9 @@
+Moac Browser Extension
+Moac Mask is an extension for accessing MOAC enabled distributed applications, or "Dapps" in your normal Chrome browser!
+
+The extension injects the Moac chain3 API into every website's javascript context, so that dapps can read from the blockchain.
+
+MoacMask also lets the user create and manage their own identities, so when a Dapp wants to perform a transaction and write to the blockchain, the user gets a secure interface to review the transaction, before approving or rejecting it.
+
+Because it adds functionality to the normal browser context, MoacMask requires the permission to read and write to any webpage. You can always "view the source" of MoacMask the way you do any Chrome extension, or view the source code on Github:
+https://github.com/mdranger/metamask-moac
