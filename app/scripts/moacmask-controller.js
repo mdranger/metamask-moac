@@ -244,6 +244,11 @@ module.exports = class MoacMaskController extends EventEmitter {
       static: {
         eth_syncing: false,
         web3_clientVersion: `MetaMask/v${version}`,
+        eth_sendTransaction: (payload, next, end) => {
+          const origin = payload.origin
+          const txParams = payload.params[0]
+          nodeify(this.txController.newUnapprovedTransaction, this.txController)(txParams, { origin }, end)
+        },
         mc_sendTransaction: (payload, next, end) => {
           const origin = payload.origin
           const txParams = payload.params[0]
