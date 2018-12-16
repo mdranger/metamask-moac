@@ -53,7 +53,7 @@ CreateVaultCompleteScreen.prototype.render = function () {
           textAlign: 'center',
         },
       }, [
-        h('span.error', 'These 12 words are the only way to restore your MOAC accounts in the extension.\nSave them somewhere safe and secret.'),
+        h('span.error', 'These 12 words are the only way to restore your MOACMask account in the extension.\nSave them somewhere safe and secret.'),
       ]),
 
       h('textarea.twelve-word-phrase', {

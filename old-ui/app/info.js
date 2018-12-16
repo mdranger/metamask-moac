@@ -123,9 +123,8 @@ InfoScreen.prototype.render = function () {
               ]),
             ]),
         ]),
-      ]),
-    ])
-  )
+      ])
+    )
 }
 
 InfoScreen.prototype.navigateTo = function (url) {

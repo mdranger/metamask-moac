@@ -1,7 +1,7 @@
 # Changelog
 
 ## 0.1.2 Dec 15 2018
-Change network to https://gateway.moac.io. 
+Change networks to https://gateway.moac.io. Update  the terms, privacy and attributions documents.
 
 ## 0.1.1 Nov 01 2018
 Fixed both sendTransaction's work in a app for popup and direct tx
