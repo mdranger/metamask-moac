@@ -1,4 +1,4 @@
-# MoacMask Browser Extension for MOAC
+# MOACMask Browser Extension for MOAC
 
 ## Support
 
@@ -10,7 +10,7 @@ In order to help users and developers access MOAC blockchain, we modified the [M
 - Use moac-tx to replace the ethereumjs-tx for sign a raw transaction object;
 - Use moac-provider-engine to replace the web3-provider-enginer for sending a signed Transaction to MOAC network;
 - Use moac-link to provide outside link with MOAC explorer for displaying account info.
-- Connect with https://moacwalletonline.com instead of infurno.io to provide online services.
+- Connect with https://gateway.moac.io instead of infurno.io to provide online services.
 
 MoacMask is a software for users to manage accounts, for sites to easily propose actions to users, and for users to coherently review actions before approving them. We build on this rapidly evolving set of protocols with the goal of empowering the most people to the greatest degree, and aspire to continuously evolve our offering to pursue that goal.
 
@@ -26,7 +26,7 @@ If you're a web dapp developer, we welcome you to join us to further develop thi
 
 ### Current Dapp Developers
 
-- If you have a Dapp on Ethereum, and you want to move to MOAC network, you can checkout our website for further development.
+- If you have a Dapp on Ethereum, and you want to move to MOAC network, you can checkout our website for instructions. 
 - At this moment, MOACMask only supports MotherChain Dapps, MicroChain supports is under developing.
 
 ## Building locally
@@ -73,12 +73,10 @@ To write tests that will be run in the browser using QUnit, add your test files 
 
 - [How to add custom build to Chrome](./docs/add-to-chrome.md)
 - [How to add custom build to Firefox](./docs/add-to-firefox.md)
-- [How to develop a live-reloading UI](./docs/ui-dev-mode.md)
-- [How to add a new translation to MetaMask](./docs/translating-guide.md)
-- [Publishing Guide](./docs/publishing.md)
-- [How to develop an in-browser mocked UI](./docs/ui-mock-mode.md)
-- [How to live reload on local dependency changes](./docs/developing-on-deps.md)
 - [How to add new networks to the Provider Menu](./docs/adding-new-networks.md)
-- [How to manage notices that appear when the app starts up](./docs/notices.md)
-- [How to port MetaMask to a new platform](./docs/porting_to_new_environment.md)
-- [How to generate a visualization of this repository's development](./docs/development-visualization.md)
+- [How to add a new translation to MOACMask](./docs/translating-guide.md)
+- [How to develop an in-browser mocked UI](./docs/ui-mock-mode.md)
+- [How to develop a live-reloading UI](./docs/ui-dev-mode.md)
+- [How to live reload on local dependency changes](./docs/developing-on-deps.md)
+
+
