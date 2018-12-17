@@ -21,7 +21,7 @@
   },
   "applications": {
     "gecko": {
-      "id": "webextension@moac.io"
+      "id": "metamask@gmail.com"
     }
   },
   "default_locale": "en",
@@ -58,9 +58,11 @@
     "storage",
     "unlimitedStorage",
     "clipboardWrite",
+    "activeTab",
     "http://localhost:8545/",
-    "https://gateway.moac.io/*",
-    "https://*.infura.io/"
+    "https://github.com/MOACChain/MOACMask/*",
+    "https://gateway.moac.io/mainnet",
+    "https://gateway.moac.io/testnet"
   ],
   "web_accessible_resources": [
     "inpage.js"
