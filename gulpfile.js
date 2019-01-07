@@ -480,7 +480,7 @@ function generateBundler(opts, performBundle) {
 
   // inject variables into bundle
   bundler.transform(envify({
-    METAMASK_DEBUG: opts.devMode,
+    MOACMASK_DEBUG: opts.devMode,
     NODE_ENV: opts.devMode ? 'development' : 'production',
   }))
 

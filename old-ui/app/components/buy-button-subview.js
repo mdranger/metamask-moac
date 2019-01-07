@@ -15,11 +15,11 @@ module.exports = connect(mapStateToProps)(BuyButtonSubview)
 function mapStateToProps (state) {
   return {
     identity: state.appState.identity,
-    account: state.metamask.accounts[state.appState.buyView.buyAddress],
+    account: state.moacmask.accounts[state.appState.buyView.buyAddress],
     warning: state.appState.warning,
     buyView: state.appState.buyView,
-    network: state.metamask.network,
-    provider: state.metamask.provider,
+    network: state.moacmask.network,
+    provider: state.moacmask.provider,
     context: state.appState.currentView.context,
     isSubLoading: state.appState.isSubLoading,
   }

@@ -31,10 +31,10 @@ const {
   ENVIRONMENT_TYPE_FULLSCREEN,
 } = require('./lib/enums')
 
-const STORAGE_KEY = 'metamask-config'
-const METAMASK_DEBUG = process.env.METAMASK_DEBUG
+const STORAGE_KEY = 'moacmask-config'
+const MOACMASK_DEBUG = process.env.MOACMASK_DEBUG
 
-log.setDefaultLevel(process.env.METAMASK_DEBUG ? 'debug' : 'warn')
+log.setDefaultLevel(process.env.MOACMASK_DEBUG ? 'debug' : 'warn')
 
 const platform = new ExtensionPlatform()
 const notificationManager = new NotificationManager()
@@ -434,7 +434,7 @@ function triggerUi () {
 // On first install, open a window to MetaMask website to how-it-works.
 // Change this to direct to moacMask page
 extension.runtime.onInstalled.addListener(function (details) {
-  if ((details.reason === 'install') && (!METAMASK_DEBUG)) {
+  if ((details.reason === 'install') && (!MOACMASK_DEBUG)) {
     extension.tabs.create({url: 'https://github.com/MOACChain/MOACMask'})
   }
 })

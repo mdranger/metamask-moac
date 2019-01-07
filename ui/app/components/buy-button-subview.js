@@ -142,14 +142,13 @@ BuyButtonSubview.prototype.primarySubview = function () {
       return
 
     case '1':
-      return this.mainnetSubview()
-
     // Ropsten, Rinkeby, Kovan
     // 2018/06/07 Added MOAC main/testnet
     case '3':
     case '4':
     case '42':
     case '99':
+          return this.mainnetSubview()
     case '101':
       const networkName = getNetworkDisplayName(network)
       const label = `${networkName} ${this.context.t('testFaucet')}`
