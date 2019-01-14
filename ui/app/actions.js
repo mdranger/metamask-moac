@@ -221,7 +221,7 @@ var actions = {
   // buy Eth with coinbase
   onboardingBuyEthView,
   ONBOARDING_BUY_ETH_VIEW: 'ONBOARDING_BUY_ETH_VIEW',
-  BUY_ETH: 'BUY_ETH',
+  BUY_ETH: 'BUY_MOAC',
   buyEth: buyEth,
   buyEthView: buyEthView,
   buyWithShapeShift,

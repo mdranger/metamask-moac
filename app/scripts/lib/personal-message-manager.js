@@ -130,7 +130,7 @@ module.exports = class PersonalMessageManager extends EventEmitter {
    *
    */
   approveMessage (msgParams) {
-    this.setMsgStatusApproved(msgParams.metamaskId)
+    this.setMsgStatusApproved(msgParams.moacmaskId)
     return this.prepMsgForSigning(msgParams)
   }
 
@@ -160,14 +160,14 @@ module.exports = class PersonalMessageManager extends EventEmitter {
   }
 
   /**
-   * Removes the metamaskId property from passed msgParams and returns a promise which resolves the updated msgParams
+   * Removes the moacmaskId property from passed msgParams and returns a promise which resolves the updated msgParams
    *
    * @param {Object} msgParams The msgParams to modify
-   * @returns {Promise<object>} Promises the msgParams with the metamaskId property removed
+   * @returns {Promise<object>} Promises the msgParams with the moacmaskId property removed
    *
    */
   prepMsgForSigning (msgParams) {
-    delete msgParams.metamaskId
+    delete msgParams.moacmaskId
     return Promise.resolve(msgParams)
   }
 

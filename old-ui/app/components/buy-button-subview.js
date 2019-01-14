@@ -3,8 +3,8 @@ const h = require('react-hyperscript')
 const inherits = require('util').inherits
 const connect = require('react-redux').connect
 const actions = require('../../../ui/app/actions')
-const CoinbaseForm = require('./coinbase-form')
-const ShapeshiftForm = require('./shapeshift-form')
+// const CoinbaseForm = require('./coinbase-form')
+// const ShapeshiftForm = require('./shapeshift-form')
 const Loading = require('./loading')
 const AccountPanel = require('./account-panel')
 const RadioList = require('./custom-radio-list')
@@ -76,7 +76,7 @@ BuyButtonSubview.prototype.headerSubview = function () {
             paddingTop: '4px',
             paddingBottom: '4px',
           },
-        }, 'Buy Eth'),
+        }, 'Buy MOAC'),
       ]),
 
       // loading indication
@@ -204,11 +204,11 @@ BuyButtonSubview.prototype.mainnetSubview = function () {
         h(RadioList, {
           defaultFocus: props.buyView.subview,
           labels: [
-            'Coinbase',
+            'Coinbene',
             'ShapeShift',
           ],
           subtext: {
-            'Coinbase': 'Crypto/FIAT (USA only)',
+            'Coinbene': 'Crypto/FIAT (USA only)',
             'ShapeShift': 'Crypto',
           },
           onClick: this.radioHandler.bind(this),
@@ -235,6 +235,7 @@ BuyButtonSubview.prototype.mainnetSubview = function () {
 
 BuyButtonSubview.prototype.formVersionSubview = function () {
   const network = this.props.network
+  log.debug("BuyButtonSubview.prototype.formVersionSubview")
   if (network === '1') {
     if (this.props.buyView.formView.coinbase) {
       return h(CoinbaseForm, this.props)
@@ -260,8 +261,8 @@ BuyButtonSubview.prototype.radioHandler = function (event) {
   switch (event.target.title) {
     case 'Coinbase':
       return this.props.dispatch(actions.coinBaseSubview())
-    case 'ShapeShift':
-      return this.props.dispatch(actions.shapeShiftSubview(this.props.provider.type))
+    // case 'ShapeShift':
+    //   return this.props.dispatch(actions.shapeShiftSubview(this.props.provider.type))
     // case 'CoinBene'://满币网
     //   return this.props.dispatch(actions.coinBeneSubview())
   }

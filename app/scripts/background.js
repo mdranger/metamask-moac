@@ -153,7 +153,7 @@ async function initialize () {
   const initState = await loadStateFromPersistence()
   const initLangCode = await getFirstPreferredLangCode()
   await setupController(initState, initLangCode)
-  log.debug('MetaMask initialization complete.')
+  log.debug('MOACMask initialization complete.')
 }
 
 //
