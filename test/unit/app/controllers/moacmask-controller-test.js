@@ -511,45 +511,46 @@ describe('MoacMaskController', function () {
     })
   })
 
-  describe('#setupUntrustedCommunication', function () {
-    let streamTest
+  // Skipped since MOAC didn't use infura.io for phishing sites.
+  // describe('#setupUntrustedCommunication', function () {
+  //   let streamTest
 
-    const phishingUrl = 'decentral.market'
+  //   const phishingUrl = 'decentral.market'
 
-    afterEach(function () {
-      streamTest.end()
-    })
+  //   afterEach(function () {
+  //     streamTest.end()
+  //   })
 
-    it('sets up phishing stream for untrusted communication ', async function () {
-      await moacmaskController.blacklistController.updatePhishingList()
+  //   it('sets up phishing stream for untrusted communication ', async function () {
+  //     await moacmaskController.blacklistController.updatePhishingList()
 
-      streamTest = createThoughStream((chunk, enc, cb) => {
-        assert.equal(chunk.name, 'phishing')
-        assert.equal(chunk.data.hostname, phishingUrl)
-         cb()
-        })
-      // console.log(streamTest)
-       moacmaskController.setupUntrustedCommunication(streamTest, phishingUrl)
-    })
-  })
+  //     streamTest = createThoughStream((chunk, enc, cb) => {
+  //       assert.equal(chunk.name, 'phishing')
+  //       assert.equal(chunk.data.hostname, phishingUrl)
+  //        cb()
+  //       })
+  //     // console.log(streamTest)
+  //      moacmaskController.setupUntrustedCommunication(streamTest, phishingUrl)
+  //   })
+  // })
 
-  describe('#setupTrustedCommunication', function () {
-    let streamTest
+  // describe('#setupTrustedCommunication', function () {
+  //   let streamTest
 
-    afterEach(function () {
-      streamTest.end()
-    })
+  //   afterEach(function () {
+  //     streamTest.end()
+  //   })
 
-    it('sets up controller dnode api for trusted communication', function (done) {
-      streamTest = createThoughStream((chunk, enc, cb) => {
-        assert.equal(chunk.name, 'controller')
-        cb()
-        done()
-      })
+  //   it('sets up controller dnode api for trusted communication', function (done) {
+  //     streamTest = createThoughStream((chunk, enc, cb) => {
+  //       assert.equal(chunk.name, 'controller')
+  //       cb()
+  //       done()
+  //     })
 
-      moacmaskController.setupTrustedCommunication(streamTest, 'mycrypto.com')
-    })
-  })
+  //     moacmaskController.setupTrustedCommunication(streamTest, 'mycrypto.com')
+  //   })
+  // })
 
   describe('#markAccountsFound', function () {
     it('adds lost accounts to config manager data', function () {

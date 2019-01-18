@@ -1234,7 +1234,6 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
    * @returns {Promise<String>} - The RPC Target URL confirmed.
    */
   async setCustomRpc (rpcTarget) {
-    console.log("Current signer is", this.getVersion())
     this.networkController.setRpcTarget(rpcTarget)
     await this.preferencesController.updateFrequentRpcList(rpcTarget)
     return rpcTarget
