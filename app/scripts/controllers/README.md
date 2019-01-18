@@ -3,6 +3,7 @@
 Different controllers (in the sense of *VC *View-Controller).
 # MOAC
 cancel infura service to send transactions.
+use gateway.moac.io service to send transactions.
 use sendRawTransaction from chain3 to replace.
 
 TransactionController

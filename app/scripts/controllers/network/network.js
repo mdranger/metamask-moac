@@ -18,8 +18,10 @@ const {
   MOACTEST,
   LOCALHOST,
 } = require('./enums');
-const MOAC_MAIN_URL = "https://www.moacwalletonline.com/main";
-const MOAC_TEST_URL = "https://www.moacwalletonline.com/test";
+// const MOAC_MAIN_URL = "https://www.moacwalletonline.com/main";
+// const MOAC_TEST_URL = "https://www.moacwalletonline.com/test";
+const MOAC_MAIN_URL = "https://gateway.moac.io/mainnet";
+const MOAC_TEST_URL = "https://gateway.moac.io/testnet";
 const LOCALHOST_RPC_URL = 'http://localhost:8545'
 const INFURA_PROVIDER_TYPES = [ROPSTEN, RINKEBY, KOVAN, MAINNET]
 const MOAC_PROVIDER_TYPES = [MOACMAIN, MOACTEST]
@@ -80,11 +82,11 @@ module.exports = class NetworkController extends EventEmitter {
   lookupNetwork () {
     // Prevent firing when provider is not defined.
     if (!this.ethQuery || !this.ethQuery.sendAsync) {
-      return log.warn('NetworkController - lookupNetwork aborted due to missing ethQuery')
+      return log.warn('NetworkController - lookupNetwork aborted due to missing Query')
     }
     this.ethQuery.sendAsync({ method: 'net_version' }, (err, network) => {
       if (err) return this.setNetworkState('loading')
-      log.info('web3.getNetwork returned ' + network)
+      log.info('chain3.getNetwork returned ' + network)
       this.setNetworkState(network)
     })
   }

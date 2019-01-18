@@ -83,7 +83,7 @@
   "buyCoinbene": {
     "message": "Купить на Coinbase"
   },
-  "buyCoinbaseExplainer": {
+  "buyCoinbeneExplainer": {
     "message": "Биржа Coinbase – это наиболее популярный способ купить или продать bitcoin, MOAC и litecoin."
   },
   "ok": {

@@ -30,7 +30,7 @@ class ShapeshiftController {
    * Represents, and contains data about, a single shapeshift transaction.
    * @typedef {Object} ShapeShiftTx
    * @property {string} depositAddress - An address at which to send a crypto deposit, so that eth can be sent to the
-   * user's Metamask account
+   * user's MOACmask account
    * @property {string} depositType - An abbreviation of the type of crypto currency to be deposited.
    * @property {string} key - The 'shapeshift' key differentiates this from other types of txs in Metamask
    * @property {number} time - The time at which the tx was created

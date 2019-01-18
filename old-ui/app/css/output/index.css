@@ -432,8 +432,13 @@
   color: #f7861c; }
 
 .color-blue {
+<<<<<<< HEAD
     color: #66ccff; }
   
+=======
+  color: #66ccff; }
+
+>>>>>>> v0.1.2
 .color-forest {
   color: #0a5448; }
 

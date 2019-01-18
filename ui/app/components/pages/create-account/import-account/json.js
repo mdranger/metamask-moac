@@ -7,7 +7,11 @@ const connect = require('react-redux').connect
 const actions = require('../../../../actions')
 const FileInput = require('react-simple-file-input').default
 const { DEFAULT_ROUTE } = require('../../../../routes')
+<<<<<<< HEAD
 const HELP_LINK = 'http://www.moacdapp.io/'
+=======
+const HELP_LINK = 'https://github.com/MOACChain/MOACMask'
+>>>>>>> v0.1.2
 
 class JsonImportSubview extends Component {
   constructor (props) {

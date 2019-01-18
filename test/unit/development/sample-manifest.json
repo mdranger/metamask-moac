@@ -65,7 +65,7 @@
   ],
   "externally_connectable": {
     "matches": [
-      "https://www.moacwalletonline.com/*"
+      "https://gateway.moac.io/*"
     ]
   }
 }

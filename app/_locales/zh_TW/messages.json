@@ -75,16 +75,20 @@
     "message": "透過 Dharma (Beta) 借用"
   },
   "builtInCalifornia": {
-    "message": "MetaMask 是在加州設計製造."
+    "message": "MoacMask 是在加州設計製造."
   },
   "buy": {
     "message": "購買"
   },
   "buyCoinbene": {
+<<<<<<< HEAD
     "message": "在 Coinbase 上購買"
+=======
+    "message": "在 Coinbene 上購買"
+>>>>>>> v0.1.2
   },
-  "buyCoinbaseExplainer": {
-    "message": "Coinbase 是世界上最流行的買賣比特幣，以太幣和萊特幣的交易所。"
+  "buyCoinbeneExplainer": {
+    "message": "Coinbene 是可以购买墨客的交易所之一。"
   },
   "ok": {
     "message": "Ok"

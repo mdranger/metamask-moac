@@ -83,7 +83,7 @@
   "buyCoinbene": {
     "message": "Comprar en Coinbase"
   },
-  "buyCoinbaseExplainer": {
+  "buyCoinbeneExplainer": {
     "message": "Coinbase es la plataforma global más popular para comprar y vender Bitcoin, MOAC y Litecoin"
   },
   "cancel": {

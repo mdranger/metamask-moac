@@ -6,8 +6,7 @@ import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'recompose'
 import {closeWelcomeScreen} from './actions'
-//Remove this 
-// import Mascot from './components/mascot'
+//import Mascot from './components/mascot'
 import { INITIALIZE_CREATE_PASSWORD_ROUTE } from './routes'
 
 class WelcomeScreen extends Component {
@@ -50,13 +49,10 @@ class WelcomeScreen extends Component {
           //   width: '225',
           //   height: '225',
           // }),
-          // h('img.welcome-screen__info__icon', {
-          //   src: 'images/moac_logo.svg',
-          // }),
 
           h('div.welcome-screen__info__header', this.context.t('welcomeBeta')),
 
-          h('div.welcome-screen__info__copy', this.context.t('moacmaskDescription')),
+          h('div.welcome-screen__info__copy', this.context.t('moacMaskDescription')),
 
           // h('div.welcome-screen__info__copy', this.context.t('holdEther')),
           h('div.welcome-screen__info__copy', this.context.t('holdMoac')),
@@ -71,8 +67,7 @@ class WelcomeScreen extends Component {
   }
 }
 
-// const mapStateToProps = ({ metamask: { welcomeScreenSeen } }) => {
-  const mapStateToProps = ({ moacmask: { welcomeScreenSeen } }) => {
+const mapStateToProps = ({ moacmask: { welcomeScreenSeen } }) => {
   return {
     welcomeScreenSeen,
   }

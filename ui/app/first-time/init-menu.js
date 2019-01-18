@@ -3,7 +3,11 @@ const { Component } = require('react')
 const PropTypes = require('prop-types')
 const connect = require('react-redux').connect
 const h = require('react-hyperscript')
+<<<<<<< HEAD
 // const Mascot = require('../components/mascot')
+=======
+//const Mascot = require('../components/mascot')
+>>>>>>> v0.1.2
 const actions = require('../actions')
 const Tooltip = require('../components/tooltip')
 const getCaretCoordinates = require('textarea-caret')
@@ -38,9 +42,9 @@ class InitializeMenuScreen extends Component {
     return (
       h('.initialize-screen.flex-column.flex-center', [
 
-        h(Mascot, {
-          animationEventEmitter: this.animationEventEmitter,
-        }),
+        // h(Mascot, {
+        //   animationEventEmitter: this.animationEventEmitter,
+        // }),
 
         h('h1', {
           style: {

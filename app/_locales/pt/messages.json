@@ -80,7 +80,7 @@
   "buyCoinbene": {
     "message": "Comprar no Coinbase"
   },
-  "buyCoinbaseExplainer": {
+  "buyCoinbeneExplainer": {
     "message": "Coinbase é a forma mais conhecida para comprar e vender bitcoin, MOAC, e litecoin."
   },
   "cancel": {

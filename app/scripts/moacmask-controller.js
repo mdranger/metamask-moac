@@ -249,6 +249,11 @@ module.exports = class MoacMaskController extends EventEmitter {
           const txParams = payload.params[0]
           nodeify(this.txController.newUnapprovedTransaction, this.txController)(txParams, { origin }, end)
         },
+        mc_sendTransaction: (payload, next, end) => {
+          const origin = payload.origin
+          const txParams = payload.params[0]
+          nodeify(this.txController.newUnapprovedTransaction, this.txController)(txParams, { origin }, end)
+        },
       },
       // account mgmt
       getAccounts: (cb) => {
@@ -1229,7 +1234,6 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
    * @returns {Promise<String>} - The RPC Target URL confirmed.
    */
   async setCustomRpc (rpcTarget) {
-    console.log("Current signer is", this.getVersion())
     this.networkController.setRpcTarget(rpcTarget)
     await this.preferencesController.updateFrequentRpcList(rpcTarget)
     return rpcTarget

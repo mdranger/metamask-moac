@@ -125,7 +125,7 @@ ConfigScreen.prototype.render = function () {
                   if (err) {
                     state.dispatch(actions.displayWarning('Error in retrieving state logs.'))
                   } else {
-                    exportAsFile('MetaMask State Logs.json', result)
+                    exportAsFile('MOACMask State Logs.json', result)
                   }
                 })
               },
@@ -166,7 +166,7 @@ ConfigScreen.prototype.render = function () {
             }, [
               'Resetting is for developer use only. ',
               h('a', {
-                href: 'http://metamask.helpscoutdocs.com/article/36-resetting-an-account',
+                href: 'https://github.com/MOACChain/MOACMask/blob/master/faqs.md',
                 target: '_blank',
               }, 'Read more.'),
             ]),
@@ -223,32 +223,12 @@ function currentConversionInformation (metamaskState, state) {
   ])
 }
 
-//remove ether networks
+//remove ether networks and keep only MOAC networks
 function currentProviderDisplay (metamaskState) {
   var provider = metamaskState.provider
   var title, value
 
   switch (provider.type) {
-
-    // case 'mainnet':
-    //   title = 'Current Network'
-    //   value = 'Main Ethereum Network'
-    //   break
-
-    // case 'ropsten':
-    //   title = 'Current Network'
-    //   value = 'Ropsten Test Network'
-    //   break
-
-    // case 'kovan':
-    //   title = 'Current Network'
-    //   value = 'Kovan Test Network'
-    //   break
-
-    // case 'rinkeby':
-    //   title = 'Current Network'
-    //   value = 'Rinkeby Test Network'
-    //   break
 
     case 'MOACmain':
       title = 'Current Network'

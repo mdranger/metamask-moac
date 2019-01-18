@@ -74,7 +74,7 @@
   "buyCoinbene": {
     "message": "Coinbaseのサイトで購入"
   },
-  "buyCoinbaseExplainer": {
+  "buyCoinbeneExplainer": {
     "message": "Etherを購入できます。Coinbaseは、世界的なBitcoin、MOAC、そしてLitecoinの取引所です。"
   },
   "cancel": {

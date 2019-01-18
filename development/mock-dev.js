@@ -21,7 +21,11 @@ const actions = require('../ui/app/actions')
 const states = require('./states')
 const backGroundConnectionModifiers = require('./backGroundConnectionModifiers')
 const Selector = require('./selector')
+<<<<<<< HEAD
 const MoacMaskController = require('../app/scripts/moacmask-controller')
+=======
+const MoacmaskController = require('../app/scripts/moacmask-controller')
+>>>>>>> v0.1.2
 const firstTimeState = require('../app/scripts/first-time-state')
 const ExtensionPlatform = require('../app/scripts/platforms/extension')
 const extension = require('./mockExtension')
@@ -71,7 +75,11 @@ const injectCss = require('inject-css')
 // MetaMask Controller
 //
 
+<<<<<<< HEAD
 const controller = new MoacMaskController({
+=======
+const controller = new MoacmaskController({
+>>>>>>> v0.1.2
   // User confirmation callbacks:
   showUnconfirmedMessage: noop,
   unlockAccountMessage: noop,

@@ -80,7 +80,7 @@
   "buyCoinbene": {
     "message": "ซื้อด้วย Coinbase"
   },
-  "buyCoinbaseExplainer": {
+  "buyCoinbeneExplainer": {
     "message": "Coinbase เป็นแหล่งซื้อขายบิตคอยน์ไลท์คอยน์และอีเธอเรียมที่ได้รับความนิยมสูงสุดในโลก"
   },
   "cancel": {
