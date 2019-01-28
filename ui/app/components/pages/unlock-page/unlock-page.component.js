@@ -7,11 +7,7 @@ const { ENVIRONMENT_TYPE_POPUP } = require('../../../../../app/scripts/lib/enums
 const { getEnvironmentType } = require('../../../../../app/scripts/lib/util')
 const getCaretCoordinates = require('textarea-caret')
 const EventEmitter = require('events').EventEmitter
-<<<<<<< HEAD
-// const Mascot = require('../../mascot')
-=======
 //const Mascot = require('../../mascot')
->>>>>>> v0.1.2
 const { DEFAULT_ROUTE, RESTORE_VAULT_ROUTE } = require('../../../routes')
 
 class UnlockPage extends Component {

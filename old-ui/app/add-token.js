@@ -47,7 +47,7 @@ AddTokenScreen.prototype.render = function () {
             props.dispatch(actions.goHome())
           },
         }),
-        h('h2.page-subtitle', 'Add Token'),
+        h('h2.page-subtitle', 'Add MicroChain'),
       ]),
 
       h('.error', {
@@ -69,14 +69,14 @@ AddTokenScreen.prototype.render = function () {
           h('div', [
             h(Tooltip, {
               position: 'top',
-              title: 'The contract of the actual token contract. Click for more info.',
+              title: 'The MicroChain address. Click for more info.',
             }, [
               h('a', {
                 style: { fontWeight: 'bold', paddingRight: '10px'},
                 href: 'http://www.moacdapp.io/',
                 target: '_blank',
               }, [
-                h('span', 'Token Contract Address  '),
+                h('span', 'MicroChain Address  '),
                 h('i.fa.fa-question-circle'),
               ]),
             ]),
@@ -85,7 +85,7 @@ AddTokenScreen.prototype.render = function () {
           h('section.flex-row.flex-center', [
             h('input#token-address', {
               name: 'address',
-              placeholder: 'Token Contract Address',
+              placeholder: 'MicroChain Address',
               onChange: this.tokenAddressDidChange.bind(this),
               style: {
                 width: 'inherit',
@@ -104,7 +104,7 @@ AddTokenScreen.prototype.render = function () {
 
           h('div', { style: {display: 'flex'} }, [
             h('input#token_symbol', {
-              placeholder: `Like "ETH"`,
+              placeholder: `Like "MOAC"`,
               value: symbol,
               style: {
                 width: 'inherit',

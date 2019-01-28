@@ -432,10 +432,6 @@ function triggerUi () {
 // Change this to direct to moacMask page
 extension.runtime.onInstalled.addListener(function (details) {
   if ((details.reason === 'install') && (!METAMASK_DEBUG)) {
-<<<<<<< HEAD
-    // extension.tabs.create({url: 'https://metamask.io/#how-it-works'})
-=======
->>>>>>> v0.1.2
     extension.tabs.create({url: 'https://github.com/MOACChain/MOACMask'})
   }
 })

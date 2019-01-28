@@ -1,13 +1,5 @@
 [
-<<<<<<< HEAD
-
-  { "code": "en", "name": "English" },
-  { "code": "es", "name": "Spanish" },
-  { "code": "fr", "name": "French" },
-  { "code": "zh_CN", "name": "Chinese" }
-=======
   { "code": "en", "name": "English" },
   { "code": "zh_CN", "name": "Mandarin" },
   { "code": "zh_TW", "name": "Taiwanese" }
->>>>>>> v0.1.2
 ]

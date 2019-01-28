@@ -209,11 +209,7 @@ PendingTx.prototype.render = function () {
                   value: gasPriceBn,
                   precision: 9,
                   scale: 9,
-<<<<<<< HEAD
-                  suffix: 'SHA',
-=======
                   suffix: 'GSHA',
->>>>>>> v0.1.2
                   min: forceGasMin || MIN_GAS_PRICE_BN,
                   style: {
                     position: 'relative',

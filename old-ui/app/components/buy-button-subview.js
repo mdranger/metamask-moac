@@ -76,7 +76,7 @@ BuyButtonSubview.prototype.headerSubview = function () {
             paddingTop: '4px',
             paddingBottom: '4px',
           },
-        }, 'Buy Eth'),
+        }, 'Buy MOAC'),
       ]),
 
       // loading indication
@@ -148,7 +148,7 @@ BuyButtonSubview.prototype.primarySubview = function () {
     case '99':
     case '101':
       const networkName = getNetworkDisplayName(network)
-      const label = `${networkName} Test Faucet`
+      const label = `${networkName} Faucet`
       return (
         h('div.flex-column', {
           style: {
@@ -208,7 +208,7 @@ BuyButtonSubview.prototype.mainnetSubview = function () {
             'ShapeShift',
           ],
           subtext: {
-            'Coinbase': 'Crypto/FIAT (USA only)',
+            'Coinbase': 'Crypto/FIAT',
             'ShapeShift': 'Crypto',
           },
           onClick: this.radioHandler.bind(this),
@@ -235,7 +235,8 @@ BuyButtonSubview.prototype.mainnetSubview = function () {
 
 BuyButtonSubview.prototype.formVersionSubview = function () {
   const network = this.props.network
-  if (network === '1') {
+  console.log("BuyButtonSubview.formVersionSubview:", network)
+  if (network === '99') {
     if (this.props.buyView.formView.coinbase) {
       return h(CoinbaseForm, this.props)
     } else if (this.props.buyView.formView.shapeshift) {
@@ -258,11 +259,11 @@ BuyButtonSubview.prototype.backButtonContext = function () {
 
 BuyButtonSubview.prototype.radioHandler = function (event) {
   switch (event.target.title) {
-    case 'Coinbase':
-      return this.props.dispatch(actions.coinBaseSubview())
-    case 'ShapeShift':
-      return this.props.dispatch(actions.shapeShiftSubview(this.props.provider.type))
-    // case 'CoinBene'://满币网
-    //   return this.props.dispatch(actions.coinBeneSubview())
+    // case 'Coinbase':
+    //   return this.props.dispatch(actions.coinBaseSubview())
+    // case 'ShapeShift':
+    //   return this.props.dispatch(actions.shapeShiftSubview(this.props.provider.type))
+    case 'CoinBene'://满币网
+      return this.props.dispatch(actions.coinBeneSubview())
   }
 }

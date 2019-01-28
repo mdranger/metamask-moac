@@ -209,11 +209,7 @@
     "message": "存入 MC"
   },
   "depositMc": {
-<<<<<<< HEAD
-    "message": "存入 MOAC"
-=======
     "message": "存入 MC"
->>>>>>> v0.1.2
   },
   "depositFiat": {
     "message": "存入货币"

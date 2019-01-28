@@ -36,6 +36,8 @@ const HDRestoreVaultScreen = require('./keychains/hd/restore-vault')
 const RevealSeedConfirmation = require('./keychains/hd/recover-seed/confirmation')
 const AccountDropdowns = require('./components/account-dropdowns').AccountDropdowns
 
+//Add MicroChain page
+const AddChainScreen = require('./add-chain')
 module.exports = connect(mapStateToProps)(App)
 
 inherits(App, Component)
@@ -586,6 +588,10 @@ App.prototype.renderPrimary = function () {
       log.debug('rendering add-token screen from unlock screen.')
       return h(AddTokenScreen, {key: 'add-token'})
 
+    case 'add-chain':
+      log.debug('rendering chain screen from unlock screen.')
+      return h(AddTokenScreen, {key: 'add-chain'})
+
     case 'config':
       log.debug('rendering config screen')
       return h(ConfigScreen, {key: 'config'})
@@ -602,12 +608,12 @@ App.prototype.renderPrimary = function () {
       log.debug('rendering info screen')
       return h(InfoScreen, {key: 'info'})
 
-    case 'buyMOAC':
+    case 'buyEth':
       log.debug('rendering buy MOAC screen')
       return h(BuyView, {key: 'buyEthView'})
 
     case 'onboardingBuyEth':
-      log.debug('rendering onboarding buy ether screen')
+      // log.debug('rendering onboarding buy ether screen')
       return h(MascaraBuyEtherScreen, {key: 'buyEthView'})
 
     case 'qr':

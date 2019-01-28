@@ -3,11 +3,6 @@ const { Component } = require('react')
 const PropTypes = require('prop-types')
 const connect = require('react-redux').connect
 const h = require('react-hyperscript')
-<<<<<<< HEAD
-// const Mascot = require('../components/mascot')
-=======
-//const Mascot = require('../components/mascot')
->>>>>>> v0.1.2
 const actions = require('../actions')
 const Tooltip = require('../components/tooltip')
 const getCaretCoordinates = require('textarea-caret')

@@ -28,11 +28,7 @@
     "description": "La description de l'application"
   },
   "appName": {
-<<<<<<< HEAD
-    "message": "MasqueMoac",
-=======
     "message": "MoacMask",
->>>>>>> v0.1.2
     "description": "Le nom de l'application"
   },
   "attemptingConnect": {

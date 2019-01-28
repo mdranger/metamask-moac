@@ -2,19 +2,11 @@
 
 **THIS AGREEMENT IS SUBJECT TO BINDING ARBITRATION AND A WAIVER OF CLASS ACTION RIGHTS AS DETAILED IN SECTION 13. PLEASE READ THE AGREEMENT CAREFULLY.**
 
-<<<<<<< HEAD
-_Our Terms of Use have been updated as of September 1, 2018_
-
-## 1. Acceptance of Terms ##
-
-MOACMask is a test platform which provides a platform for managing MOAC (or "MC") accounts, and allowing ordinary websites to interact with the MOAC blockchain, while keeping the user in control over what transactions they approve, through a website located at[https://moacwalletonline.com](https://moacwalletonline.com) and browser plugin (the "Site") — which includes text, images, audio, code and other materials  (collectively, the “Content”) and all of the features, and services provided. The Site, and any other features, tools, materials, or other services offered from time to time by MOACMask are referred to here as the “Service.” Please read these Terms of Use (the “Terms” or “Terms of Use”) carefully before using the Service. By using or otherwise accessing the Services, or clicking to accept or agree to these Terms where that option is made available, you (1) accept and agree to these Terms (2) consent to the collection, use, disclosure and other handling of information as described in our Privacy Policy  and (3) any additional terms, rules and conditions of participation issued by MOACMask from time to time. If you do not agree to the Terms, then you may not access or use the Content or Services.
-=======
 _Our Terms of Use have been updated as of November 1, 2018_
 
 ## 1. Acceptance of Terms ##
 
 MOACMask provides a platform for managing Mother Of All Chains (or "MOAC") accounts, and allowing ordinary websites to interact with the MOAC blockchain, while keeping the user in control over what transactions they approve, through our website located at[https://gateway.moac.io](https://gateway.moac.io) and browser plugin (the "Site") — which includes text, images, audio, code and other materials  (collectively, the “Content”) and all of the features, and services provided. The Site, and any other features, tools, materials, or other services offered from time to time by MOACMask are referred to here as the “Service.” Please read these Terms of Use (the “Terms” or “Terms of Use”) carefully before using the Service. By using or otherwise accessing the Services, or clicking to accept or agree to these Terms where that option is made available, you (1) accept and agree to these Terms (2) consent to the collection, use, disclosure and other handling of information as described in our Privacy Policy  and (3) any additional terms, rules and conditions of participation issued by MOACMask from time to time. If you do not agree to the Terms, then you may not access or use the Content or Services.
->>>>>>> v0.1.2
 
 ## 2. Modification of Terms of Use ##
 
@@ -40,19 +32,11 @@ You expressly understand and agree that your use of the Service is at your sole 
 
 ### 5.2 Sophistication and Risk of Cryptographic Systems ###
 
-<<<<<<< HEAD
-By utilizing the Service or interacting with the Content or platform in any way, you represent that you understand the inherent risks associated with cryptographic systems; and warrant that you have an understanding of the usage and intricacies of native cryptographic tokens, like MOAC(MC), Ether (ETH) and Bitcoin (BTC), smart contract based tokens such as those that follow the MOAC Token Standard (https://github.com/ethereum/EIPs/issues/20), and blockchain-based software systems.
-
-### 5.3 Risk of Regulatory Actions in One or More Jurisdictions ###
-
-MOACMask and MC could be impacted by one or more regulatory inquiries or regulatory action, which could impede or limit the ability of MOACMask to continue to develop, or which could impede or limit your ability to access or use the Service or MOAC blockchain.
-=======
 By utilizing the Service or interacting with the Content or platform in any way, you represent that you understand the inherent risks associated with cryptographic systems; and warrant that you have an understanding of the usage and intricacies of native cryptographic tokens, like MOAC, Ether (ETH) and Bitcoin (BTC), smart contract based tokens such as those that follow the Ethereum Token Standard (https://github.com/ethereum/EIPs/issues/20), and blockchain-based software systems.
 
 ### 5.3 Risk of Regulatory Actions in One or More Jurisdictions ###
 
 MOACMask and MOAC could be impacted by one or more regulatory inquiries or regulatory action, which could impede or limit the ability of MOACMask to continue to develop, or which could impede or limit your ability to access or use the Service or MOAC blockchain.
->>>>>>> v0.1.2
 
 ### 5.4 Risk of Weaknesses or Exploits in the Field of Cryptography ###
 
@@ -78,11 +62,7 @@ SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR THE LIMIT
 
 ## 8. Our Proprietary Rights ##
 
-<<<<<<< HEAD
-All title, ownership and intellectual property rights in and to the Service are owned by MOACMask or its licensors. You acknowledge and agree that the Service contains proprietary and confidential information that is protected by applicable intellectual property and other laws. Except as expressly authorized by MOACMask, you agree not to copy, modify, rent, lease, loan, sell, distribute, perform, display or create derivative works based on the Service, in whole or in part. MOACMask issues a license for MOACMask, found [here](https://github.com/MOACMask/blob/master/LICENSE). 
-=======
 All title, ownership and intellectual property rights in and to the Service are owned by MOACMask or its licensors. You acknowledge and agree that the Service contains proprietary and confidential information that is protected by applicable intellectual property and other laws. Except as expressly authorized by MOACMask, you agree not to copy, modify, rent, lease, loan, sell, distribute, perform, display or create derivative works based on the Service, in whole or in part. MOACMask issues a license for MOACMask, found [here](https://github.com/MOACChain/MOACMask/blob/master/LICENSE). For information on other licenses utilized in the development of MOACMask, please see our attribution page at: [https://github.com/MOACChain/MOACMask/blob/master/ATTRIBUTIONS](https://github.com/MOACChain/MOACMask/blob/master/ATTRIBUTIONS)
->>>>>>> v0.1.2
 
 ## 9. Links ##
 
@@ -116,11 +96,7 @@ If you believe that your copyright or the copyright of a person on whose behalf 
 
 MOACMask’s Copyright Agent can be reached at:
 
-<<<<<<< HEAD
-Email: copyright [at] moacmask [dot] io
-=======
 Email: metamask [at] gmail [dot] com
->>>>>>> v0.1.2
 
 Mail:
 
@@ -162,11 +138,7 @@ Notwithstanding the parties' decision to resolve all disputes through arbitratio
 
 ### 13.6 30-Day Right to Opt Out ###
 
-<<<<<<< HEAD
-You have the right to opt-out and not be bound by the arbitration and class action waiver provisions set forth above by sending written notice of your decision to opt-out to the following address: MOACMask ℅ ConsenSys, 49 Bogart Street, Brooklyn NY 11206 and via email at legal-opt@moacmask.io. The notice must be sent within 30 days of September 1, 2018 or your first use of the Service, whichever is later, otherwise you shall be bound to arbitrate disputes in accordance with the terms of those paragraphs. If you opt-out of these arbitration provisions, MOACMask also will not be bound by them.
-=======
 You have the right to opt-out and not be bound by the arbitration and class action waiver provisions set forth above by sending written notice of your decision to opt-out to the following address: MOACMask ℅ ConsenSys, 809 San Antonio Rd Ste 10, Palo Alto, CA 94303 and via email at metamask@gmail.com. The notice must be sent within 30 days of November 1, 2018 or your first use of the Service, whichever is later, otherwise you shall be bound to arbitrate disputes in accordance with the terms of those paragraphs. If you opt-out of these arbitration provisions, MOACMask also will not be bound by them.
->>>>>>> v0.1.2
 
 ### 13.7 Changes to This Section ###
 
@@ -196,10 +168,6 @@ The section titles in the Terms are for convenience only and have no legal or co
 
 ### 14.5 Communications ###
 
-<<<<<<< HEAD
-Users with questions, complaints or claims with respect to the Service may contact us using the relevant contact information set forth above and at support@moac.io.
-
-=======
 Users with questions, complaints or claims with respect to the Service may contact us using the relevant contact information set forth above and at moacmask@gmail.com.
 
 ## 15 Related Links ##
@@ -208,4 +176,3 @@ Users with questions, complaints or claims with respect to the Service may conta
 
 **[Privacy](https://www.moac.io/privacy_policy.html)**
 
->>>>>>> v0.1.2

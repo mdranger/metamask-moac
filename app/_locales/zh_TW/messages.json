@@ -81,11 +81,7 @@
     "message": "購買"
   },
   "buyCoinbene": {
-<<<<<<< HEAD
-    "message": "在 Coinbase 上購買"
-=======
     "message": "在 Coinbene 上購買"
->>>>>>> v0.1.2
   },
   "buyCoinbeneExplainer": {
     "message": "Coinbene 是可以购买墨客的交易所之一。"

@@ -141,7 +141,7 @@ BuyButtonSubview.prototype.primarySubview = function () {
     case 'loading':
       return
 
-    case '1':
+    case '99':
       return this.mainnetSubview()
 
     // Ropsten, Rinkeby, Kovan
@@ -149,7 +149,6 @@ BuyButtonSubview.prototype.primarySubview = function () {
     case '3':
     case '4':
     case '42':
-    case '99':
     case '101':
       const networkName = getNetworkDisplayName(network)
       const label = `${networkName} ${this.context.t('testFaucet')}`
@@ -169,11 +168,11 @@ BuyButtonSubview.prototype.primarySubview = function () {
           // Kovan only: Dharma loans beta
           network === '42' ? (
             h('button.text-transform-uppercase', {
-              onClick: () => this.navigateTo('https://borrow.dharma.io/'),
+              onClick: () => this.navigateTo('http://119.28.13.213:3000/'),
               style: {
                 marginTop: '15px',
               },
-            }, this.context.t('borrowDharma'))
+            }, this.context.t('MOAC testnet faucet'))
           ) : null,
       ])
     )

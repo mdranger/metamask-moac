@@ -197,7 +197,7 @@ AccountDetailScreen.prototype.render = function () {
           h('button', {
             onClick: () => props.dispatch(actions.buyEthView(selected)),
             style: { marginRight: '10px' },
-          }, 'BUY'),
+          }, 'DEPOSIT'),
 
           h('button', {
             onClick: () => props.dispatch(actions.showSendPage()),
@@ -245,6 +245,7 @@ AccountDetailScreen.prototype.tabSections = function () {
       tabs: [
         { content: 'Sent', key: 'history' },
         { content: 'Tokens', key: 'tokens' },
+        { content: 'MicroChains', key: 'microchains' },
       ],
       defaultTab: currentAccountTab || 'history',
       tabSelected: (key) => {
@@ -268,6 +269,13 @@ AccountDetailScreen.prototype.tabSwitchView = function () {
         network,
         tokens,
         addToken: () => this.props.dispatch(actions.showAddTokenPage()),
+      })
+    case 'microchains':
+      return h(TokenList, {
+        userAddress: address,
+        network,
+        tokens,
+        addToken: () => this.props.dispatch(actions.showAddChainPage()),
       })
     default:
       return this.transactionList()
