@@ -14,6 +14,7 @@ const EditableLabel = require('./components/editable-label')
 const TabBar = require('./components/tab-bar')
 const TokenList = require('./components/token-list')
 const AccountDropdowns = require('./components/account-dropdowns').AccountDropdowns
+const ChainList = require('./components/chain-list')
 
 module.exports = connect(mapStateToProps)(AccountDetailScreen)
 
@@ -245,7 +246,7 @@ AccountDetailScreen.prototype.tabSections = function () {
       tabs: [
         { content: 'Sent', key: 'history' },
         { content: 'Tokens', key: 'tokens' },
-        { content: 'MicroChains', key: 'microchains' },
+        { content: 'Chains', key: 'microchains' },
       ],
       defaultTab: currentAccountTab || 'history',
       tabSelected: (key) => {
@@ -271,7 +272,7 @@ AccountDetailScreen.prototype.tabSwitchView = function () {
         addToken: () => this.props.dispatch(actions.showAddTokenPage()),
       })
     case 'microchains':
-      return h(TokenList, {
+      return h(ChainList, {
         userAddress: address,
         network,
         tokens,
