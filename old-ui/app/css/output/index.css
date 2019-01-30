@@ -956,7 +956,7 @@ a {
   color: inherit; }
 
 a:hover {
-  color: #df6b0e; }
+  color: #66ccff; }
 
 input.large-input,
 textarea.large-input {
@@ -983,8 +983,8 @@ input[type="submit"][disabled] {
 button.primary {
   padding: 8px 12px;
   background: #66ccff;
-  -webkit-box-shadow: 0 3px 6px rgba(247, 134, 28, 0.36);
-          box-shadow: 0 3px 6px rgba(247, 134, 28, 0.36);
+  -webkit-box-shadow: 0 3px 6px rgba(174, 174, 174, 0.36);
+          box-shadow: 0 3px 6px rgba(174, 174, 174, 0.36);
   color: #fff;
   font-size: 1.1em;
   font-family: Roboto;

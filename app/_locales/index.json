@@ -1,5 +1,5 @@
 [
   { "code": "en", "name": "English" },
-  { "code": "zh_CN", "name": "Mandarin" },
-  { "code": "zh_TW", "name": "Taiwanese" }
+  { "code": "zh_CN", "name": "SimplifiedChinese" },
+  { "code": "zh_TC", "name": "TraditionalChinese" }
 ]
