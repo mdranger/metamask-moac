@@ -160,19 +160,21 @@ BuyButtonSubview.prototype.primarySubview = function () {
           },
         }, [
           h('button.text-transform-uppercase', {
-            onClick: () => this.props.dispatch(actions.buyEth({ network })),
+            onClick: () => this.navigateTo('http://119.28.13.213:3000'),
             style: {
+              background: 'rgb(95, 158, 160)',
+              color: 'rgb(0, 0, 139)',
               marginTop: '15px',
             },
           }, label),
           // Kovan only: Dharma loans beta
-          network === '42' ? (
+          network === '101' ? (
             h('button.text-transform-uppercase', {
-              onClick: () => this.navigateTo('https://borrow.dharma.io/'),
+              onClick: () => this.navigateTo('https://github.com/MOACChain/chain3/issues/1'),
               style: {
                 marginTop: '15px',
               },
-            }, this.context.t('borrowDharma'))
+            }, this.context.t('Testnet token'))
           ) : null,
       ])
     )
