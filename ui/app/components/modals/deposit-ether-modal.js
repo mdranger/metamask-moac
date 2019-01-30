@@ -40,7 +40,7 @@ function mapDispatchToProps (dispatch) {
     showAccountDetailModal: () => {
       dispatch(actions.showModal({ name: 'ACCOUNT_DETAILS' }))
     },
-    toFaucet: network => dispatch(actions.buyEth({ network })),
+    toFaucet: network => dispatch(actions.buyMoac({ network })),
   }
 }
 
@@ -170,7 +170,7 @@ DepositEtherModal.prototype.render = function () {
           title: FAUCET_ROW_TITLE,
           text: this.facuetRowText(networkName),
           buttonLabel: this.context.t('testFaucet'),
-          onButtonClick: toFaucet(network),
+          onButtonClick: () => toFaucet(network),
           hide: !isTestNetwork || buyingWithShapeshift,
         }),
 

@@ -943,7 +943,7 @@
     "message": "Unknown network ID"
   },
   "unlockMessage": {
-    "message": "The 3rd generation blockchain awaits"
+    "message": "The next generation blockchain awaits"
   },
   "uriErrorMsg": {
     "message": "URIs require the appropriate HTTP/HTTPS prefix."
