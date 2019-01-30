@@ -77,8 +77,8 @@ button, input[type="submit"] {
   transform-origin: center center;
   transition: transform 50ms ease-in;
   /* changed default orange color from rgba(247, 134, 28, 1) to #66ccff */
-  background: rgba(247, 134, 28, 1);
-  box-shadow: 0px 3px 6px rgba(247, 134, 28, 0.36);
+  background: #66ccff;
+  box-shadow: 0px 3px 6px rgba(197, 197, 197, 1);
 }
 
 .btn-green, input[type="submit"].btn-green {
@@ -118,7 +118,7 @@ a {
 }
 
 a:hover{
-  color: #df6b0e;
+  color: #66ccff;
 }
 
 /*
@@ -141,7 +141,7 @@ app
 button.primary {
   padding: 8px 12px;
   background: #66ccff;
-  box-shadow: 0 3px 6px rgba(247, 134, 28, .36);
+  box-shadow: 0 3px 6px rgba(139, 135, 131, 0.36);
   color: white;
   font-size: 1.1em;
   font-family: Roboto;
@@ -264,7 +264,7 @@ app sections
 }
 
 .warning {
-  color: #FFAE00;
+  color: rgb(159, 80, 20);
 }
 
 .dropped {
@@ -448,11 +448,11 @@ input.large-input {
 
 .identity-section .identity-panel.selected {
   background: white;
-  color: #F3C83E;
+  color: #66ccff;
 }
 
 .identity-section .identity-panel.selected .identicon {
-  border-color: orange;
+  border-color: rgb(0, 136, 255);
 }
 
 .identity-section .accounts-list-option:hover,
@@ -502,7 +502,7 @@ input.large-input {
   margin-bottom: 2px;
   font-size: 11px;
   text-rendering: geometricPrecision;
-  color: #F7861C;
+  color: #66ccff;
 }
 .name-label:hover .edit-text {
   visibility: visible;
@@ -515,7 +515,7 @@ input.large-input {
   margin: 12px;
   margin-bottom: 24px;
   border-radius: 4px;
-  border: 2px solid #F3C83E;
+  border: 2px solid #66ccff;
   background: #FAF6F0;
 }
 
@@ -537,7 +537,7 @@ input.large-input {
 /* Ether Balance Widget */
 
 .ether-balance-amount {
-  color: #F7861C;
+  color: #66ccff;
 }
 
 .ether-balance-label {
@@ -576,7 +576,7 @@ input.large-input {
   border-style: double;
   border-radius: 15px;
   border-width: 5px;
-  background: rgba(247, 134, 28, 1);
+  background: rgb(28, 79, 247);
   border-color: #F7F7F7;
 }
 
@@ -590,7 +590,7 @@ input.large-input {
 }
 
 .radio-titles {
-  color: rgba(247, 134, 28, 1);
+  color: rgb(28, 61, 247);
 }
 
 .radio-titles-subtext {
@@ -632,14 +632,14 @@ input.large-input {
 .input-container:hover .buy-inputs{
   box-sizing: inherit;
   border: solid;
-  border-color: #F7861C;
+  border-color: #66ccff;
   border-width: 0.5px;
   border-radius: 2px;
 }
 
 .buy-inputs:focus{
   border: solid;
-  border-color: #F7861C;
+  border-color: #66ccff;
   border-width: 0.5px;
   border-radius: 2px;
 }
@@ -727,7 +727,7 @@ input.large-input {
 
 .qr-message {
   font-size: 12px;
-  color: #F7861C;
+  color: #66ccff;
 }
 
 div.message-container > div:first-child {
@@ -740,7 +740,7 @@ div.message-container > div:first-child {
     transform: scale(1.1);
 }
 
-//Notification Modal
+/*Notification Modal*/
 
 .notification-modal-wrapper {
   display: flex;
