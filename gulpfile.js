@@ -25,14 +25,13 @@ const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 const gulpStylelint = require('gulp-stylelint')
 const stylefmt = require('gulp-stylefmt')
-//const uglify = require('gulp-uglify-es').default
+const uglify = require('gulp-uglify-es').default
 const babel = require('gulp-babel')
 const debug = require('gulp-debug')
 const pify = require('pify')
 const gulpMultiProcess = require('gulp-multi-process')
 const endOfStream = pify(require('end-of-stream'))
 
-// dependency used to separate the ui.js to libs and ui.js
 const packageJSON = require('./package.json')
 const dependencies = Object.keys(packageJSON && packageJSON.dependencies || {})
 const materialUIDependencies = ['@material-ui/core']
@@ -337,7 +336,6 @@ function createTasksForBuildJsUIDeps ({ dependenciesToBundle, filename }) {
   }, bundleTaskOpts)))
 }
 
-
 function createTasksForBuildJsExtension({ buildJsFiles, taskPrefix, devMode, bundleTaskOpts = {} }) {
   // inpage must be built before all other scripts:
   const rootDir = './app/scripts'
@@ -593,12 +591,13 @@ function bundleTask(opts) {
         .pipe(sourcemaps.init({ loadMaps: true }))
     }
 
+    // Removed to avoid chrome check
     // Minification
     if (opts.minifyBuild) {
       buildStream = buildStream
       .pipe(uglify({
         mangle: {
-          reserved: [ 'MetamaskInpageProvider' ]
+          reserved: [ 'MoacmaskInpageProvider' ]
         },
       }))
     }
