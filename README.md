@@ -11,7 +11,12 @@ In order to help users and developers access MOAC blockchain, we modified the [M
 - Use moac-tx to replace the ethereumjs-tx for sign a raw transaction object;
 - Use moac-provider-engine to replace the web3-provider-enginer for sending a signed Transaction to MOAC network;
 - Use moac-link to provide outside link with MOAC explorer for displaying account info.
+<<<<<<< HEAD
+- Connect with https://gateway.moac.io instead of infurno.io to provide online services.
+- Use https://api.coinmarketcap.com/ instead of https://api.infura.io to provide MOAC market price.
+=======
 - Connect with gateway.moac.io instead of infurno.io to provide online services.
+>>>>>>> master
 
 MoacMask is a software for users to manage accounts, for sites to easily propose actions to users, and for users to coherently review actions before approving them. We build on this rapidly evolving set of protocols with the goal of empowering the most people to the greatest degree, and aspire to continuously evolve our offering to pursue that goal.
 
@@ -32,7 +37,7 @@ If you're a web dapp developer, we welcome you to join us to further develop thi
 
 ## Building locally
 
- - Install [Node.js](https://nodejs.org/en/) version 6.3.1 or later.
+ - Install [Node.js](https://nodejs.org/en/) version 8.
  - Install dependencies:
    - For node versions up to and including 9, install local dependencies with `npm install`.
    - For node versions 10 and later, install [Yarn](https://yarnpkg.com/lang/en/docs/install/) and use `yarn install`.

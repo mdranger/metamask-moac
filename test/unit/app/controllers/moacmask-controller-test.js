@@ -13,6 +13,7 @@ const TEST_SEED = 'debris dizzy just program just float decrease vacant alarm re
 const TEST_ADDRESS = '0x0dcd5d886577d5081b0c52e242ef29e70be3e7bc'
 const TEST_SEED_ALT = 'setup olympic issue mobile velvet surge alcohol burger horse view reopen gentle'
 const TEST_ADDRESS_ALT = '0xc42edfcc21ed14dda456aa0756c153f7985d8813'
+const CUSTOM_RPC_URL = 'http://localhost:8545'
 
 describe('MoacMaskController', function () {
   let moacmaskController
@@ -21,14 +22,9 @@ describe('MoacMaskController', function () {
 
   beforeEach(function () {
 
-    nock('https://api.infura.io')
-      .persist()
-      .get('/v2/blacklist')
-      .reply(200, blacklistJSON)
-
-    nock('https://api.infura.io')
-      .get('/v1/ticker/ethusd')
-      .reply(200, '{"base": "ETH", "quote": "USD", "bid": 288.45, "ask": 288.46, "volume": 112888.17569277, "exchange": "bitfinex", "total_volume": 272175.00106721005, "num_exchanges": 8, "timestamp": 1506444677}')
+    nock('https://api.coinmarketcap.com')
+      .get('/v2/ticker/2403')
+      .reply(200, '{"base": "MOAC", "quote": "USD", "bid": 288.45, "ask": 288.46, "volume": 112888.17569277, "exchange": "bitfinex", "total_volume": 272175.00106721005, "num_exchanges": 8, "timestamp": 1506444677}')
 
     nock('https://api.infura.io')
       .get('/v1/ticker/ethjpy')
@@ -64,7 +60,7 @@ describe('MoacMaskController', function () {
     nock.cleanAll()
     sandbox.restore()
   })
-
+/*
   describe('submitPassword', function () {
     const password = 'password'
 
@@ -216,19 +212,19 @@ describe('MoacMaskController', function () {
       assert.equal(preferenceControllerState.selectedAddress, address)
     })
 
-    it('changes metamask controller selected address', function () {
-      const metamaskState = moacmaskController.getState()
-      assert.equal(metamaskState.selectedAddress, address)
+    it('changes moacmask controller selected address', function () {
+      const moacmaskState = moacmaskController.getState()
+      assert.equal(moacmaskState.selectedAddress, address)
     })
   })
 
   describe('#setCustomRpc', function () {
-    const customRPC = 'https://custom.rpc/'
+    const customRPC = 'https://gateway.moac.io/testnet'
     let rpcTarget
 
     beforeEach(function () {
 
-      nock('https://custom.rpc')
+      nock('https://gateway.moac.io/testnet')
       .post('/')
       .reply(200)
 
@@ -250,40 +246,20 @@ describe('MoacMaskController', function () {
   })
 
   describe('#setCurrentCurrency', function () {
-    let defaultMetaMaskCurrency
+    let defaultMOACMaskCurrency
 
     beforeEach(function () {
-      defaultMetaMaskCurrency = moacmaskController.currencyController.getCurrentCurrency()
+      defaultMOACMaskCurrency = moacmaskController.currencyController.getCurrentCurrency()
     })
 
     it('defaults to usd', function () {
-      assert.equal(defaultMetaMaskCurrency, 'usd')
+      assert.equal(defaultMOACMaskCurrency, 'usd')
     })
 
     it('sets currency to JPY', function () {
       moacmaskController.setCurrentCurrency('JPY', noop)
       assert.equal(moacmaskController.currencyController.getCurrentCurrency(), 'JPY')
     })
-  })
-
-  describe('#createShapeshifttx', function () {
-    let depositAddress, depositType, shapeShiftTxList
-
-    beforeEach(function () {
-      nock('https://shapeshift.io')
-        .get('/txStat/3EevLFfB4H4XMWQwYCgjLie1qCAGpd2WBc')
-        .reply(200, '{"status": "no_deposits", "address": "3EevLFfB4H4XMWQwYCgjLie1qCAGpd2WBc"}')
-
-      depositAddress = '3EevLFfB4H4XMWQwYCgjLie1qCAGpd2WBc'
-      depositType = 'ETH'
-      shapeShiftTxList = moacmaskController.shapeshiftController.store.getState().shapeShiftTxList
-    })
-
-    it('creates a shapeshift tx', async function () {
-      moacmaskController.createShapeShiftTx(depositAddress, depositType)
-      assert.equal(shapeShiftTxList[0].depositAddress, depositAddress)
-    })
-
   })
 
   describe('#addNewAccount', function () {
@@ -350,9 +326,9 @@ describe('MoacMaskController', function () {
       getNetworkstub.returns(42)
 
       moacmaskController.txController.txStateManager._saveTxList([
-        { id: 1, status: 'unapproved', metamaskNetworkId: currentNetworkId, txParams: {from: '0x0dcd5d886577d5081b0c52e242ef29e70be3e7bc'} },
-        { id: 2, status: 'rejected', metamaskNetworkId: 32, txParams: {} },
-        { id: 3, status: 'submitted', metamaskNetworkId: currentNetworkId, txParams: {from: '0xB09d8505E1F4EF1CeA089D47094f5DD3464083d4'} },
+        { id: 1, status: 'unapproved', moacmaskNetworkId: currentNetworkId, txParams: {from: '0x0dcd5d886577d5081b0c52e242ef29e70be3e7bc'} },
+        { id: 2, status: 'rejected', moacmaskNetworkId: 32, txParams: {} },
+        { id: 3, status: 'submitted', moacmaskNetworkId: currentNetworkId, txParams: {from: '0xB09d8505E1F4EF1CeA089D47094f5DD3464083d4'} },
       ])
     })
 
@@ -398,7 +374,7 @@ describe('MoacMaskController', function () {
 
   describe('#newUnsignedMessage', function () {
 
-    let msgParams, metamaskMsgs, messages, msgId
+    let msgParams, moacmaskMsgs, messages, msgId
 
     const address = '0xc42edfcc21ed14dda456aa0756c153f7985d8813'
     const data = '0x43727970746f6b697474696573'
@@ -413,26 +389,27 @@ describe('MoacMaskController', function () {
       }
 
       moacmaskController.newUnsignedMessage(msgParams, noop)
-      metamaskMsgs = moacmaskController.messageManager.getUnapprovedMsgs()
+      moacmaskMsgs = moacmaskController.messageManager.getUnapprovedMsgs()
       messages = moacmaskController.messageManager.messages
-      msgId = Object.keys(metamaskMsgs)[0]
-      messages[0].msgParams.metamaskId = parseInt(msgId)
+      msgId = Object.keys(moacmaskMsgs)[0]
+
+      messages[0].msgParams.moacmaskId = parseInt(msgId)
     })
 
     it('persists address from msg params', function () {
-      assert.equal(metamaskMsgs[msgId].msgParams.from, address)
+      assert.equal(moacmaskMsgs[msgId].msgParams.from, address)
     })
 
     it('persists data from msg params', function () {
-      assert.equal(metamaskMsgs[msgId].msgParams.data, data)
+      assert.equal(moacmaskMsgs[msgId].msgParams.data, data)
     })
 
     it('sets the status to unapproved', function () {
-      assert.equal(metamaskMsgs[msgId].status, 'unapproved')
+      assert.equal(moacmaskMsgs[msgId].status, 'unapproved')
     })
 
     it('sets the type to eth_sign', function () {
-      assert.equal(metamaskMsgs[msgId].type, 'eth_sign')
+      assert.equal(moacmaskMsgs[msgId].type, 'eth_sign')
     })
 
     it('rejects the message', function () {
@@ -449,7 +426,7 @@ describe('MoacMaskController', function () {
       }
     })
   })
-
+*/
   describe('#newUnsignedPersonalMessage', function () {
 
     it('errors with no from in msgParams', function () {
@@ -461,7 +438,7 @@ describe('MoacMaskController', function () {
       })
     })
 
-    let msgParams, metamaskPersonalMsgs, personalMessages, msgId
+    let msgParams, moacmaskPersonalMsgs, personalMessages, msgId
 
     const address = '0xc42edfcc21ed14dda456aa0756c153f7985d8813'
     const data = '0x43727970746f6b697474696573'
@@ -476,26 +453,26 @@ describe('MoacMaskController', function () {
       }
 
       moacmaskController.newUnsignedPersonalMessage(msgParams, noop)
-      metamaskPersonalMsgs = moacmaskController.personalMessageManager.getUnapprovedMsgs()
+      moacmaskPersonalMsgs = moacmaskController.personalMessageManager.getUnapprovedMsgs()
       personalMessages = moacmaskController.personalMessageManager.messages
-      msgId = Object.keys(metamaskPersonalMsgs)[0]
-      personalMessages[0].msgParams.metamaskId = parseInt(msgId)
+      msgId = Object.keys(moacmaskPersonalMsgs)[0]
+      personalMessages[0].msgParams.moacmaskId = parseInt(msgId)
     })
 
     it('persists address from msg params', function () {
-      assert.equal(metamaskPersonalMsgs[msgId].msgParams.from, address)
+      assert.equal(moacmaskPersonalMsgs[msgId].msgParams.from, address)
     })
 
     it('persists data from msg params', function () {
-      assert.equal(metamaskPersonalMsgs[msgId].msgParams.data, data)
+      assert.equal(moacmaskPersonalMsgs[msgId].msgParams.data, data)
     })
 
     it('sets the status to unapproved', function () {
-      assert.equal(metamaskPersonalMsgs[msgId].status, 'unapproved')
+      assert.equal(moacmaskPersonalMsgs[msgId].status, 'unapproved')
     })
 
     it('sets the type to personal_sign', function () {
-      assert.equal(metamaskPersonalMsgs[msgId].type, 'personal_sign')
+      assert.equal(moacmaskPersonalMsgs[msgId].type, 'personal_sign')
     })
 
     it('rejects the message', function () {
@@ -506,33 +483,12 @@ describe('MoacMaskController', function () {
 
     it('errors when signing a message', async function () {
       await moacmaskController.signPersonalMessage(personalMessages[0].msgParams)
-      assert.equal(metamaskPersonalMsgs[msgId].status, 'signed')
-      assert.equal(metamaskPersonalMsgs[msgId].rawSig, '0x6a1b65e2b8ed53cf398a769fad24738f9fbe29841fe6854e226953542c4b6a173473cb152b6b1ae5f06d601d45dd699a129b0a8ca84e78b423031db5baa734741b')
+      assert.equal(moacmaskPersonalMsgs[msgId].status, 'signed')
+      assert.equal(moacmaskPersonalMsgs[msgId].rawSig, '0x6a1b65e2b8ed53cf398a769fad24738f9fbe29841fe6854e226953542c4b6a173473cb152b6b1ae5f06d601d45dd699a129b0a8ca84e78b423031db5baa734741b')
     })
   })
 
-  describe('#setupUntrustedCommunication', function () {
-    let streamTest
-
-    const phishingUrl = 'decentral.market'
-
-    afterEach(function () {
-      streamTest.end()
-    })
-
-    it('sets up phishing stream for untrusted communication ', async function () {
-      await moacmaskController.blacklistController.updatePhishingList()
-
-      streamTest = createThoughStream((chunk, enc, cb) => {
-        assert.equal(chunk.name, 'phishing')
-        assert.equal(chunk.data.hostname, phishingUrl)
-         cb()
-        })
-      // console.log(streamTest)
-       moacmaskController.setupUntrustedCommunication(streamTest, phishingUrl)
-    })
-  })
-
+/*
   describe('#setupTrustedCommunication', function () {
     let streamTest
 
@@ -574,5 +530,5 @@ describe('MoacMaskController', function () {
       assert.equal(configManagerData.forgottenPassword, false)
     })
   })
-
+*/
 })

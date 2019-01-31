@@ -5,7 +5,7 @@ const inherits = require('util').inherits
 const connect = require('react-redux').connect
 const actions = require('../../actions')
 const { getNetworkDisplayName } = require('../../../../app/scripts/controllers/network/util')
-const ShapeshiftForm = require('../shapeshift-form')
+// const ShapeshiftForm = require('../shapeshift-form')
 
 let DIRECT_DEPOSIT_ROW_TITLE
 let DIRECT_DEPOSIT_ROW_TEXT
@@ -24,8 +24,12 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    toCoinbase: (address) => {
-      dispatch(actions.buyEth({ network: '1', address, amount: 0 }))
+    // toCoinbase: (address) => {
+    //   dispatch(actions.buyEth({ network: '1', address, amount: 0 }))
+    // },
+    toCoinbene: (address) => {
+      // dispatch(actions.buyEth({ network: '99', address, amount: 0 }))
+      dispatch(actions.buyMoac({ network: '99'}))
     },
     hideModal: () => {
       dispatch(actions.hideModal())
@@ -36,7 +40,7 @@ function mapDispatchToProps (dispatch) {
     showAccountDetailModal: () => {
       dispatch(actions.showModal({ name: 'ACCOUNT_DETAILS' }))
     },
-    toFaucet: network => dispatch(actions.buyEth({ network })),
+    toFaucet: network => dispatch(actions.buyMoac({ network })),
   }
 }
 
@@ -118,7 +122,7 @@ DepositEtherModal.prototype.renderRow = function ({
 }
 
 DepositEtherModal.prototype.render = function () {
-  const { network, toCoinbase, address, toFaucet } = this.props
+  const { network, toCoinbene, address, toFaucet } = this.props
   const { buyingWithShapeshift } = this.state
 
   const isTestNetwork = ['3', '4', '42','101'].find(n => n === network)
@@ -159,26 +163,26 @@ DepositEtherModal.prototype.render = function () {
           hide: buyingWithShapeshift,
         }),
 
+        //Note, the buttonLabel should contains the
+        // string with index in messages.json.
         this.renderRow({
           logo: h('i.fa.fa-tint.fa-2x'),
           title: FAUCET_ROW_TITLE,
           text: this.facuetRowText(networkName),
-          buttonLabel: this.context.t('getMc'),
+          buttonLabel: this.context.t('testFaucet'),
           onButtonClick: () => toFaucet(network),
           hide: !isTestNetwork || buyingWithShapeshift,
         }),
 
+        // remove the coinbene image file as background
         this.renderRow({
-          logo: h('div.deposit-ether-modal__logo', {
-            style: {
-              backgroundImage: 'url(\'./images/coinbene_logo.png\')',
-              height: '40px',
-            },
+          logo: h('div.deposit-ether-modal__logo',{
+            src: './images/coinbenelog.png',
           }),
           title: COINBASE_ROW_TITLE,
           text: COINBASE_ROW_TEXT,
-          buttonLabel: this.context.t('continueToCoinbene'),
-          onButtonClick: () => toCoinbase(address),
+          buttonLabel: this.context.t('continueToCoinbase'),
+          onButtonClick: () => toCoinbene(address),
           hide: isTestNetwork || buyingWithShapeshift,
         }),
 

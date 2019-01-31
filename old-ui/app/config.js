@@ -26,7 +26,7 @@ function ConfigScreen () {
 
 ConfigScreen.prototype.render = function () {
   var state = this.props
-  var metamaskState = state.metamask
+  var moacmaskState = state.metamask
   var warning = state.warning
 
   return (
@@ -66,7 +66,7 @@ ConfigScreen.prototype.render = function () {
           },
         }, [
 
-          currentProviderDisplay(metamaskState),
+          currentProviderDisplay(moacmaskState),
 
           h('div', { style: {display: 'flex'} }, [
             h('input#new_rpc', {
@@ -100,7 +100,7 @@ ConfigScreen.prototype.render = function () {
 
           h('hr.horizontal-line'),
 
-          currentConversionInformation(metamaskState, state),
+          currentConversionInformation(moacmaskState, state),
 
           h('hr.horizontal-line'),
 
@@ -202,9 +202,9 @@ function rpcValidation (newRpc, state) {
   }
 }
 
-function currentConversionInformation (metamaskState, state) {
-  var currentCurrency = metamaskState.currentCurrency
-  var conversionDate = metamaskState.conversionDate
+function currentConversionInformation (moacmaskState, state) {
+  var currentCurrency = moacmaskState.currentCurrency
+  var conversionDate = moacmaskState.conversionDate
   return h('div', [
     h('span', {style: { fontWeight: 'bold', paddingRight: '10px'}}, 'Current Conversion'),
     h('span', {style: { fontWeight: 'bold', paddingRight: '10px', fontSize: '13px'}}, `Updated ${Date(conversionDate)}`),
@@ -224,8 +224,8 @@ function currentConversionInformation (metamaskState, state) {
 }
 
 //remove ether networks and keep only MOAC networks
-function currentProviderDisplay (metamaskState) {
-  var provider = metamaskState.provider
+function currentProviderDisplay (moacmaskState) {
+  var provider = moacmaskState.provider
   var title, value
 
   switch (provider.type) {
@@ -242,7 +242,7 @@ function currentProviderDisplay (metamaskState) {
 
     default:
       title = 'Current RPC'
-      value = metamaskState.provider.rpcTarget
+      value = moacmaskState.provider.rpcTarget
   }
 
   return h('div', [

@@ -142,14 +142,13 @@ BuyButtonSubview.prototype.primarySubview = function () {
       return
 
     case '1':
-      return this.mainnetSubview()
-
     // Ropsten, Rinkeby, Kovan
     // 2018/06/07 Added MOAC main/testnet
     case '3':
     case '4':
     case '42':
     case '99':
+          return this.mainnetSubview()
     case '101':
       const networkName = getNetworkDisplayName(network)
       const label = `${networkName} ${this.context.t('testFaucet')}`
@@ -161,19 +160,21 @@ BuyButtonSubview.prototype.primarySubview = function () {
           },
         }, [
           h('button.text-transform-uppercase', {
-            onClick: () => this.props.dispatch(actions.buyEth({ network })),
+            onClick: () => this.navigateTo('http://119.28.13.213:3000'),
             style: {
+              background: 'rgb(95, 158, 160)',
+              color: 'rgb(0, 0, 139)',
               marginTop: '15px',
             },
           }, label),
           // Kovan only: Dharma loans beta
-          network === '42' ? (
+          network === '101' ? (
             h('button.text-transform-uppercase', {
-              onClick: () => this.navigateTo('https://borrow.dharma.io/'),
+              onClick: () => this.navigateTo('https://github.com/MOACChain/chain3/issues/1'),
               style: {
                 marginTop: '15px',
               },
-            }, this.context.t('borrowDharma'))
+            }, this.context.t('Testnet token'))
           ) : null,
       ])
     )

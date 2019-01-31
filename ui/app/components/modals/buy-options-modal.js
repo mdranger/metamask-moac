@@ -13,11 +13,12 @@ function mapStateToProps (state) {
   }
 }
 
+// Remove toCoinbase, 2019/01/29
 function mapDispatchToProps (dispatch) {
   return {
-    toCoinbase: (address) => {
-      dispatch(actions.buyEth({ network: '1', address, amount: 0 }))
-    },
+    // toCoinbase: (address) => {
+    //   dispatch(actions.buyEth({ network: '1', address, amount: 0 }))
+    // },
     hideModal: () => {
       dispatch(actions.hideModal())
     },

@@ -7,7 +7,7 @@ const setupDappAutoReload = require('./lib/auto-reload.js')
 const MetamaskInpageProvider = require('./lib/inpage-provider.js')
 restoreContextAfterImports()
 
-log.setDefaultLevel(process.env.METAMASK_DEBUG ? 'debug' : 'warn')
+log.setDefaultLevel(process.env.MOACMASK_DEBUG ? 'debug' : 'warn')
 
 //
 // setup plugin communication

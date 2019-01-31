@@ -197,7 +197,7 @@ AccountDetailScreen.prototype.render = function () {
           h('button', {
             onClick: () => props.dispatch(actions.buyEthView(selected)),
             style: { marginRight: '10px' },
-          }, 'BUY'),
+          }, 'DEPOSIT'),
 
           h('button', {
             onClick: () => props.dispatch(actions.showSendPage()),

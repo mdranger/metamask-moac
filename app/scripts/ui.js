@@ -9,7 +9,7 @@ const extension = require('extensionizer')
 const ExtensionPlatform = require('./platforms/extension')
 const NotificationManager = require('./lib/notification-manager')
 const notificationManager = new NotificationManager()
-const setupRaven = require('./lib/setupRaven')
+// const setupRaven = require('./lib/setupRaven')  //DISABLED for v0.1.3
 const log = require('loglevel')
 
 start().catch(log.error)
@@ -24,9 +24,9 @@ async function start() {
   // create platform global
   global.platform = new ExtensionPlatform()
 
-  // setup sentry error reporting
+  // setup sentry error reporting， removed for MOACMASK PROJECT
   const release = global.platform.getVersion()
-  setupRaven({ release })
+  // setupRaven({ release })
 
   // inject css
   // const css = MetaMaskUiCss()

@@ -76,7 +76,7 @@ BuyButtonSubview.prototype.headerSubview = function () {
             paddingTop: '4px',
             paddingBottom: '4px',
           },
-        }, 'Buy Eth'),
+        }, 'Buy MOAC'),
       ]),
 
       // loading indication
@@ -113,8 +113,8 @@ BuyButtonSubview.prototype.headerSubview = function () {
           style: {
             paddingLeft: '15px',
             width: '100vw',
-            background: 'rgb(235, 235, 235)',
-            color: 'rgb(174, 174, 174)',
+            background: 'rgb(95, 158, 160)',
+            color: 'rgb(0, 0, 139)',
             paddingTop: '4px',
             paddingBottom: '4px',
           },
@@ -138,17 +138,34 @@ BuyButtonSubview.prototype.primarySubview = function () {
       return
 
     // case '1':
-    //   return this.mainnetSubview()
-
-    // Ropsten, Rinkeby, Kovan
-    // Added MOAC main(99), MOAC test(101), MOAC dev(100)
-    // case '3':
-    // case '4':
-    // case '42':
+    // Added MOAC main(99), MOAC test(101)
     case '99':
+      // return this.mainnetSubview() //removed with simple button link
+      return (
+        h('div.flex-column', {
+          style: {
+            alignItems: 'center',
+            margin: '20px 50px',
+          },
+        }, [
+          // MOAC only: 
+            h('button.text-transform-uppercase', {
+              onClick: () => this.navigateTo('https://www.coinbene.com/#/market?pairId=MOACUSDT'),
+              style: {
+                marginTop: '15px',
+              },
+            }, 'Coinbene'),
+            h('button.text-transform-uppercase', {
+              onClick: () => this.navigateTo('https://weidex.vip/'),
+              style: {
+                marginTop: '15px',
+              },
+            }, 'Weidex')
+      ])
+      )
     case '101':
       const networkName = getNetworkDisplayName(network)
-      const label = `${networkName} Test Faucet`
+      const label = `${networkName} Faucet`
       return (
         h('div.flex-column', {
           style: {
@@ -157,23 +174,22 @@ BuyButtonSubview.prototype.primarySubview = function () {
           },
         }, [
           h('button.text-transform-uppercase', {
-            onClick: () => this.props.dispatch(actions.buyEth({ network })),
+            onClick: () => this.navigateTo('http://119.28.13.213:3000'),
             style: {
               marginTop: '15px',
             },
           }, label),
-          // MOAC only: Dharma loans beta
-          network === '99' ? (
+          // MOAC only: 
+          network === '101' ? (
             h('button.text-transform-uppercase', {
-              onClick: () => this.navigateTo('http://explorer.moac.io/home/'),
+              onClick: () => this.navigateTo('https://github.com/MOACChain/chain3/issues/1'),
               style: {
                 marginTop: '15px',
               },
-            }, 'MOAC explorer')
+            }, 'Testnet token')
           ) : null,
       ])
     )
-
     default:
       return (
         h('h2.error', 'Unknown network ID')
@@ -182,6 +198,7 @@ BuyButtonSubview.prototype.primarySubview = function () {
   }
 }
 
+//didn't work
 BuyButtonSubview.prototype.mainnetSubview = function () {
   const props = this.props
 
@@ -204,12 +221,12 @@ BuyButtonSubview.prototype.mainnetSubview = function () {
         h(RadioList, {
           defaultFocus: props.buyView.subview,
           labels: [
-            'Coinbase',
-            'ShapeShift',
+            'Coinbene',
+            'Weidex',
           ],
           subtext: {
-            'Coinbase': 'Crypto/FIAT (USA only)',
-            'ShapeShift': 'Crypto',
+            'Coinbene': 'Crypto/FIAT',
+            'Weidex': 'Crypto',
           },
           onClick: this.radioHandler.bind(this),
         }),
@@ -235,10 +252,13 @@ BuyButtonSubview.prototype.mainnetSubview = function () {
 
 BuyButtonSubview.prototype.formVersionSubview = function () {
   const network = this.props.network
-  if (network === '1') {
+  log.debug("BuyButtonSubview.prototype.formVersionSubview")
+  if (network === '99') {
     if (this.props.buyView.formView.coinbase) {
       return h(CoinbaseForm, this.props)
-    } else if (this.props.buyView.formView.shapeshift) {
+    } else if (this.props.buyView.formView.coinbene) {
+      return h(CoinbeneForm, this.props)
+    }else if (this.props.buyView.formView.shapeshift) {
       return h(ShapeshiftForm, this.props)
     }
   }
@@ -260,9 +280,9 @@ BuyButtonSubview.prototype.radioHandler = function (event) {
   switch (event.target.title) {
     case 'Coinbase':
       return this.props.dispatch(actions.coinBaseSubview())
-    case 'ShapeShift':
-      return this.props.dispatch(actions.shapeShiftSubview(this.props.provider.type))
-    // case 'CoinBene'://满币网
-    //   return this.props.dispatch(actions.coinBeneSubview())
+    // case 'ShapeShift':
+    //   return this.props.dispatch(actions.shapeShiftSubview(this.props.provider.type))
+    case 'CoinBene'://满币网
+      return this.props.dispatch(actions.coinBeneSubview())
   }
 }

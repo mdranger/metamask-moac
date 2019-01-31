@@ -25,7 +25,7 @@ const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 const gulpStylelint = require('gulp-stylelint')
 const stylefmt = require('gulp-stylefmt')
-// const uglify = require('gulp-uglify-es').default
+const uglify = require('gulp-uglify-es').default
 const babel = require('gulp-babel')
 const debug = require('gulp-debug')
 const pify = require('pify')
@@ -455,6 +455,7 @@ gulp.task('build',
     'clean',
     'build:scss',
     gulpParallel(
+      'build:extension:js:uideps',
       'build:extension:js',
       'build:mascara:js',
       'copy'
@@ -496,7 +497,7 @@ gulp.task('dist',
 function zipTask(target) {
   return () => {
     return gulp.src(`dist/${target}/**`)
-    .pipe(zip(`metamask-${target}-${manifest.version}.zip`))
+    .pipe(zip(`moacmask-${target}-${manifest.version}.zip`))
     .pipe(gulp.dest('builds'))
   }
 }
@@ -513,7 +514,7 @@ function generateBundler(opts, performBundle) {
 
   // inject variables into bundle
   bundler.transform(envify({
-    METAMASK_DEBUG: opts.devMode,
+    MOACMASK_DEBUG: opts.devMode,
     NODE_ENV: opts.devMode ? 'development' : 'production',
   }))
 
@@ -590,15 +591,16 @@ function bundleTask(opts) {
         .pipe(sourcemaps.init({ loadMaps: true }))
     }
 
+    // Removed to avoid chrome check
     // Minification
-    // if (opts.minifyBuild) {
-    //   buildStream = buildStream
-    //   .pipe(uglify({
-    //     mangle: {
-    //       reserved: [ 'MetamaskInpageProvider' ]
-    //     },
-    //   }))
-    // }
+    if (opts.minifyBuild) {
+      buildStream = buildStream
+      .pipe(uglify({
+        mangle: {
+          reserved: [ 'MoacmaskInpageProvider' ]
+        },
+      }))
+    }
 
     // Finalize Source Maps (writes .map file)
     if (opts.buildSourceMaps) {

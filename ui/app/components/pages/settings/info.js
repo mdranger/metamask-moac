@@ -25,7 +25,7 @@ class Info extends Component {
         h('div.settings__info-link-header', this.context.t('links')),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://github.com/MOACChain/MOACMask',
+            href: 'https://github.com/MOACChain/MOACMask/blob/master/privacy.md',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('privacyMsg')),
@@ -33,7 +33,7 @@ class Info extends Component {
         ]),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://github.com/MOACChain/MOACMask',
+            href: 'https://github.com/MOACChain/MOACMask/blob/master/terms.md',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('terms')),
@@ -41,7 +41,7 @@ class Info extends Component {
         ]),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://github.com/MOACChain/MOACMask',
+            href: 'https://github.com/MOACChain/MOACMask/blob/master/attributions.md',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('attributions')),
@@ -50,7 +50,7 @@ class Info extends Component {
         h('hr.settings__info-separator'),
         h('div.settings__info-link-item', [
           h('a', {
-            href: 'https://github.com/MOACChain/MOACMask',
+            href: 'https://github.com/MOACChain/MOACMask/issues',
             target: '_blank',
           }, [
             h('span.settings__info-link', this.context.t('supportCenter')),
@@ -67,7 +67,7 @@ class Info extends Component {
         h('div.settings__info-link-item', [
           h('a', {
             target: '_blank',
-            href: 'https://github.com/MOACChain/MOACMask',
+            href: 'moacmask@gmail.com',
           }, [
             h('span.settings__info-link', this.context.t('emailUs')),
           ]),
@@ -83,7 +83,7 @@ class Info extends Component {
           h('div.settings__content-item.settings__content-item--without-height', [
             this.renderLogo(),
             h('div.settings__info-item', [
-              h('div.settings__info-version-header', 'MOAC Version'),
+              h('div.settings__info-version-header', 'MOACMask Version'),
               h('div.settings__info-version-number', this.state.version),
             ]),
             h('div.settings__info-item', [
