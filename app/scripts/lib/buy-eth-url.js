@@ -34,7 +34,8 @@ function getBuyEthUrl ({ network, amount, address }) {
       url = 'https://www.coinbene.com/#/market?pairId=MOACUSDT'
       break
     case '101':
-      url = 'http://119.28.13.213:3000'
+      url = 'https://faucet.moacchina.com'
+      //old url: 'http://119.28.13.213:3000'
       break
   }
   return url

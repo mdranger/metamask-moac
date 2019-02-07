@@ -11,12 +11,8 @@ In order to help users and developers access MOAC blockchain, we modified the [M
 - Use moac-tx to replace the ethereumjs-tx for sign a raw transaction object;
 - Use moac-provider-engine to replace the web3-provider-enginer for sending a signed Transaction to MOAC network;
 - Use moac-link to provide outside link with MOAC explorer for displaying account info.
-<<<<<<< HEAD
 - Connect with https://gateway.moac.io instead of infurno.io to provide online services.
 - Use https://api.coinmarketcap.com/ instead of https://api.infura.io to provide MOAC market price.
-=======
-- Connect with gateway.moac.io instead of infurno.io to provide online services.
->>>>>>> master
 
 MoacMask is a software for users to manage accounts, for sites to easily propose actions to users, and for users to coherently review actions before approving them. We build on this rapidly evolving set of protocols with the goal of empowering the most people to the greatest degree, and aspire to continuously evolve our offering to pursue that goal.
 
