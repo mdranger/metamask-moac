@@ -11,6 +11,7 @@ function reduceMetamask (state, action) {
   let newState
 
   // clone + defaults
+  // Added chains for Microchains
   var metamaskState = extend({
     isInitialized: false,
     isUnlocked: false,
@@ -28,6 +29,7 @@ function reduceMetamask (state, action) {
     contractExchangeRates: {},
     tokenExchangeRates: {},
     tokens: [],
+    chains: [],
     pendingTokens: {},
     send: {
       gasLimit: null,
@@ -184,7 +186,7 @@ function reduceMetamask (state, action) {
         tokens: action.newTokens,
       })
 
-    // metamask.send
+    // MOACMask.send
     case actions.UPDATE_GAS_LIMIT:
       return extend(metamaskState, {
         send: {
@@ -311,15 +313,15 @@ function reduceMetamask (state, action) {
         },
       })
 
-    case actions.SHAPESHIFT_SUBVIEW:
-      const { value: { marketinfo: ssMarketInfo, coinOptions } } = action
-      return extend(metamaskState, {
-        tokenExchangeRates: {
-          ...metamaskState.tokenExchangeRates,
-          [ssMarketInfo.pair]: ssMarketInfo,
-        },
-        coinOptions,
-      })
+    // case actions.SHAPESHIFT_SUBVIEW:
+    //   const { value: { marketinfo: ssMarketInfo, coinOptions } } = action
+    //   return extend(metamaskState, {
+    //     tokenExchangeRates: {
+    //       ...metamaskState.tokenExchangeRates,
+    //       [ssMarketInfo.pair]: ssMarketInfo,
+    //     },
+    //     coinOptions,
+    //   })
 
     case actions.SET_USE_BLOCKIE:
           return extend(metamaskState, {

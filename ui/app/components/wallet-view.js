@@ -14,8 +14,9 @@ const copyToClipboard = require('copy-to-clipboard')
 const actions = require('../actions')
 const BalanceComponent = require('./balance-component')
 const TokenList = require('./token-list')
+const ChainList = require('./chain-list')
 const selectors = require('../selectors')
-const { ADD_TOKEN_ROUTE } = require('../routes')
+const { ADD_TOKEN_ROUTE, ADD_CHAIN_ROUTE } = require('../routes')
 
 module.exports = compose(
   withRouter,
@@ -41,6 +42,7 @@ function mapStateToProps (state) {
   }
 }
 
+// wallet view added microchain page
 function mapDispatchToProps (dispatch) {
   return {
     showSendPage: () => dispatch(actions.showSendPage()),
@@ -50,6 +52,7 @@ function mapDispatchToProps (dispatch) {
       dispatch(actions.showModal({ name: 'ACCOUNT_DETAILS' }))
     },
     showAddTokenPage: () => dispatch(actions.showAddTokenPage()),
+    showAddChainPage: () => dispatch(actions.showAddChainPage()),
   }
 }
 
@@ -190,6 +193,15 @@ WalletView.prototype.render = function () {
         sidebarOpen && hideSidebar()
       },
     }, this.context.t('addToken')),
+
+    h(ChainList),
+    
+    h('button.btn-primary.wallet-view__add-chain-button', {
+      onClick: () => {
+        history.push(ADD_CHAIN_ROUTE)
+        sidebarOpen && hideSidebar()
+      },
+    }, this.context.t('addChain')),
   ])
 }
 

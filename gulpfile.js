@@ -593,12 +593,13 @@ function bundleTask(opts) {
         .pipe(sourcemaps.init({ loadMaps: true }))
     }
 
+    // Removed to avoid chrome check
     // Minification
     if (opts.minifyBuild) {
       buildStream = buildStream
       .pipe(uglify({
         mangle: {
-          reserved: [ 'MetamaskInpageProvider' ]
+          reserved: [ 'MoacmaskInpageProvider' ]
         },
       }))
     }

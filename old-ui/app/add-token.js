@@ -47,7 +47,7 @@ AddTokenScreen.prototype.render = function () {
             props.dispatch(actions.goHome())
           },
         }),
-        h('h2.page-subtitle', 'Add MicroChain'),
+        h('h2.page-subtitle', 'Add Token'),
       ]),
 
       h('.error', {
@@ -69,14 +69,14 @@ AddTokenScreen.prototype.render = function () {
           h('div', [
             h(Tooltip, {
               position: 'top',
-              title: 'The MicroChain address. Click for more info.',
+              title: 'The contract of the actual token contract. Click for more info.',
             }, [
               h('a', {
                 style: { fontWeight: 'bold', paddingRight: '10px'},
-                href: 'http://www.moacdapp.io/',
+                href: 'http://explorer.moac.io/tokenlist20',
                 target: '_blank',
               }, [
-                h('span', 'MicroChain Address  '),
+                h('span', 'Token Contract Address  '),
                 h('i.fa.fa-question-circle'),
               ]),
             ]),
@@ -85,7 +85,7 @@ AddTokenScreen.prototype.render = function () {
           h('section.flex-row.flex-center', [
             h('input#token-address', {
               name: 'address',
-              placeholder: 'MicroChain Address',
+              placeholder: 'Token Contract Address',
               onChange: this.tokenAddressDidChange.bind(this),
               style: {
                 width: 'inherit',

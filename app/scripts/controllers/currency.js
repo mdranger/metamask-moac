@@ -110,6 +110,7 @@ class CurrencyController {
       //Convert to CMC
       //MOAC id = 2403
       //https://api.coinmarketcap.com/v2/ticker/2403/?convert=USD
+
       const response = await fetch(`https://api.coinmarketcap.com/v2/ticker/2403/?convert=${currentCurrency.toLowerCase()}`)
       // const response = await fetch(`https://api.infura.io/v1/ticker/eth${currentCurrency.toLowerCase()}`)
       // console.log('currency:',response.json())

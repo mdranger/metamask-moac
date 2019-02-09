@@ -1,6 +1,6 @@
 const abi = require('human-standard-token-abi')
 const pify = require('pify')
-const getBuyEthUrl = require('../../app/scripts/lib/buy-eth-url')
+const getBuyMoacUrl = require('../../app/scripts/lib/buy-eth-url')
 const { getTokenAddressFromTokenObject } = require('./util')
 const {
   calcGasTotal,
@@ -210,6 +210,15 @@ var actions = {
   removeToken,
   updateTokens,
   UPDATE_TOKENS: 'UPDATE_TOKENS',
+  // MicroChain actions
+  SHOW_ADD_CHAIN_PAGE: 'SHOW_ADD_CHAIN_PAGE',
+  showAddChainPage,
+  addChain,
+  addChains,
+  removeChain,
+  updateChains,
+  UPDATE_CHAINS: 'UPDATE_CHAINS',
+  //PROVIDER actions
   setRpcTarget: setRpcTarget,
   setProviderType: setProviderType,
   updateProviderType,
@@ -223,6 +232,8 @@ var actions = {
   ONBOARDING_BUY_ETH_VIEW: 'ONBOARDING_BUY_ETH_VIEW',
   BUY_ETH: 'BUY_ETH',
   buyEth: buyEth,
+  BUY_MOAC: 'BUY_MOAC',
+  buyMoac: buyMoac,
   buyEthView: buyEthView,
   buyWithShapeShift,
   BUY_ETH_VIEW: 'BUY_ETH_VIEW',
@@ -1320,6 +1331,7 @@ function showConfigPage (transitionForward = true) {
   }
 }
 
+// For tokens
 function showAddTokenPage (transitionForward = true) {
   return {
     type: actions.SHOW_ADD_TOKEN_PAGE,
@@ -1385,6 +1397,75 @@ function updateTokens (newTokens) {
   return {
     type: actions.UPDATE_TOKENS,
     newTokens,
+  }
+}
+
+// actions for MicroChains
+function showAddChainPage (transitionForward = true) {
+  return {
+    type: actions.SHOW_ADD_CHAIN_PAGE,
+    value: transitionForward,
+  }
+}
+
+function addChain (address, symbol, decimals) {
+  return (dispatch) => {
+    dispatch(actions.showLoadingIndication())
+    return new Promise((resolve, reject) => {
+      background.addChain(address, symbol, decimals, (err, chains) => {
+        dispatch(actions.hideLoadingIndication())
+        if (err) {
+          dispatch(actions.displayWarning(err.message))
+          reject(err)
+        }
+        dispatch(actions.updateChains(chains))
+        resolve(chains)
+      })
+    })
+  }
+}
+
+function removeChain (address) {
+  return (dispatch) => {
+    dispatch(actions.showLoadingIndication())
+    return new Promise((resolve, reject) => {
+      background.removeChain(address, (err, chains) => {
+        dispatch(actions.hideLoadingIndication())
+        if (err) {
+          dispatch(actions.displayWarning(err.message))
+          reject(err)
+        }
+        dispatch(actions.updateChains(chains))
+        resolve(chains)
+      })
+    })
+  }
+}
+
+function addChains (chains) {
+  return dispatch => {
+    if (Array.isArray(tokens)) {
+      dispatch(actions.setSelectedToken(getTokenAddressFromTokenObject(chains[0])))
+      return Promise.all(chains.map(({ address, symbol, decimals }) => (
+        dispatch(addChain(address, symbol, decimals))
+      )))
+    } else {
+      dispatch(actions.setSelectedToken(getTokenAddressFromTokenObject(chains)))
+      return Promise.all(
+        Object
+        .entries(chains)
+        .map(([_, { address, symbol, decimals }]) => (
+          dispatch(addChain(address, symbol, decimals))
+        ))
+      )
+    }
+  }
+}
+
+function updateChains (newChains) {
+  return {
+    type: actions.UPDATE_CHAINS,
+    newChains,
   }
 }
 
@@ -1694,10 +1775,20 @@ function showSendTokenPage () {
 
 function buyEth (opts) {
   return (dispatch) => {
-    const url = getBuyEthUrl(opts)
-    global.platform.openWindow({ url })
+    const url = getBuyMoacUrl(opts)
+    // global.platform.openWindow({ url })
     dispatch({
       type: actions.BUY_ETH,
+    })
+  }
+}
+
+function buyMoac (opts) {
+  return (dispatch) => {
+    const url = getBuyMoacUrl(opts)
+    global.platform.openWindow({ url })
+    dispatch({
+      type: actions.BUY_MOAC,
     })
   }
 }
@@ -1719,6 +1810,12 @@ function buyEthView (address) {
 function coinBaseSubview () {
   return {
     type: actions.COINBASE_SUBVIEW,
+  }
+}
+
+function coinBeneSubview () {
+  return {
+    type: actions.COINBENE_SUBVIEW,
   }
 }
 

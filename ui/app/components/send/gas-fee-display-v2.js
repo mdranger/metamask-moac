@@ -17,6 +17,7 @@ function GasFeeDisplay () {
   Component.call(this)
 }
 // Convert the ETH display to MC
+// Need to increase the gasLimit
 GasFeeDisplay.prototype.render = function () {
   const {
     conversionRate,

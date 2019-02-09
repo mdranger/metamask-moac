@@ -168,10 +168,13 @@ class Home extends Component {
       //   })
         // return h(ConfirmTxScreen, {key: 'confirm-tx'})
 
-      // case 'add-token':
-      //   log.debug('rendering add-token screen from unlock screen.')
-      //   return h(AddTokenScreen, {key: 'add-token'})
+      case 'add-token':
+        log.debug('rendering add-token screen from unlock screen.')
+        return h(AddTokenScreen, {key: 'add-token'})
 
+      case 'add-chain':
+        log.debug('rendering add-chain screen from unlock screen.')
+        return h(AddChainScreen, {key: 'add-chain'})
       // case 'config':
       //   log.debug('rendering config screen')
       //   return h(Settings, {key: 'config'})

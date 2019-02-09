@@ -6,13 +6,14 @@ const extend = require('xtend')
 class PreferencesController {
 
   /**
-   *
+   * 2019/02/01 Added chains object
    * @typedef {Object} PreferencesController
    * @param {object} opts Overrides the defaults for the initial state of this.store
    * @property {object} store The stored object containing a users preferences, stored in local storage
 	 * @property {array} store.frequentRpcList A list of custom rpcs to provide the user
    * @property {string} store.currentAccountTab Indicates the selected tab in the ui
    * @property {array} store.tokens The tokens the user wants display in their token lists
+   * @property {array} store.chains The MicroChains the user wants display in the chain lists
    * @property {boolean} store.useBlockie The users preference for blockie identicons within the UI
    * @property {object} store.featureFlags A key-boolean map, where keys refer to features and booleans to whether the
    * user wishes to see that feature
@@ -25,6 +26,7 @@ class PreferencesController {
       frequentRpcList: [],
       currentAccountTab: 'history',
       tokens: [],
+      chains: [],
       useBlockie: false,
       featureFlags: {},
       currentLocale: opts.initLangCode,
@@ -238,6 +240,74 @@ class PreferencesController {
    */
   getTokens () {
     return this.store.getState().tokens
+  }
+
+  /**
+   * Contains data about MicroChain users add to their account.
+   * @typedef {Object} AddedChain
+   * @property {string} address - The hex address for the MicroChain. Will be all lower cased and hex-prefixed.
+   * @property {string} symbol - The symbol of the MicroChain, usually 3 or 4 capitalized letters
+   *  {@link https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#symbol}
+   * @property {boolean} decimals - The number of decimals the token uses.
+   *  {@link https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#decimals}
+   */
+
+  /**
+   * Adds a new MicroChain to the MicroChain array, or updates the MicroChain if passed an address that already exists.
+   * Modifies the existing MicroChain array from the store. All objects in the MicroChain array AddedChain objects.
+   * @see AddedChain {@link AddedChain}
+   *
+   * @param {string} rawAddress Hex address of the MicroChain. May or may not be a checksum address.
+   * @param {string} symbol The name of the MicroChain
+   * @param {number} decimals  The number of decimals the token uses.
+   * @returns {Promise<array>} Promises the new array of AddedChain objects.
+   *
+   */
+  async addChain (rawAddress, symbol, decimals) {
+    const address = normalizeAddress(rawAddress)
+    const newEntry = { address, symbol, decimals }
+
+    const chains = this.store.getState().chains
+    const previousEntry = chains.find((chain, index) => {
+      return chain.address === address
+    })
+    const previousIndex = chains.indexOf(previousEntry)
+
+    if (previousEntry) {
+      chains[previousIndex] = newEntry
+    } else {
+      chains.push(newEntry)
+    }
+
+    this.store.updateState({ chains })
+
+    return Promise.resolve(chains)
+  }
+
+  /**
+   * Removes a specified MicroChain from the MicroChains array.
+   *
+   * @param {string} rawAddress Hex address of the token contract to remove.
+   * @returns {Promise<array>} The new array of AddedChain objects
+   *
+   */
+  removeChain (rawAddress) {
+    const chains = this.store.getState().chains
+
+    const updatedChains = chains.filter(token => chain.address !== rawAddress)
+
+    this.store.updateState({ chains: updatedChains })
+    return Promise.resolve(updatedChains)
+  }
+
+  /**
+   * A getter for the `chains` property
+   *
+   * @returns {array} The current array of AddedToken objects
+   *
+   */
+  getChains () {
+    return this.store.getState().chains
   }
 
   /**

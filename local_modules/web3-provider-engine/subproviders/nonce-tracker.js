@@ -1,5 +1,5 @@
 const inherits = require('util').inherits
-const Transaction = require('moac-tx');console.log('moac-tx')
+const Transaction = require('moac-tx');//console.log('moac-tx')
 const ethUtil = require('ethereumjs-util')
 const Subprovider = require('./subprovider.js')
 const blockTagForPayload = require('../util/rpc-cache-utils').blockTagForPayload

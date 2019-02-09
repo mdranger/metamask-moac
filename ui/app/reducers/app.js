@@ -615,6 +615,19 @@ function reduceApp (state, action) {
         },
       })
 
+    case actions.COINBENE_SUBVIEW:
+    return extend(appState, {
+      buyView: {
+        subview: 'Coinbene',
+        formView: {
+          coinbase: true,
+          shapeshift: false,
+        },
+        buyAddress: appState.buyView.buyAddress,
+        amount: appState.buyView.amount,
+      },
+    })
+
     case actions.SHAPESHIFT_SUBVIEW:
       return extend(appState, {
         buyView: {

@@ -7,11 +7,11 @@ const txHelper = require('./lib/tx-helper')
 const { fetchLocale } = require('./i18n-helper')
 const log = require('loglevel')
 
-module.exports = launchMetamaskUi
+module.exports = launchMOACMaskUi
 
-log.setLevel(global.METAMASK_DEBUG ? 'debug' : 'warn')
+log.setLevel(global.MOACMASK_DEBUG ? 'debug' : 'warn')
 
-function launchMetamaskUi (opts, cb) {
+function launchMOACMaskUi (opts, cb) {
   var accountManager = opts.accountManager
   actions._setBackgroundConnection(accountManager)
   // check if we are unlocked first

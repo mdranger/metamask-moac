@@ -66,7 +66,7 @@ class InitializeMenuScreen extends Component {
               style: {
                 fontSize: '18px',
                 position: 'relative',
-                color: 'rgb(247, 134, 28)',
+                color: 'rgb(174, 174, 174)',
                 top: '2px',
                 marginLeft: '4px',
               },
@@ -114,7 +114,7 @@ class InitializeMenuScreen extends Component {
             onClick: () => this.showRestoreVault(),
             style: {
               fontSize: '0.8em',
-              color: 'rgb(247, 134, 28)',
+              color: 'rgb(174, 174, 174)',
               textDecoration: 'underline',
             },
           }, this.context.t('importDen')),

@@ -190,7 +190,7 @@
     "message": "精确小数点"
   },
   "defaultNetwork": {
-    "message": "默认以太坊交易网络为主网。"
+    "message": "默认交易网络为主网。"
   },
   "denExplainer": {
     "message": "你的 DEN 是存储在 MoacMask 中的已加密密码。"
@@ -477,22 +477,22 @@
     "message": "助记词只有小写字符"
   },
   "mainnet": {
-    "message": "以太坊主网络"
+    "message": "MOAC主网络"
   },
   "message": {
     "message": "消息"
   },
-  "moacmaskDescription": {
-    "message": "MoacMask is a secure identity vault for MOAC."
+  "metamaskDescription": {
+    "message": "MOACMask是存储MOAC链上身份标识的安全钱包."
   },
   "moacmaskSeedWords": {
-    "message": "MoacMask 助记词"
+    "message": "MOACMask 助记词"
   },
   "min": {
     "message": "最小"
   },
   "myAccounts": {
-    "message": "My Accounts"
+    "message": "我的帐号"
   },
   "mustSelectOne": {
     "message": "至少选择一种代币."

@@ -31,6 +31,7 @@ class TxGasUtil {
     let estimatedGasHex
     try {
       estimatedGasHex = await this.estimateTxGas(txMeta, block.gasLimit)
+      log.infof("estimatedGasHex:", estimatedGasHex)
     } catch (err) {
       const simulationFailed = (
         err.message.includes('Transaction execution error.') ||
@@ -48,6 +49,8 @@ class TxGasUtil {
   /**
     Estimates the tx's gas usage
     Need to update with MOAC gas table
+    Note the MOAC contract call needs much more gas 
+    ERC20 should be set to 20,000
     @param txMeta {Object} - the txMeta object
     @param blockGasLimitHex {string} - hex string of the block's gas limit
     @returns {string} the estimated gas limit as a hex string
@@ -79,7 +82,7 @@ class TxGasUtil {
     const blockGasLimitBN = hexToBn(blockGasLimitHex)
     const saferGasLimitBN = BnMultiplyByFraction(blockGasLimitBN, 19, 20)
     txParams.gas = bnToHex(saferGasLimitBN)
-log.infof("Estimated TX gas:", txParams.gas)
+// log.infof("Estimated TX gas:", txParams.gas)
     // run tx
     return await this.query.estimateGas(txParams)
   }

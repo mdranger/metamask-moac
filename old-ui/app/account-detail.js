@@ -27,12 +27,13 @@ function mapStateToProps (state) {
     accountDetail: state.appState.accountDetail,
     network: state.metamask.network,
     unapprovedMsgs: valuesFor(state.metamask.unapprovedMsgs),
-    shapeShiftTxList: state.metamask.shapeShiftTxList,
+    // shapeShiftTxList: state.metamask.shapeShiftTxList,
     transactions: state.metamask.selectedAddressTxList || [],
     conversionRate: state.metamask.conversionRate,
     currentCurrency: state.metamask.currentCurrency,
     currentAccountTab: state.metamask.currentAccountTab,
     tokens: state.metamask.tokens,
+    chains: state.metamask.chains,
     computedBalances: state.metamask.computedBalances,
   }
 }
@@ -261,7 +262,7 @@ AccountDetailScreen.prototype.tabSections = function () {
 AccountDetailScreen.prototype.tabSwitchView = function () {
   const props = this.props
   const { address, network } = props
-  const { currentAccountTab, tokens } = this.props
+  const { currentAccountTab, tokens, chains } = this.props
 
   switch (currentAccountTab) {
     case 'tokens':
@@ -275,8 +276,8 @@ AccountDetailScreen.prototype.tabSwitchView = function () {
       return h(ChainList, {
         userAddress: address,
         network,
-        tokens,
-        addToken: () => this.props.dispatch(actions.showAddChainPage()),
+        chains,
+        addChain: () => this.props.dispatch(actions.showAddChainPage()),
       })
     default:
       return this.transactionList()
@@ -285,7 +286,7 @@ AccountDetailScreen.prototype.tabSwitchView = function () {
 
 AccountDetailScreen.prototype.transactionList = function () {
   const {transactions, unapprovedMsgs, address,
-    network, shapeShiftTxList, conversionRate } = this.props
+    network,conversionRate } = this.props
 
   return h(TransactionList, {
     transactions: transactions.sort((a, b) => b.time - a.time),
@@ -293,7 +294,7 @@ AccountDetailScreen.prototype.transactionList = function () {
     unapprovedMsgs,
     conversionRate,
     address,
-    shapeShiftTxList,
+    // shapeShiftTxList,
     viewPendingTx: (txId) => {
       this.props.dispatch(actions.viewPendingTx(txId))
     },

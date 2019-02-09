@@ -90,7 +90,7 @@ MetamaskInpageProvider.prototype.send = function (payload) {
     // throw not-supported Error
     default:
       var link = 'https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#dizzy-all-async---think-of-metamask-as-a-light-client'
-      var message = `The MetaMask Web3 object does not support synchronous methods like ${payload.method} without a callback parameter. See ${link} for details.`
+      var message = `MOACMask used the MetaMask Web3 object and it does not support synchronous methods like ${payload.method} without a callback parameter. See ${link} for details.`
       throw new Error(message)
 
   }
@@ -112,7 +112,7 @@ MetamaskInpageProvider.prototype.isMetaMask = true
 // util
 
 function logStreamDisconnectWarning (remoteLabel, err) {
-  let warningMsg = `MetamaskInpageProvider - lost connection to ${remoteLabel}`
+  let warningMsg = `MOACmaskInpageProvider - lost connection to ${remoteLabel}`
   if (err) warningMsg += '\n' + err.stack
   console.warn(warningMsg)
 }

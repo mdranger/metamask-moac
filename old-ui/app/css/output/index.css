@@ -956,7 +956,7 @@ a {
   color: inherit; }
 
 a:hover {
-  color: #df6b0e; }
+  color: #66ccff; }
 
 input.large-input,
 textarea.large-input {
@@ -983,8 +983,8 @@ input[type="submit"][disabled] {
 button.primary {
   padding: 8px 12px;
   background: #66ccff;
-  -webkit-box-shadow: 0 3px 6px rgba(247, 134, 28, 0.36);
-          box-shadow: 0 3px 6px rgba(247, 134, 28, 0.36);
+  -webkit-box-shadow: 0 3px 6px rgba(174, 174, 174, 0.36);
+          box-shadow: 0 3px 6px rgba(174, 174, 174, 0.36);
   color: #fff;
   font-size: 1.1em;
   font-family: Roboto;
@@ -1984,7 +1984,20 @@ h2.page-subtitle {
     font-weight: 300;
     background: none;
     padding: 9px 30px; }
-
+    .wallet-view__add-chain-button {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+      color: #9b9b9b;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      margin: 36px auto;
+      border: 1px solid #9b9b9b;
+      border-radius: 2px;
+      font-weight: 300;
+      background: none;
+      padding: 9px 30px; }
 @media screen and (min-width: 576px) {
   .wallet-view::-webkit-scrollbar {
     display: none; } }

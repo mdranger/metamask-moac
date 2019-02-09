@@ -14,12 +14,12 @@ const migrations = require('../../app/scripts/migrations/')
 const firstTimeState = require('../../app/scripts/first-time-state')
 
 const STORAGE_KEY = 'metamask-config'
-const METAMASK_DEBUG = process.env.METAMASK_DEBUG
+const MOACMASK_DEBUG = process.env.MOACMASK_DEBUG
 global.metamaskPopupIsOpen = false
 
 const log = require('loglevel')
 global.log = log
-log.setDefaultLevel(METAMASK_DEBUG ? 'debug' : 'warn')
+log.setDefaultLevel(MOACMASK_DEBUG ? 'debug' : 'warn')
 
 global.addEventListener('install', function (event) {
   event.waitUntil(global.skipWaiting())

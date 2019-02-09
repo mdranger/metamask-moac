@@ -22,6 +22,8 @@ const INITIALIZE_UNIQUE_IMAGE_ROUTE = '/initialize/unique-image'
 const INITIALIZE_NOTICE_ROUTE = '/initialize/notice'
 const INITIALIZE_BACKUP_PHRASE_ROUTE = '/initialize/backup-phrase'
 const INITIALIZE_CONFIRM_SEED_ROUTE = '/initialize/confirm-phrase'
+const ADD_CHAIN_ROUTE = '/add-chain'
+const CONFIRM_ADD_CHAIN_ROUTE = '/confirm-add-chain'
 
 module.exports = {
   DEFAULT_ROUTE,
@@ -33,6 +35,8 @@ module.exports = {
   RESTORE_VAULT_ROUTE,
   ADD_TOKEN_ROUTE,
   CONFIRM_ADD_TOKEN_ROUTE,
+  ADD_CHAIN_ROUTE,
+  CONFIRM_ADD_CHAIN_ROUTE,
   NEW_ACCOUNT_ROUTE,
   IMPORT_ACCOUNT_ROUTE,
   SEND_ROUTE,

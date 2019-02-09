@@ -24,7 +24,7 @@ const NetworkController = require('./controllers/network')
 const PreferencesController = require('./controllers/preferences')
 const CurrencyController = require('./controllers/currency')
 const NoticeController = require('./notice-controller')
-const ShapeShiftController = require('./controllers/shapeshift')
+// const ShapeShiftController = require('./controllers/shapeshift')
 const AddressBookController = require('./controllers/address-book')
 const InfuraController = require('./controllers/infura')
 const BlacklistController = require('./controllers/blacklist')
@@ -193,9 +193,9 @@ module.exports = class MoacMaskController extends EventEmitter {
     // to be uncommented when retrieving notices from a remote server.
     // this.noticeController.startPolling()
 
-    this.shapeshiftController = new ShapeShiftController({
-      initState: initState.ShapeShiftController,
-    })
+    // this.shapeshiftController = new ShapeShiftController({
+    //   initState: initState.ShapeShiftController,
+    // })
 
     this.networkController.lookupNetwork()
     this.messageManager = new MessageManager()
@@ -210,7 +210,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       AddressBookController: this.addressBookController.store,
       CurrencyController: this.currencyController.store,
       NoticeController: this.noticeController.store,
-      ShapeShiftController: this.shapeshiftController.store,
+      // ShapeShiftController: this.shapeshiftController.store,
       NetworkController: this.networkController.store,
       InfuraController: this.infuraController.store,
     })
@@ -230,7 +230,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       AddressBookController: this.addressBookController.store,
       CurrencyController: this.currencyController.store,
       NoticeController: this.noticeController.memStore,
-      ShapeshiftController: this.shapeshiftController.store,
+      // ShapeshiftController: this.shapeshiftController.store,
       InfuraController: this.infuraController.store,
     })
     this.memStore.subscribe(this.sendUpdate.bind(this))
@@ -243,7 +243,7 @@ module.exports = class MoacMaskController extends EventEmitter {
     const providerOpts = {
       static: {
         eth_syncing: false,
-        web3_clientVersion: `MetaMask/v${version}`,
+        web3_clientVersion: `MoacMask/v${version}`,
         eth_sendTransaction: (payload, next, end) => {
           const origin = payload.origin
           const txParams = payload.params[0]
@@ -360,7 +360,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       // coinbase
       buyEth: this.buyEth.bind(this),
       // shapeshift
-      createShapeShiftTx: this.createShapeShiftTx.bind(this),
+      // createShapeShiftTx: this.createShapeShiftTx.bind(this),
 
       // primary HD keyring management
       addNewAccount: nodeify(this.addNewAccount, this),
@@ -376,6 +376,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       // network management
       setProviderType: nodeify(networkController.setProviderType, networkController),
       setCustomRpc: nodeify(this.setCustomRpc, this),
+      delCustomRpc: nodeify(this.delCustomRpc, this),
 
       // PreferencesController
       setSelectedAddress: nodeify(preferencesController.setSelectedAddress, preferencesController),
@@ -384,6 +385,10 @@ module.exports = class MoacMaskController extends EventEmitter {
       setCurrentAccountTab: nodeify(preferencesController.setCurrentAccountTab, preferencesController),
       setAccountLabel: nodeify(preferencesController.setAccountLabel, preferencesController),
       setFeatureFlag: nodeify(preferencesController.setFeatureFlag, preferencesController),
+
+      //MicroChainController
+      addChain: nodeify(preferencesController.addChain, preferencesController),
+      removeChain: nodeify(preferencesController.removeChain, preferencesController),
 
       // AddressController
       setAddressBook: nodeify(addressBookController.setAddressBook, addressBookController),
@@ -700,16 +705,19 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
    */
   signMessage (msgParams) {
     log.info('MoacMaskController - signMessage')
-    const msgId = msgParams.metamaskId
 
+    const msgId = msgParams.moacmaskId
+console.log("signMessage (msgParams):", msgParams)
     // sets the status op the message to 'approved'
     // and removes the metamaskId for signing
     return this.messageManager.approveMessage(msgParams)
     .then((cleanMsgParams) => {
+      console.log("signs the message", cleanMsgParams)
       // signs the message
       return this.keyringController.signMessage(cleanMsgParams)
     })
     .then((rawSig) => {
+      console.log("setMsgStatusSigned", rawSig)
       // tells the listener that the message has been signed
       // and can be returned to the dapp
       this.messageManager.setMsgStatusSigned(msgId, rawSig)
@@ -772,7 +780,7 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
    */
   signPersonalMessage (msgParams) {
     log.info('MoacMaskController - signPersonalMessage')
-    const msgId = msgParams.metamaskId
+    const msgId = msgParams.moacmaskId
     // sets the status op the message to 'approved'
     // and removes the metamaskId for signing
     return this.personalMessageManager.approveMessage(msgParams)
@@ -840,7 +848,7 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
    */
   signTypedMessage (msgParams) {
     log.info('MoacMaskController - signTypedMessage')
-    const msgId = msgParams.metamaskId
+    const msgId = msgParams.moacmaskId
     // sets the status op the message to 'approved'
     // and removes the metamaskId for signing
     return this.typedMessageManager.approveMessage(msgParams)
@@ -1217,15 +1225,6 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
     if (url) this.platform.openWindow({ url })
   }
 
-  /**
-   * A method for triggering a shapeshift currency transfer.
-   * @param {string} depositAddress - The address to deposit to.
-   * @property {string} depositType - An abbreviation of the type of crypto currency to be deposited.
-   */
-  createShapeShiftTx (depositAddress, depositType) {
-    this.shapeshiftController.createShapeShiftTx(depositAddress, depositType)
-  }
-
   // network
 
   /**
@@ -1234,10 +1233,20 @@ log.info('submitPassword:'+accounts.length+' accounts found!');
    * @returns {Promise<String>} - The RPC Target URL confirmed.
    */
   async setCustomRpc (rpcTarget) {
+    // console.log("Current signer is", this.getVersion())
     this.networkController.setRpcTarget(rpcTarget)
     await this.preferencesController.updateFrequentRpcList(rpcTarget)
     return rpcTarget
   }
+
+  /**
+   * A method for deleting a selected custom URL.
+   * @param {string} rpcTarget - A RPC URL to delete.
+   */
+  async delCustomRpc (rpcTarget) {
+    await this.preferencesController.removeFromFrequentRpcList(rpcTarget)
+  }
+
 
   /**
    * Sets whether or not to use the blockie identicon format.

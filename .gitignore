@@ -1,3 +1,4 @@
+# Logs
 npm-debug.log
 node_modules
 package-lock.json
@@ -36,6 +37,3 @@ test-artifacts
 ui/app/css/output/
 
 notes.txt
-
-.coveralls.yml
-.nyc_output

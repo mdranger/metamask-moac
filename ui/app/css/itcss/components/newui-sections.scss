@@ -151,6 +151,18 @@ $wallet-view-bg: $alabaster;
       border-color: $curious-blue;
     }
   }
+
+  &__add-chain-button {
+    flex: 0 0 auto;
+    margin: 36px auto;
+    background: none;
+    transition: border-color .3s ease;
+    width: 150px;
+
+    &:hover {
+      border-color: $cornflower-blue;
+    }
+  }
 }
 
 @media screen and (min-width: 576px) {

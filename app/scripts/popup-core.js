@@ -3,14 +3,14 @@ const async = require('async')
 const Dnode = require('dnode')
 const Eth = require('ethjs')
 const EthQuery = require('eth-query')
-const launchMetamaskUi = require('../../ui')
+const launchMOACMaskUi = require('../../ui')
 const StreamProvider = require('web3-stream-provider')
 const setupMultiplex = require('./lib/stream-utils.js').setupMultiplex
 
 module.exports = initializePopup
 
 /**
- * Asynchronously initializes the MetaMask popup UI
+ * Asynchronously initializes the MOACMask popup UI
  *
  * @param {{ container: Element, connectionStream: * }} config Popup configuration object 
  * @param {Function} cb Called when initialization is complete
@@ -19,12 +19,12 @@ function initializePopup ({ container, connectionStream }, cb) {
   // setup app
   async.waterfall([
     (cb) => connectToAccountManager(connectionStream, cb),
-    (accountManager, cb) => launchMetamaskUi({ container, accountManager }, cb),
+    (accountManager, cb) => launchMOACMaskUi({ container, accountManager }, cb),
   ], cb)
 }
 
 /**
- * Establishes streamed connections to background scripts and a Web3 provider
+ * Establishes streamed connections to background scripts and a Web3/Chain3 provider
  *
  * @param {PortDuplexStream} connectionStream PortStream instance establishing a background connection
  * @param {Function} cb Called when controller connection is established

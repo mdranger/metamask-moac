@@ -26,6 +26,15 @@
   "addAcquiredTokens": {
     "message": "Add the tokens you've acquired using MoacMask"
   },
+  "addChain": {
+    "message": "Add Chain"
+  },
+  "addChains": {
+    "message": "Add Chains"
+  },
+  "addAcquiredChains": {
+    "message": "Add the new MicroChains"
+  },
   "amount": {
     "message": "Amount"
   },
@@ -179,6 +188,9 @@
   },
   "customToken": {
     "message": "Custom Token"
+  },
+  "customChain": {
+    "message": "Micro Chain"
   },
   "customize": {
     "message": "Customize"
@@ -793,6 +805,9 @@
   "searchTokens": {
     "message": "Search Tokens"
   },
+  "searchChains": {
+    "message": "Search Registered Chains"
+  },
   "sendTokensAnywhere": {
     "message": "Send Tokens to anyone with an MOAC account"
   },
@@ -943,7 +958,7 @@
     "message": "Unknown network ID"
   },
   "unlockMessage": {
-    "message": "The decentralized web awaits"
+    "message": "A multi-layer blockchain for commercial applications"
   },
   "uriErrorMsg": {
     "message": "URIs require the appropriate HTTP/HTTPS prefix."

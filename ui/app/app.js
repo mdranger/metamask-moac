@@ -30,6 +30,10 @@ const ConfirmAddTokenPage = require('./components/pages/confirm-add-token')
 const CreateAccountPage = require('./components/pages/create-account')
 const NoticeScreen = require('./components/pages/notice')
 
+// MicroChain pages
+const AddChainPage = require('./components/pages/add-chain')
+// const ConfirmAddChainPage = require('./components/pages/confirm-add-chain')
+
 const Loading = require('./components/loading-screen')
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 const NetworkDropdown = require('./components/dropdowns/network-dropdown')
@@ -54,6 +58,7 @@ const {
   CONFIRM_TRANSACTION_ROUTE,
   INITIALIZE_ROUTE,
   NOTICE_ROUTE,
+  ADD_CHAIN_ROUTE,
 } = require('./routes')
 
 class App extends Component {
@@ -81,6 +86,7 @@ class App extends Component {
         h(Authenticated, { path: ADD_TOKEN_ROUTE, exact, component: AddTokenPage }),
         h(Authenticated, { path: CONFIRM_ADD_TOKEN_ROUTE, exact, component: ConfirmAddTokenPage }),
         h(Authenticated, { path: NEW_ACCOUNT_ROUTE, component: CreateAccountPage }),
+        h(Authenticated, { path: ADD_CHAIN_ROUTE, exact, component: AddChainPage }),
         h(Authenticated, { path: DEFAULT_ROUTE, exact, component: Home }),
       ])
     )
@@ -100,7 +106,7 @@ class App extends Component {
     const isLoadingNetwork = network === 'loading' && currentView.name !== 'config'
     const loadMessage = loadingMessage || isLoadingNetwork ?
       this.getConnectingLabel(loadingMessage) : null
-    log.debug('Main ui render function')
+    // log.debug('Main ui render function')
 
     return (
       h('.flex-column.full-height', {

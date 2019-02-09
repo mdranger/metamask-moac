@@ -9,7 +9,7 @@ const extension = require('extensionizer')
 const ExtensionPlatform = require('./platforms/extension')
 const NotificationManager = require('./lib/notification-manager')
 const notificationManager = new NotificationManager()
-const setupRaven = require('./lib/setupRaven')
+// const setupRaven = require('./lib/setupRaven')  //DISABLED for v0.1.3
 const log = require('loglevel')
 
 start().catch(log.error)
@@ -24,9 +24,9 @@ async function start() {
   // create platform global
   global.platform = new ExtensionPlatform()
 
-  // setup sentry error reporting
+  // setup sentry error reporting， removed for MOACMASK PROJECT
   const release = global.platform.getVersion()
-  setupRaven({ release })
+  // setupRaven({ release })
 
   // inject css
   // const css = MetaMaskUiCss()
@@ -57,9 +57,10 @@ async function start() {
     const useBetaCss = isMascara || betaUIState
 
     //Debug: Only use OLD UI for testing, 2018/06/25
-    let css = useBetaCss ? NewMetaMaskUiCss() : OldMetaMaskUiCss()
+    //Use betaUI for MicroChain
+    // let css = useBetaCss ? NewMetaMaskUiCss() : OldMetaMaskUiCss()
 
-    // let css = OldMetaMaskUiCss()
+    let css = NewMetaMaskUiCss()
     let deleteInjectedCss = injectCss(css)
     let newBetaUIState
 

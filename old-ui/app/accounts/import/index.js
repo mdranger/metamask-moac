@@ -53,7 +53,7 @@ AccountImportSubview.prototype.render = function () {
         h('span', 'Imported accounts will not be associated with your originally created MetaMask account seedphrase. Learn more about imported accounts '),
         h('span', {
           style: {
-            color: 'rgba(247, 134, 28, 1)',
+            color: 'rgba(174, 174, 174, 1)',
             cursor: 'pointer',
             textDecoration: 'underline',
           },
