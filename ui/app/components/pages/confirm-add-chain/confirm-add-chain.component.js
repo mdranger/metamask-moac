@@ -25,10 +25,12 @@ export default class ConfirmAddChain extends Component {
     }
   }
 
-  getChainName (name, symbol) {
-    return typeof name === 'undefined'
-      ? symbol
-      : `${name} (${symbol})`
+  // MicroChain may not have name/symbol with it
+  // Only display the hash if no symbol
+  getChainName (address, symbol) {
+    return typeof symbol === 'undefined'
+      ? address
+      : `${symbol} (${address})`
   }
 
   render () {
@@ -58,7 +60,7 @@ export default class ConfirmAddChain extends Component {
               {
                 Object.entries(pendingChains)
                   .map(([ address, chain ]) => {
-                    const { name, symbol } = chain
+                    const { address, symbol } = chain
 
                     return (
                       <div
@@ -72,7 +74,7 @@ export default class ConfirmAddChain extends Component {
                             address={address}
                           />
                           <div className="confirm-add-chain__name">
-                            { this.getChainName(name, symbol) }
+                            { this.getChainName(address, symbol) }
                           </div>
                         </div>
                         <div className="confirm-add-chain__balance">
@@ -90,7 +92,7 @@ export default class ConfirmAddChain extends Component {
             type="default"
             large
             className="page-container__footer-button"
-            onClick={() => history.push(ADD_TOKEN_ROUTE)}
+            onClick={() => history.push(ADD_CHAIN_ROUTE)}
           >
             { this.context.t('back') }
           </Button>

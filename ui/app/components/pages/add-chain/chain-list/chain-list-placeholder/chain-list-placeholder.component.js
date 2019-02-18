@@ -6,16 +6,17 @@ export default class ChainListPlaceholder extends Component {
     t: PropTypes.func,
   }
 
+  // Display the 
   render () {
     return (
       <div className="chain-list-placeholder">
-        <img src="images/chainsearch.svg" />
+        <img src="images/search.svg" />
         <div className="chain-list-placeholder__text">
           { this.context.t('addAcquiredChains') }
         </div>
         <a
           className="chain-list-placeholder__link"
-          href="https://consensys.zendesk.com/hc/en-us/articles/360004135092"
+          href="https://moacdocs-chn.readthedocs.io/"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -9,11 +9,14 @@ import Button from '../../button'
 import TextField from '../../text-field'
 import ChainList from './chain-list'
 import ChainSearch from './chain-search'
+const validUrl = require('valid-url')
 
 const emptyAddr = '0x0000000000000000000000000000000000000000'
 const SEARCH_TAB = 'SEARCH'
 const CUSTOM_CHAIN_TAB = 'CUSTOM_CHAIN'
 
+// Each MicroChain should have chainAddress, name or symbol
+// and monitor url to access.
 class AddChain extends Component {
   static contextTypes = {
     t: PropTypes.func,
@@ -34,13 +37,13 @@ class AddChain extends Component {
     this.state = {
       customAddress: '',
       customSymbol: '',
-      customDecimals: 0,
+      customUrl: '',
       searchResults: [],
       selectedChains: {},
       chainSelectorError: null,
       customAddressError: null,
       customSymbolError: null,
-      customDecimalsError: null,
+      customUrlError: null,
       autoFilled: false,
       displayedTab: SEARCH_TAB,
     }
@@ -69,14 +72,15 @@ class AddChain extends Component {
       const {
         address: customAddress = '',
         symbol: customSymbol = '',
-        decimals: customDecimals = 0,
+        url: customUrl = '',
       } = customChain
 
       const displayedTab = Object.keys(selectedChains).length > 0 ? SEARCH_TAB : CUSTOM_CHAIN_TAB
-      this.setState({ selectedChains, customAddress, customSymbol, customDecimals, displayedTab })
+      this.setState({ selectedChains, customAddress, customSymbol, customUrl, displayedTab })
     }
   }
 
+  // 
   handleToggleChain (chain) {
     const { address } = chain
     const { selectedChains = {} } = this.state
@@ -99,10 +103,10 @@ class AddChain extends Component {
       chainSelectorError,
       customAddressError,
       customSymbolError,
-      customDecimalsError,
+      customUrlError,
     } = this.state
 
-    return chainSelectorError || customAddressError || customSymbolError || customDecimalsError
+    return chainSelectorError || customAddressError || customSymbolError || customUrlError
   }
 
   hasSelected () {
@@ -110,6 +114,7 @@ class AddChain extends Component {
     return customAddress || Object.keys(selectedChains).length > 0
   }
 
+  // The action after click "next"
   handleNext () {
     if (this.hasError()) {
       return
@@ -124,14 +129,14 @@ class AddChain extends Component {
     const {
       customAddress: address,
       customSymbol: symbol,
-      customDecimals: decimals,
+      customUrl: url,
       selectedChains,
     } = this.state
 
     const customChain = {
       address,
       symbol,
-      decimals,
+      url,
     }
 
     setPendingChains({ customChain, selectedChains })
@@ -139,14 +144,15 @@ class AddChain extends Component {
   }
 
   async attemptToAutoFillChainParams (address) {
-    const { symbol = '', decimals = 0 } = await this.chainInfoGetter(address)
+    const { symbol = '', url = '' } = await this.chainInfoGetter(address)
 
-    const autoFilled = Boolean(symbol && decimals)
+    const autoFilled = Boolean(symbol && url)
     this.setState({ autoFilled })
     this.handleCustomSymbolChange(symbol || '')
-    this.handleCustomDecimalsChange(decimals)
+    this.handlecustomUrlChange(url)
   }
 
+  //Check if the input address fits the format
   handleCustomAddressChange (value) {
     const customAddress = value.trim()
     this.setState({
@@ -164,9 +170,9 @@ class AddChain extends Component {
         this.setState({
           customAddressError: this.context.t('invalidAddress'),
           customSymbol: '',
-          customDecimals: 0,
+          customUrl: '',
           customSymbolError: null,
-          customDecimalsError: null,
+          customUrlError: null,
         })
 
         break
@@ -201,29 +207,36 @@ class AddChain extends Component {
     this.setState({ customSymbol, customSymbolError })
   }
 
-  handleCustomDecimalsChange (value) {
-    const customDecimals = value.trim()
-    const validDecimals = customDecimals !== null &&
-      customDecimals !== '' &&
-      customDecimals >= 0 &&
-      customDecimals < 36
-    let customDecimalsError = null
+  // Processing the changes in URL
+  handleCustomUrlChange (value) {
 
-    if (!validDecimals) {
-      customDecimalsError = this.context.t('decimalsMustZerotoTen')
+    const customUrl = value.trim()
+    let customUrlError = null
+    if (validUrl.isWebUri(customUrl)) {
+      // setRpcTarget(customUrl)
+      // Just save the URL in the RPC and use later
+
+    } else {
+      const appendedRpc = `http://${customUrl}`
+
+      if (validUrl.isWebUri(appendedRpc)) {
+        customUrlError = this.context.t('uriErrorMsg')
+      } else {
+        customUrlError = this.context.t('invalidChainMonitorRPC')
+      }
     }
 
-    this.setState({ customDecimals, customDecimalsError })
+    this.setState({ customUrl, customUrlError })
   }
 
   renderCustomChainForm () {
     const {
       customAddress,
       customSymbol,
-      customDecimals,
+      customUrl,
       customAddressError,
       customSymbolError,
-      customDecimalsError,
+      customUrlError,
       autoFilled,
     } = this.state
 
@@ -251,12 +264,12 @@ class AddChain extends Component {
           disabled={autoFilled}
         />
         <TextField
-          id="custom-decimals"
-          label={this.context.t('decimal')}
-          type="number"
-          value={customDecimals}
-          onChange={e => this.handleCustomDecimalsChange(e.target.value)}
-          error={customDecimalsError}
+          id="custom-url"
+          label={this.context.t('chainMonitorAddress')}
+          type="text"
+          value={customUrl}
+          onChange={e => this.handleCustomUrlChange(e.target.value)}
+          error={customUrlError}
           fullWidth
           margin="normal"
           disabled={autoFilled}
@@ -265,6 +278,9 @@ class AddChain extends Component {
     )
   }
 
+  /*
+   * Locate the input chain address in the existing MicroChain List
+  */
   renderSearchChain () {
     const { chainSelectorError, selectedChains, searchResults } = this.state
 
@@ -285,6 +301,7 @@ class AddChain extends Component {
     )
   }
 
+  // Display the 
   render () {
     const { displayedTab } = this.state
     const { history, clearPendingChains } = this.props

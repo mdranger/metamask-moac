@@ -29,8 +29,10 @@ function reduceMetamask (state, action) {
     contractExchangeRates: {},
     tokenExchangeRates: {},
     tokens: [],
+    selectedChainAddress: null,
     chains: [],
     pendingTokens: {},
+    pendingChains: {},
     send: {
       gasLimit: null,
       gasPrice: null,
@@ -358,6 +360,28 @@ function reduceMetamask (state, action) {
         pendingTokens: {},
       })
     }
+
+    //MicroChain actions
+    case actions.SET_PENDING_CHAINS:
+    return extend(metamaskState, {
+      pendingChains: { ...action.payload },
+    })
+
+    case actions.CLEAR_PENDING_CHAINS: {
+      return extend(metamaskState, {
+        pendingChains: {},
+      })
+    }
+
+    case actions.UPDATE_CHAINS:
+      return extend(metamaskState, {
+        tokens: action.newChains,
+      })
+
+    case actions.SET_SELECTED_CHAIN:
+      return extend(metamaskState, {
+        selectedChainAddress: action.value,
+      })
 
     default:
       return metamaskState

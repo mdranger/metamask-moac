@@ -218,6 +218,10 @@ var actions = {
   removeChain,
   updateChains,
   UPDATE_CHAINS: 'UPDATE_CHAINS',
+  setPendingChains,
+  clearPendingChains,
+  SET_PENDING_CHAINS: 'SET_PENDING_CHAINS',
+  CLEAR_PENDING_CHAINS: 'CLEAR_PENDING_CHAINS',
   //PROVIDER actions
   setRpcTarget: setRpcTarget,
   setProviderType: setProviderType,
@@ -294,6 +298,7 @@ var actions = {
   UPDATE_NETWORK_ENDPOINT_TYPE: 'UPDATE_NETWORK_ENDPOINT_TYPE',
 
   retryTransaction,
+  // For token ui 
   SET_PENDING_TOKENS: 'SET_PENDING_TOKENS',
   CLEAR_PENDING_TOKENS: 'CLEAR_PENDING_TOKENS',
   setPendingTokens,
@@ -1466,6 +1471,26 @@ function updateChains (newChains) {
   return {
     type: actions.UPDATE_CHAINS,
     newChains,
+  }
+}
+
+// To save the input Chain info into chain list
+function setPendingChains (pendingChains) {
+  const { customChain = {}, selectedChains = {} } = pendingChains
+  const { address, symbol, url } = customChain
+  const chains = address && symbol && url
+    ? { ...selectedChains, [address]: { ...customChain, isCustom: true } }
+    : selectedChains
+
+  return {
+    type: actions.SET_PENDING_CHAINS,
+    payload: chains,
+  }
+}
+
+function clearPendingChains () {
+  return {
+    type: actions.CLEAR_PENDING_CHAINS,
   }
 }
 

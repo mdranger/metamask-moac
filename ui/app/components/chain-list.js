@@ -109,7 +109,7 @@ ChainList.prototype.createFreshTokenTracker = function () {
     userAddress,
     provider: global.ethereumProvider,
     tokens: this.props.tokens,
-    pollingInterval: 8000,
+    pollingInterval: 10000,
   })
 
 
@@ -157,6 +157,7 @@ ChainList.prototype.componentDidUpdate = function (nextProps) {
   this.createFreshTokenTracker()
 }
 
+// Should be update to only load the subchain balances
 ChainList.prototype.updateBalances = function (tokens) {
   this.setState({ tokens, isLoading: false })
 }
@@ -166,15 +167,3 @@ ChainList.prototype.componentWillUnmount = function () {
   this.tracker.stop()
 }
 
-// function uniqueMergeTokens (tokensA, tokensB = []) {
-//   const uniqueAddresses = []
-//   const result = []
-//   tokensA.concat(tokensB).forEach((token) => {
-//     const normal = normalizeAddress(token.address)
-//     if (!uniqueAddresses.includes(normal)) {
-//       uniqueAddresses.push(normal)
-//       result.push(token)
-//     }
-//   })
-//   return result
-// }

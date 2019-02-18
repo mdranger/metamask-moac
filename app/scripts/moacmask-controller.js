@@ -1,7 +1,9 @@
 /**
  * @file      The central moacmask controller. Aggregates other controllers and exports an api.
- * @copyright Copyright (c) 2018 MoacMask
+ * @copyright Copyright (c) 2018-2019 MoacMask
  * @license   MIT
+ * Added MicrochainController to request MicroChain status.
+ * Replace the ShapeshiftController with MicrochainController
  */
 
 const EventEmitter = require('events')
@@ -24,7 +26,7 @@ const NetworkController = require('./controllers/network')
 const PreferencesController = require('./controllers/preferences')
 const CurrencyController = require('./controllers/currency')
 const NoticeController = require('./notice-controller')
-// const ShapeShiftController = require('./controllers/shapeshift')
+const MicrochainController = require('./controllers/microchain')
 const AddressBookController = require('./controllers/address-book')
 const InfuraController = require('./controllers/infura')
 const BlacklistController = require('./controllers/blacklist')
@@ -193,9 +195,10 @@ module.exports = class MoacMaskController extends EventEmitter {
     // to be uncommented when retrieving notices from a remote server.
     // this.noticeController.startPolling()
 
-    // this.shapeshiftController = new ShapeShiftController({
-    //   initState: initState.ShapeShiftController,
-    // })
+    // Used to keep the MicroChain monitors
+    this.MicrochainController = new MicrochainController({
+      initState: initState.MicrochainController,
+    })
 
     this.networkController.lookupNetwork()
     this.messageManager = new MessageManager()
@@ -210,11 +213,12 @@ module.exports = class MoacMaskController extends EventEmitter {
       AddressBookController: this.addressBookController.store,
       CurrencyController: this.currencyController.store,
       NoticeController: this.noticeController.store,
-      // ShapeShiftController: this.shapeshiftController.store,
+      MicrochainController: this.MicrochainController.store,
       NetworkController: this.networkController.store,
       InfuraController: this.infuraController.store,
     })
 
+    // Data stored in the Memory
     this.memStore = new ComposableObservableStore(null, {
       NetworkController: this.networkController.store,
       AccountTracker: this.accountTracker.store,
@@ -230,7 +234,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       AddressBookController: this.addressBookController.store,
       CurrencyController: this.currencyController.store,
       NoticeController: this.noticeController.memStore,
-      // ShapeshiftController: this.shapeshiftController.store,
+      MicrochainController: this.MicrochainController.store,
       InfuraController: this.infuraController.store,
     })
     this.memStore.subscribe(this.sendUpdate.bind(this))
@@ -260,9 +264,6 @@ module.exports = class MoacMaskController extends EventEmitter {
         const isUnlocked = this.keyringController.memStore.getState().isUnlocked
         const result = []
         const selectedAddress = this.preferencesController.getSelectedAddress()
-
-
-
         // only show address if account is unlocked
         if (isUnlocked && selectedAddress) {
           result.push(selectedAddress)
@@ -386,7 +387,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       setAccountLabel: nodeify(preferencesController.setAccountLabel, preferencesController),
       setFeatureFlag: nodeify(preferencesController.setFeatureFlag, preferencesController),
 
-      //MicroChainController
+      //These are the actions to modify the MicroChainController
       addChain: nodeify(preferencesController.addChain, preferencesController),
       removeChain: nodeify(preferencesController.removeChain, preferencesController),
 

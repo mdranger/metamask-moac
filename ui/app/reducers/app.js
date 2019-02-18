@@ -5,6 +5,9 @@ const log = require('loglevel')
 
 module.exports = reduceApp
 
+// ADDED MICROCHAIN operations
+// SHOW_ADD_CHAIN_PAGE
+// 
 
 function reduceApp (state, action) {
   log.debug('App Reducer got ' + action.type)
@@ -686,6 +689,26 @@ function reduceApp (state, action) {
     case actions.SET_MOUSE_USER_STATE:
       return extend(appState, {
         isMouseUser: action.value,
+      })
+
+    // MicroChain actions
+    case actions.SHOW_ADD_CHAIN_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'add-chain',
+          context: appState.currentView.context,
+        },
+        transForward: action.value,
+      })
+
+    case actions.SHOW_SEND_CHAIN_PAGE:
+      return extend(appState, {
+        currentView: {
+          name: 'sendChain',
+          context: appState.currentView.context,
+        },
+        transForward: true,
+        warning: null,
       })
 
     default:

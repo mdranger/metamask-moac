@@ -35,6 +35,15 @@
   "addAcquiredChains": {
     "message": "Add the new MicroChains"
   },
+  "chainAddress": {
+    "message": "Chain Address"
+  },
+  "chainSymbol": {
+    "message": "Chain Symbol"
+  },
+  "chainMonitorAddress": {
+    "message": "Chain Monitor Address"
+  },
   "amount": {
     "message": "Amount"
   },
@@ -379,6 +388,12 @@
   "hide": {
     "message": "Hide"
   },
+  "hideChain": {
+    "message": "Hide Chain"
+  },
+  "hideChainPrompt": {
+    "message": "Hide Chain?"
+  },
   "hideToken": {
     "message": "Hide Token"
   },
@@ -472,6 +487,9 @@
   },
   "likeToAddTokens": {
     "message": "Would you like to add these tokens?"
+  },
+  "likeToAddChains": {
+    "message": "Would you like to add the MicroChain?"
   },
   "links": {
     "message": "Links"

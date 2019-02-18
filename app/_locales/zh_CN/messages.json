@@ -23,6 +23,15 @@
   "addTokens": {
     "message": "添加代币"
   },
+  "addCustomChain": {
+    "message": "添加新子链"
+  },
+  "addChain": {
+    "message": "添加子链"
+  },
+  "addChains": {
+    "message": "添加多条子链"
+  },
   "amount": {
     "message": "数量"
   },
@@ -428,7 +437,7 @@
     "description": "format for importing an account"
   },
   "keepTrackTokens": {
-    "message": "Keep track of the tokens you’ve bought with your MoacMask account."
+    "message": "查看所购买的代币"
   },
   "kovan": {
     "message": "Kovan 测试网络"
@@ -878,7 +887,7 @@
     "message": "交易"
   },
   "troubleTokenBalances": {
-    "message": "我们无法加载您的代币余额。你可以查看它们",
+    "message": "我们无法加载您的代币余额。你可以使用下面的链接来查看它们",
     "description": "Followed by a link (here) to view token balances"
   },
   "twelveWords": {

@@ -30,9 +30,9 @@ const ConfirmAddTokenPage = require('./components/pages/confirm-add-token')
 const CreateAccountPage = require('./components/pages/create-account')
 const NoticeScreen = require('./components/pages/notice')
 
-// MicroChain pages
+// MicroChain pages required
 const AddChainPage = require('./components/pages/add-chain')
-// const ConfirmAddChainPage = require('./components/pages/confirm-add-chain')
+const ConfirmAddChainPage = require('./components/pages/confirm-add-chain')
 
 const Loading = require('./components/loading-screen')
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group')
@@ -87,6 +87,7 @@ class App extends Component {
         h(Authenticated, { path: CONFIRM_ADD_TOKEN_ROUTE, exact, component: ConfirmAddTokenPage }),
         h(Authenticated, { path: NEW_ACCOUNT_ROUTE, component: CreateAccountPage }),
         h(Authenticated, { path: ADD_CHAIN_ROUTE, exact, component: AddChainPage }),
+        h(Authenticated, { path: CONFIRM_ADD_CHAIN_ROUTE, exact, component: ConfirmAddChainPage }),
         h(Authenticated, { path: DEFAULT_ROUTE, exact, component: Home }),
       ])
     )

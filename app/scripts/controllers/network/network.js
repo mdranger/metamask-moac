@@ -1,3 +1,8 @@
+/*
+ * MOACMask used a local module for the network communication
+ * web3-provider-engine was modified to use MOAC network settings.
+ * 
+*/
 const assert = require('assert')
 const EventEmitter = require('events')
 const createMetamaskProvider = require('web3-provider-engine/zero.js')
@@ -18,8 +23,8 @@ const {
   MOACTEST,
   LOCALHOST,
 } = require('./enums');
-// const MOAC_MAIN_URL = "https://www.moacwalletonline.com/main";
-// const MOAC_TEST_URL = "https://www.moacwalletonline.com/test";
+
+// MOAC servers 
 const MOAC_MAIN_URL = "https://gateway.moac.io/mainnet";
 const MOAC_TEST_URL = "https://gateway.moac.io/testnet";
 const LOCALHOST_RPC_URL = 'http://localhost:8545'

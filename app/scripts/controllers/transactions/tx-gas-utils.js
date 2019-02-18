@@ -83,7 +83,7 @@ class TxGasUtil {
     const saferGasLimitBN = BnMultiplyByFraction(blockGasLimitBN, 19, 20)
     txParams.gas = bnToHex(saferGasLimitBN)
 // log.infof("Estimated TX gas:", txParams.gas)
-    // run tx
+    // run tx to get the gas estimate from ETH
     return await this.query.estimateGas(txParams)
   }
 

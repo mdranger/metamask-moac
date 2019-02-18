@@ -1,3 +1,6 @@
+/*
+ * handle the info for MicroChain
+*/
 const Component = require('react').Component
 const h = require('react-hyperscript')
 const inherits = require('util').inherits
@@ -7,14 +10,15 @@ const Identicon = require('./identicon')
 const selectors = require('../selectors')
 const actions = require('../actions')
 const { conversionUtil, multiplyCurrencies } = require('../conversion-util')
+// Need to update with MicroChain
+// const TokenMenuDropdown = require('./dropdowns/token-menu-dropdown.js')
 
-const TokenMenuDropdown = require('./dropdowns/token-menu-dropdown.js')
 
 function mapStateToProps (state) {
   return {
     network: state.metamask.network,
     currentCurrency: state.metamask.currentCurrency,
-    selectedTokenAddress: state.metamask.selectedTokenAddress,
+    selectedChainAddress: state.metamask.selectedChainAddress,
     userAddress: selectors.getSelectedAddress(state),
     contractExchangeRates: state.metamask.contractExchangeRates,
     conversionRate: state.metamask.conversionRate,
@@ -24,7 +28,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    setSelectedToken: address => dispatch(actions.setSelectedToken(address)),
+    setSelectedChain: address => dispatch(actions.setSelectedChain(address)),
     hideSidebar: () => dispatch(actions.hideSidebar()),
   }
 }
@@ -36,20 +40,20 @@ function ChainInfo () {
   Component.call(this)
 
   this.state = {
-    tokenMenuOpen: false,
+    chainMenuOpen: false,
   }
 }
 
 ChainInfo.prototype.render = function () {
-  const { tokenMenuOpen } = this.state
+  const { chainMenuOpen } = this.state
   const props = this.props
   const {
     address,
     symbol,
     string,
     network,
-    setSelectedToken,
-    selectedTokenAddress,
+    setSelectedChain,
+    selectedChainAddress,
     contractExchangeRates,
     conversionRate,
     hideSidebar,
@@ -82,46 +86,46 @@ ChainInfo.prototype.render = function () {
   const showFiat = Boolean(currentTokenInFiat) && currentCurrency.toUpperCase() !== symbol
 
   return (
-    h('div.token-list-item', {
-      className: `token-list-item ${selectedTokenAddress === address ? 'token-list-item--active' : ''}`,
+    h('div.chain-list-item', {
+      className: `chain-list-item ${selectedChainAddress === address ? 'chain-list-item--active' : ''}`,
       // style: { cursor: network === '1' ? 'pointer' : 'default' },
       // onClick: this.view.bind(this, address, userAddress, network),
       onClick: () => {
-        setSelectedToken(address)
-        selectedTokenAddress !== address && sidebarOpen && hideSidebar()
+        setSelectedChain(address)
+        selectedChainAddress !== address && sidebarOpen && hideSidebar()
       },
     }, [
 
       h(Identicon, {
-        className: 'token-list-item__identicon',
+        className: 'chain-list-item__identicon',
         diameter: 50,
         address,
         network,
       }),
 
-      h('div.token-list-item__balance-ellipsis', null, [
-        h('div.token-list-item__balance-wrapper', null, [
-          h('div.token-list-item__token-balance', `${string || 0}`),
-          h('div.token-list-item__token-symbol', symbol),
-          showFiat && h('div.token-list-item__fiat-amount', {
+      h('div.chain-list-item__balance-ellipsis', null, [
+        h('div.chain-list-item__balance-wrapper', null, [
+          h('div.chain-list-item__token-balance', `${string || 0}`),
+          h('div.chain-list-item__token-symbol', symbol),
+          showFiat && h('div.chain-list-item__fiat-amount', {
             style: {},
           }, formattedFiat),
         ]),
 
-        h('i.fa.fa-ellipsis-h.fa-lg.token-list-item__ellipsis.cursor-pointer', {
+        h('i.fa.fa-ellipsis-h.fa-lg.chain-list-item__ellipsis.cursor-pointer', {
           onClick: (e) => {
             e.stopPropagation()
-            this.setState({ tokenMenuOpen: true })
+            this.setState({ chainMenuOpen: true })
           },
         }),
 
       ]),
 
 
-      tokenMenuOpen && h(TokenMenuDropdown, {
-        onClose: () => this.setState({ tokenMenuOpen: false }),
-        token: { symbol, address },
-      }),
+      // chainMenuOpen && h(ChainMenuDropdown, {
+      //   onClose: () => this.setState({ chainMenuOpen: false }),
+      //   chain: { symbol, address },
+      // }),
 
       /*
       h('button', {
@@ -133,10 +137,12 @@ ChainInfo.prototype.render = function () {
   )
 }
 
+// Send MicroChain token
 ChainInfo.prototype.send = function (address, event) {
   event.preventDefault()
   event.stopPropagation()
-  const url = tokenFactoryFor(address)
+  //Should be used to connect the URL
+  const url = address
   if (url) {
     navigateTo(url)
   }
@@ -153,16 +159,13 @@ function navigateTo (url) {
   global.platform.openWindow({ url })
 }
 
-function moacExplorerLinkFor (tokenAddress, address, network) {
+function moacExplorerLinkFor (chainAddress, address, network) {
   if (network == 99){
-    return `https://explorer.moac.io/token/${tokenAddress}?a=${address}`
+    return `https://explorer.moac.io/mclist/${chainAddress}?a=${address}`
   }else if( network == 101){
-    return `http://testnet.moac.io:3000/token/${tokenAddress}?a=${address}`
+    return `http://testnet.moac.io:3000/mclist/${chainAddress}?a=${address}`
   }else
     return null
 }
 
-function tokenFactoryFor (tokenAddress) {
-  return `https://tokenfactory.surge.sh/#/token/${tokenAddress}`
-}
 

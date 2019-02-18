@@ -15,10 +15,10 @@ function chainInfoGetter () {
   }
 }
 
-async function getSymbolAndDecimals (chainAddress, existingTokens = []) {
-  const existingToken = existingTokens.find(({ address }) => chainAddress === address)
-  if (existingToken) {
-    return existingToken
+async function getSymbolAndDecimals (chainAddress, existingChains = []) {
+  const existingChain = existingChains.find(({ address }) => chainAddress === address)
+  if (existingChain) {
+    return existingChain
   }
   
   let result = []
