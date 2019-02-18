@@ -908,6 +908,9 @@
   "token": {
     "message": "Token"
   },
+  "chain": {
+    "message": "MicroChain Token"
+  },
   "tokenAddress": {
     "message": "Token Address"
   },

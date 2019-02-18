@@ -12,7 +12,6 @@ ChainMenuDropdown.contextTypes = {
 
 module.exports = connect(null, mapDispatchToProps)(ChainMenuDropdown)
 
-
 function mapDispatchToProps (dispatch) {
   return {
     showHideChainConfirmationModal: (chain) => {

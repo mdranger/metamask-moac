@@ -1406,6 +1406,8 @@ function updateTokens (newTokens) {
 }
 
 // actions for MicroChains
+// For each chain
+// 
 function showAddChainPage (transitionForward = true) {
   return {
     type: actions.SHOW_ADD_CHAIN_PAGE,
@@ -1413,11 +1415,12 @@ function showAddChainPage (transitionForward = true) {
   }
 }
 
-function addChain (address, symbol, decimals) {
+
+function addChain (address, symbol, url) {
   return (dispatch) => {
     dispatch(actions.showLoadingIndication())
     return new Promise((resolve, reject) => {
-      background.addChain(address, symbol, decimals, (err, chains) => {
+      background.addChain(address, symbol, url, (err, chains) => {
         dispatch(actions.hideLoadingIndication())
         if (err) {
           dispatch(actions.displayWarning(err.message))
@@ -1446,21 +1449,21 @@ function removeChain (address) {
     })
   }
 }
-
+//TODO
 function addChains (chains) {
   return dispatch => {
-    if (Array.isArray(tokens)) {
+    if (Array.isArray(chains)) {
       dispatch(actions.setSelectedToken(getTokenAddressFromTokenObject(chains[0])))
-      return Promise.all(chains.map(({ address, symbol, decimals }) => (
-        dispatch(addChain(address, symbol, decimals))
+      return Promise.all(chains.map(({ address, symbol, url }) => (
+        dispatch(addChain(address, symbol, url))
       )))
     } else {
       dispatch(actions.setSelectedToken(getTokenAddressFromTokenObject(chains)))
       return Promise.all(
         Object
         .entries(chains)
-        .map(([_, { address, symbol, decimals }]) => (
-          dispatch(addChain(address, symbol, decimals))
+        .map(([_, { address, symbol, url }]) => (
+          dispatch(addChain(address, symbol, url))
         ))
       )
     }

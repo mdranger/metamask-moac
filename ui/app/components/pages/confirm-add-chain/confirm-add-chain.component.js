@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { DEFAULT_ROUTE, ADD_TOKEN_ROUTE } from '../../../routes'
+import { DEFAULT_ROUTE, ADD_CHAIN_ROUTE } from '../../../routes'
 import Button from '../../button'
 import Identicon from '../../../components/identicon'
 import ChainBalance from './chain-balance'
@@ -25,12 +25,12 @@ export default class ConfirmAddChain extends Component {
     }
   }
 
-  // MicroChain may not have name/symbol with it
-  // Only display the hash if no symbol
-  getChainName (address, symbol) {
-    return typeof symbol === 'undefined'
-      ? address
-      : `${symbol} (${address})`
+  // MicroChain may not have name with it
+  // Only display the symbol if no name
+  getChainName (name, symbol) {
+    return typeof name === 'undefined'
+      ? symbol
+      : `${name} (${symbol})`
   }
 
   render () {
@@ -60,7 +60,7 @@ export default class ConfirmAddChain extends Component {
               {
                 Object.entries(pendingChains)
                   .map(([ address, chain ]) => {
-                    const { address, symbol } = chain
+                    const { name, symbol } = chain
 
                     return (
                       <div
@@ -74,7 +74,7 @@ export default class ConfirmAddChain extends Component {
                             address={address}
                           />
                           <div className="confirm-add-chain__name">
-                            { this.getChainName(address, symbol) }
+                            { this.getChainName(name, symbol) }
                           </div>
                         </div>
                         <div className="confirm-add-chain__balance">

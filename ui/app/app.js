@@ -59,6 +59,7 @@ const {
   INITIALIZE_ROUTE,
   NOTICE_ROUTE,
   ADD_CHAIN_ROUTE,
+  CONFIRM_ADD_CHAIN_ROUTE,
 } = require('./routes')
 
 class App extends Component {
