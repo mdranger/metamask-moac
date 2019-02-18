@@ -57,6 +57,7 @@ module.exports = {
   isInvalidChecksumAddress,
   allNull,
   getTokenAddressFromTokenObject,
+  getChainAddressFromChainObject,
   checksumAddress,
 }
 
@@ -287,6 +288,10 @@ function allNull (obj) {
 
 function getTokenAddressFromTokenObject (token) {
   return Object.values(token)[0].address.toLowerCase()
+}
+
+function getChainAddressFromChainObject (chain) {
+  return Object.values(chain)[0].address.toLowerCase()
 }
 
 /**

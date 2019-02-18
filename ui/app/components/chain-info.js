@@ -12,6 +12,8 @@ const actions = require('../actions')
 const { conversionUtil, multiplyCurrencies } = require('../conversion-util')
 // Need to update with MicroChain
 // const TokenMenuDropdown = require('./dropdowns/token-menu-dropdown.js')
+const ChainMenuDropdown = require('./dropdowns/chain-menu-dropdown.js')
+
 
 
 function mapStateToProps (state) {
@@ -105,8 +107,8 @@ ChainInfo.prototype.render = function () {
 
       h('div.chain-list-item__balance-ellipsis', null, [
         h('div.chain-list-item__balance-wrapper', null, [
-          h('div.chain-list-item__token-balance', `${string || 0}`),
-          h('div.chain-list-item__token-symbol', symbol),
+          h('div.chain-list-item__chain-balance', `${string || 0}`),
+          h('div.chain-list-item__chain-symbol', symbol),
           showFiat && h('div.chain-list-item__fiat-amount', {
             style: {},
           }, formattedFiat),
@@ -122,10 +124,10 @@ ChainInfo.prototype.render = function () {
       ]),
 
 
-      // chainMenuOpen && h(ChainMenuDropdown, {
-      //   onClose: () => this.setState({ chainMenuOpen: false }),
-      //   chain: { symbol, address },
-      // }),
+      chainMenuOpen && h(ChainMenuDropdown, {
+        onClose: () => this.setState({ chainMenuOpen: false }),
+        chain: { symbol, address },
+      }),
 
       /*
       h('button', {

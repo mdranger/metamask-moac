@@ -40,7 +40,7 @@ function connectToAccountManager (connectionStream, cb) {
 
 /**
  * Establishes a streamed connection to a Web3 provider
- *
+ * 
  * @param {PortDuplexStream} connectionStream PortStream instance establishing a background connection
  */
 function setupWeb3Connection (connectionStream) {

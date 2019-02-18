@@ -1,7 +1,7 @@
 const abi = require('human-standard-token-abi')
 const pify = require('pify')
 const getBuyMoacUrl = require('../../app/scripts/lib/buy-eth-url')
-const { getTokenAddressFromTokenObject } = require('./util')
+const { getTokenAddressFromTokenObject, getChainAddressFromChainObject } = require('./util')
 const {
   calcGasTotal,
   calcTokenBalance,
@@ -108,6 +108,7 @@ var actions = {
   // accounts screen
   SET_SELECTED_ACCOUNT: 'SET_SELECTED_ACCOUNT',
   SET_SELECTED_TOKEN: 'SET_SELECTED_TOKEN',
+  SET_SELECTED_CHAIN: 'SET_SELECTED_CHAIN',
   setSelectedToken,
   SHOW_ACCOUNT_DETAIL: 'SHOW_ACCOUNT_DETAIL',
   SHOW_ACCOUNTS_PAGE: 'SHOW_ACCOUNTS_PAGE',
@@ -220,6 +221,7 @@ var actions = {
   UPDATE_CHAINS: 'UPDATE_CHAINS',
   setPendingChains,
   clearPendingChains,
+  setSelectedChain,
   SET_PENDING_CHAINS: 'SET_PENDING_CHAINS',
   CLEAR_PENDING_CHAINS: 'CLEAR_PENDING_CHAINS',
   //PROVIDER actions
@@ -231,7 +233,7 @@ var actions = {
   HIDE_LOADING: 'HIDE_LOADING_INDICATION',
   showLoadingIndication: showLoadingIndication,
   hideLoadingIndication: hideLoadingIndication,
-  // buy Eth with coinbase
+  // buy MOAC with coinbase
   onboardingBuyEthView,
   ONBOARDING_BUY_ETH_VIEW: 'ONBOARDING_BUY_ETH_VIEW',
   BUY_ETH: 'BUY_ETH',
@@ -324,7 +326,7 @@ function tryUnlockMetamask (password) {
   return dispatch => {
     dispatch(actions.showLoadingIndication())
     dispatch(actions.unlockInProgress())
-    log.debug(`background.submitPassword`)
+    // log.debug(`background.submitPassword`)
 
     return new Promise((resolve, reject) => {
       background.submitPassword(password, error => {
@@ -378,7 +380,7 @@ function transitionBackward () {
 function confirmSeedWords () {
   return dispatch => {
     dispatch(actions.showLoadingIndication())
-    log.debug(`background.clearSeedWordCache`)
+    // log.debug(`background.clearSeedWordCache`)
     return new Promise((resolve, reject) => {
       background.clearSeedWordCache((err, account) => {
         dispatch(actions.hideLoadingIndication())
@@ -387,7 +389,7 @@ function confirmSeedWords () {
           return reject(err)
         }
 
-        log.info('Seed word cache cleared. ' + account)
+        // log.info('Seed word cache cleared. ' + account)
         dispatch(actions.showAccountsPage())
         resolve(account)
       })
@@ -1453,12 +1455,12 @@ function removeChain (address) {
 function addChains (chains) {
   return dispatch => {
     if (Array.isArray(chains)) {
-      dispatch(actions.setSelectedToken(getTokenAddressFromTokenObject(chains[0])))
+      dispatch(actions.setSelectedChain(getChainAddressFromChainObject(chains[0])))
       return Promise.all(chains.map(({ address, symbol, url }) => (
         dispatch(addChain(address, symbol, url))
       )))
     } else {
-      dispatch(actions.setSelectedToken(getTokenAddressFromTokenObject(chains)))
+      dispatch(actions.setSelectedChain(getChainAddressFromChainObject(chains)))
       return Promise.all(
         Object
         .entries(chains)
@@ -1474,6 +1476,14 @@ function updateChains (newChains) {
   return {
     type: actions.UPDATE_CHAINS,
     newChains,
+  }
+}
+
+// Return the selected
+function setSelectedChain (chainAddress) {
+  return {
+    type: actions.SET_SELECTED_CHAIN,
+    value: chainAddress || null,
   }
 }
 
@@ -1505,7 +1515,6 @@ function goBackToInitView () {
 
 //
 // notice
-//
 
 function markNoticeRead (notice) {
   return (dispatch) => {

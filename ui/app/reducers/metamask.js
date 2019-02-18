@@ -375,7 +375,7 @@ function reduceMetamask (state, action) {
 
     case actions.UPDATE_CHAINS:
       return extend(metamaskState, {
-        tokens: action.newChains,
+        chains: action.newChains,
       })
 
     case actions.SET_SELECTED_CHAIN:
