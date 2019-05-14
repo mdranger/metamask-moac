@@ -303,7 +303,7 @@ ConfirmSendEther.prototype.editTransaction = function () {
 }
 
 ConfirmSendEther.prototype.renderHeaderRow = function (isTxReprice) {
-  const windowType = window.METAMASK_UI_TYPE
+  const windowType = window.MOACMASK_UI_TYPE
   const isFullScreen = windowType !== ENVIRONMENT_TYPE_NOTIFICATION &&
     windowType !== ENVIRONMENT_TYPE_POPUP
 

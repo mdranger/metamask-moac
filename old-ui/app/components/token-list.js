@@ -41,7 +41,7 @@ TokenList.prototype.render = function () {
         },
         onClick: () => {
           global.platform.openWindow({
-          url: `https://ethplorer.io/address/${userAddress}`,
+          url: `http://explorer.moac.io/token/${userAddress}`,
         })
         },
       }, 'here'),
@@ -155,11 +155,11 @@ TokenList.prototype.createFreshTokenTracker = function () {
     this.tracker.removeListener('error', this.showError)
   }
 
-  if (!global.ethereumProvider) return
+  if (!global.moacProvider) return
   const { userAddress } = this.props
   this.tracker = new TokenTracker({
     userAddress,
-    provider: global.ethereumProvider,
+    provider: global.moacProvider,
     tokens: this.props.tokens,
     pollingInterval: 8000,
   })

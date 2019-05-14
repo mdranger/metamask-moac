@@ -21,7 +21,7 @@ global.ethQuery = {
   sendTransaction: () => {},
 }
 
-global.ethereumProvider = {}
+global.moacProvider = {}
 
 async function customizeGas (assert, price, limit, ethFee, usdFee) {
   const sendGasOpenCustomizeModalButton = await queryAsync($, '.sliders-icon-container')

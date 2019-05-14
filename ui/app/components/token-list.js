@@ -16,15 +16,16 @@ function mapStateToProps (state) {
   }
 }
 
-const defaultTokens = []
-const contracts = require('eth-contract-metadata')
-for (const address in contracts) {
-  const contract = contracts[address]
-  if (contract.erc20) {
-    contract.address = address
-    defaultTokens.push(contract)
-  }
-}
+// 05/09/2019, commented out, doesn't seem to be used
+// const defaultTokens = []
+// const contracts = require('eth-contract-metadata')
+// for (const address in contracts) {
+//   const contract = contracts[address]
+//   if (contract.erc20) {
+//     contract.address = address
+//     defaultTokens.push(contract)
+//   }
+// }
 
 TokenList.contextTypes = {
   t: PropTypes.func,
@@ -102,12 +103,12 @@ TokenList.prototype.createFreshTokenTracker = function () {
     this.tracker.removeListener('error', this.showError)
   }
 
-  if (!global.ethereumProvider) return
+  if (!global.moacProvider) return
   const { userAddress } = this.props
 
   this.tracker = new TokenTracker({
     userAddress,
-    provider: global.ethereumProvider,
+    provider: global.moacProvider,
     tokens: this.props.tokens,
     pollingInterval: 8000,
   })

@@ -60,7 +60,9 @@ module.exports = class NetworkController extends EventEmitter {
     this._baseProviderParams = _providerParams
     const { type, rpcTarget } = this.providerStore.getState()
     this._configureProvider({ type, rpcTarget })
+    // remove the debugging info
     this._proxy.on('block', this._logBlock.bind(this))
+
     this._proxy.on('error', this.verifyNetwork.bind(this))
     this.ethQuery = new EthQuery(this._proxy)
     this.lookupNetwork()
@@ -142,13 +144,9 @@ module.exports = class NetworkController extends EventEmitter {
   _configureProvider (opts) {
     const { type, rpcTarget } = opts
     // infura type-based endpoints
-    const isInfura = INFURA_PROVIDER_TYPES.includes(type)
+    // const isInfura = INFURA_PROVIDER_TYPES.includes(type)
     // const isMoac = MOAC_PROVIDER_TYPES.includes(type)
-    if (isInfura) {
-
-      this._configureInfuraProvider(opts)
-    // other type-based rpc endpoints
-    }else if( type === MOACMAIN){
+    if( type === MOACMAIN){
       this._configureMoacProvider({rpcUrl: MOAC_MAIN_URL})  
     } else if( type === MOACTEST){
     // other type-based rpc endpoints	      
@@ -181,20 +179,20 @@ module.exports = class NetworkController extends EventEmitter {
     this._setProvider(provider)
   }
 
-  _configureInfuraProvider ({ type }) {
-    log.info('_configureInfuraProvider', type)
-    const infuraProvider = createInfuraProvider({ network: type })
-    const infuraSubprovider = new SubproviderFromProvider(infuraProvider)
-    const providerParams = extend(this._baseProviderParams, {
-      engineParams: {
-        pollingInterval: 8000,
-        blockTrackerProvider: infuraProvider,
-      },
-      dataSubprovider: infuraSubprovider,
-    })
-    const provider = createMetamaskProvider(providerParams)
-    this._setProvider(provider)
-  }
+  // _configureInfuraProvider ({ type }) {
+  //   log.info('_configureInfuraProvider', type)
+  //   const infuraProvider = createInfuraProvider({ network: type })
+  //   const infuraSubprovider = new SubproviderFromProvider(infuraProvider)
+  //   const providerParams = extend(this._baseProviderParams, {
+  //     engineParams: {
+  //       pollingInterval: 8000,
+  //       blockTrackerProvider: infuraProvider,
+  //     },
+  //     dataSubprovider: infuraSubprovider,
+  //   })
+  //   const provider = createMetamaskProvider(providerParams)
+  //   this._setProvider(provider)
+  // }
 
   _configureStandardProvider ({ rpcUrl }) {
     const providerParams = extend(this._baseProviderParams, {
@@ -226,7 +224,7 @@ module.exports = class NetworkController extends EventEmitter {
   }
 
   _logBlock (block) {
-    log.info(`BLOCK CHANGED: #${block.number.toString('hex')} 0x${block.hash.toString('hex')}`)
+     log.info(`BLOCK CHANGED: #${block.number.toString('hex')} 0x${block.hash.toString('hex')}`)
     this.verifyNetwork()
   }
 }

@@ -470,6 +470,9 @@
   "loadingTokens": {
     "message": "加载代币中..."
   },
+  "loadingMicroChainInfo": {
+    "message": "加载子链信息..."
+  },
   "localhost": {
     "message": "Localhost 8545"
   },
@@ -856,6 +859,9 @@
   "tokenAlreadyAdded": {
     "message": "代币已经被添加."
   },
+  "chainAlreadyAdded": {
+    "message": "子链地址已经被添加."
+  },
   "tokenBalance": {
     "message": "代币余额："
   },
@@ -889,6 +895,10 @@
   "troubleTokenBalances": {
     "message": "我们无法加载您的代币余额。你可以使用下面的链接来查看它们",
     "description": "Followed by a link (here) to view token balances"
+  },
+  "troubleChainBalances": {
+    "message": "我们无法加载您的子链代币余额。你可以使用下面的链接来查看它们",
+    "description": "Followed by a link (here) to view MicroChain token balances"
   },
   "twelveWords": {
     "message": "这12个单词是恢复MoacMask帐户的唯一方法。.\n将它们存放在安全和秘密的地方。."

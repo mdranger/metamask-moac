@@ -168,9 +168,9 @@ AddChainScreen.prototype.render = function () {
 }
 
 AddChainScreen.prototype.componentWillMount = function () {
-  if (typeof global.ethereumProvider === 'undefined') return
+  if (typeof global.moacProvider === 'undefined') return
 
-  this.eth = new Eth(global.ethereumProvider)
+  this.eth = new Eth(global.moacProvider)
   this.contract = new EthContract(this.eth)
   this.TokenContract = this.contract(abi)
 }

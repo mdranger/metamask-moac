@@ -1,0 +1,42 @@
+{
+  "0x389e82806cc945d3be793d24226931bfda410e75": {
+    "name": "Tesnet 101 Token",
+    "scstype":"procwind",
+    "mctype":"ast",
+    "logo": "test.svg",
+    "erc20": false,
+    "symbol": "TEST1",
+    "url": "http://47.107.75.89:8547",
+    "decimals": 18
+  },
+  "0xf08baeb638d379d3347bd3cae44ca8e3fe12f469": {
+    "name": "Tesnet 101 Lianwen",
+    "scstype":"procwind",
+    "mctype":"asm",
+    "logo": "test.svg",
+    "erc20": false,
+    "symbol": "LIANWEN",
+    "url": "http://47.107.75.89:8547",
+    "decimals": 18
+  },
+  "0x57b7b8225bcb5d4c6c5abbe2e44fa67998cfa791": {
+    "name": "Tesnet 106 Token1",
+    "scstype":"procwind",
+    "mctype":"asm",
+    "logo": "test.svg",
+    "erc20": false,
+    "symbol": "TEST3",
+    "url": "http://127.0.0.1:8548",
+    "decimals": 18
+  },
+  "0x39ce8c2a7006a9c65b02721601cb29b6194d9b6f": {
+    "name": "Tesnet 106 Token2",
+    "scstype":"procwind",
+    "mctype":"asm",
+    "logo": "test.svg",
+    "erc20": false,
+    "symbol": "TEST3",
+    "url": "http://127.0.0.1:8548",
+    "decimals": 18
+  }
+ }

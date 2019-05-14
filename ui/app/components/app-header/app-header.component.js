@@ -77,11 +77,11 @@ class AppHeader extends Component {
       return true
     }
 
-    if (window.METAMASK_UI_TYPE === ENVIRONMENT_TYPE_NOTIFICATION) {
+    if (window.MOACMASK_UI_TYPE === ENVIRONMENT_TYPE_NOTIFICATION) {
       return true
     }
 
-    if (window.METAMASK_UI_TYPE === ENVIRONMENT_TYPE_POPUP && this.isConfirming()) {
+    if (window.MOACMASK_UI_TYPE === ENVIRONMENT_TYPE_POPUP && this.isConfirming()) {
       return true
     }
   }

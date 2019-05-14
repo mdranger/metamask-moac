@@ -4,7 +4,7 @@ const copyToClipboard = require('copy-to-clipboard')
 //
 // Sub-Reducers take in the complete state and return their sub-state
 //
-const reduceMetamask = require('./reducers/metamask')
+const reduceMoacmask = require('./reducers/metamask')
 const reduceApp = require('./reducers/app')
 const reduceLocale = require('./reducers/locale')
 const reduceSend = require('./ducks/send.duck').default
@@ -25,7 +25,7 @@ function rootReducer (state, action) {
   // MetaMask
   //
 
-  state.metamask = reduceMetamask(state, action)
+  state.metamask = reduceMoacmask(state, action)
 
   //
   // AppState

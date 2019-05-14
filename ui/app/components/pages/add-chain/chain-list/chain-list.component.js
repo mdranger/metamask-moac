@@ -10,14 +10,14 @@ export default class InfoBox extends Component {
   }
 
   static propTypes = {
-    chains: PropTypes.array,
+    microchains: PropTypes.array,
     results: PropTypes.array,
     selectedChains: PropTypes.object,
     onToggleChain: PropTypes.func,
   }
 
   render () {
-    const { results = [], selectedChains = {}, onToggleChain, chains = [] } = this.props
+    const { results = [], selectedChains = {}, onToggleChain, microchains = [] } = this.props
 
     return results.length === 0
       ? <ChainListPlaceholder />
@@ -31,7 +31,7 @@ export default class InfoBox extends Component {
               Array(6).fill(undefined)
                 .map((_, i) => {
                   const { logo, symbol, name, address } = results[i] || {}
-                  const chainAlreadyAdded = checkExistingAddresses(address, chains)
+                  const chainAlreadyAdded = checkExistingAddresses(address, microchains)
 
                   return Boolean(logo || symbol || name) && (
                     <div

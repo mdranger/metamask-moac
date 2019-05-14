@@ -4,8 +4,8 @@ window.addEventListener('load', loadProvider)
 window.addEventListener('message', console.warn)
 
 async function loadProvider() {
-  const ethereumProvider = window.metamask.createDefaultProvider({ host: 'http://localhost:9001' })
-  const ethQuery = new EthQuery(ethereumProvider)
+  const moacProvider = window.metamask.createDefaultProvider({ host: 'http://localhost:9001' })
+  const ethQuery = new EthQuery(moacProvider)
   const accounts = await ethQuery.accounts()
    window.METAMASK_ACCOUNT = accounts[0] || 'locked'
   logToDom(accounts.length ? accounts[0] : 'LOCKED or undefined', 'account')

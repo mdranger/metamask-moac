@@ -1,6 +1,9 @@
 const log = require('loglevel')
 const util = require('./util')
 
+/*
+ * MOAC MicroChain needs to have 
+*/
 function chainInfoGetter () {
   const chains = {}
 
@@ -9,13 +12,14 @@ function chainInfoGetter () {
       return chains[address]
     }
 
-    chains[address] = await getSymbolAndDecimals(address)
+    chains[address] = await getChainSymbolAndUrls(address)
 
     return chains[address]
   }
 }
 
-async function getSymbolAndDecimals (chainAddress, existingChains = []) {
+// Not working well
+async function getChainSymbolAndUrls (chainAddress, existingChains = []) {
   const existingChain = existingChains.find(({ address }) => chainAddress === address)
   if (existingChain) {
     return existingChain
@@ -23,25 +27,27 @@ async function getSymbolAndDecimals (chainAddress, existingChains = []) {
   
   let result = []
   try {
-    const chain = util.getContractAtAddress(chainAddress)
+    // const chain = util.getContractAtAddress(chainAddress)
+    const chainInfo = util.getChainInfoByAddress(chainAddress)
 
     result = await Promise.all([
-      chain.symbol(),
-      chain.decimals(),
+      chainInfo.symbol,
+      chainInfo.url,
     ])
   } catch (err) {
-    log.warn(`symbol() and decimal() calls for chain at address ${chainAddress} resulted in error:`, err)
+    log.warn(`symbol() and url() calls for chain at address ${chainAddress} resulted in error:`, err)
   }
 
-  const [ symbol = [], decimals = [] ] = result
+  const [ symbol = [], urls = [] ] = result
 
   return {
     symbol: symbol[0] || null,
-    decimals: decimals[0] && decimals[0].toString() || null,
+    urls: urls[0] || null,
   }
 }
 
-function calcTokenAmount (value, decimals) {
+// Notice Chain decimals is defined in the subchainbase contract
+function calcChainTokenAmount (value, decimals) {
   const multiplier = Math.pow(10, Number(decimals || 0))
   const amount = Number(value / multiplier)
 
@@ -51,6 +57,6 @@ function calcTokenAmount (value, decimals) {
 
 module.exports = {
   chainInfoGetter,
-  calcTokenAmount,
-  getSymbolAndDecimals,
+  calcChainTokenAmount,
+  getChainSymbolAndUrls,
 }

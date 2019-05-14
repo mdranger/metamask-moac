@@ -4,17 +4,17 @@ import AddChain from './add-chain.component'
 const { setPendingChains, clearPendingChains } = require('../../../actions')
 
 const mapStateToProps = ({ metamask }) => {
-  const { identities, chains, pendingChains } = metamask
+  const { identities, microchains, pendingChains } = metamask
   return {
     identities,
-    chains,
+    microchains,
     pendingChains,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setPendingChains: chains => dispatch(setPendingChains(chains)),
+    setPendingChains: microchains => dispatch(setPendingChains(microchains)),
     clearPendingChains: () => dispatch(clearPendingChains()),
   }
 }

@@ -13,7 +13,7 @@ injectCss(css)
 const container = document.getElementById('app-content')
 
 const name = 'popup'
-window.METAMASK_UI_TYPE = name
+window.MOACMASK_UI_TYPE = name
 window.METAMASK_PLATFORM_TYPE = 'mascara'
 
 const keepAliveDelay = Math.floor(Math.random() * (30000 - 1000)) + 1000

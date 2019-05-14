@@ -125,7 +125,7 @@ App.prototype.render = function () {
 }
 
 App.prototype.renderAppBar = function () {
-  if (window.METAMASK_UI_TYPE === 'notification') {
+  if (window.MOACMASK_UI_TYPE === 'notification') {
     return null
   }
 

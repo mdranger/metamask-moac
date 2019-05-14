@@ -40,7 +40,7 @@ var actions = {
   transitionForward,
   transitionBackward,
   // remote state
-  UPDATE_METAMASK_STATE: 'UPDATE_METAMASK_STATE',
+  UPDATE_METAMASK_STATE: 'UPDATE_MOACMASK_STATE',
   updateMetamaskState: updateMetamaskState,
   // notices
   MARK_NOTICE_READ: 'MARK_NOTICE_READ',

@@ -1,9 +1,9 @@
 const extend = require('xtend')
 const actions = require('../actions')
 
-module.exports = reduceMetamask
+module.exports = reduceMoacmask
 
-function reduceMetamask (state, action) {
+function reduceMoacmask (state, action) {
   const localeMessagesState = extend({}, state.localeMessages)
 
   switch (action.type) {

@@ -249,7 +249,7 @@ class ConfirmDeployContract extends Component {
             h('span.page-container__back-button', {
               onClick: () => backToAccountDetail(selectedAddress),
             }, this.context.t('back')),
-            window.METAMASK_UI_TYPE === 'notification' && h(NetworkDisplay),
+            window.MOACMASK_UI_TYPE === 'notification' && h(NetworkDisplay),
           ]),
           h('.page-container__title', this.context.t('confirmContract')),
           h('.page-container__subtitle', this.context.t('pleaseReviewTransaction')),

@@ -161,11 +161,11 @@ ChainList.prototype.createMicroChainMonitor = function () {
     this.tracker.removeListener('error', this.showError)
   }
 
-  if (!global.ethereumProvider) return
+  if (!global.moacProvider) return
   const { userAddress } = this.props
   this.tracker = new MicroChainMonitor({
     userAddress,
-    provider: global.ethereumProvider,
+    provider: global.moacProvider,
     chains: this.props.chains,
     pollingInterval: 8000,
   })

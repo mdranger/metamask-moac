@@ -18,6 +18,10 @@ const ChainList = require('./chain-list')
 const selectors = require('../selectors')
 const { ADD_TOKEN_ROUTE, ADD_CHAIN_ROUTE } = require('../routes')
 
+/*
+ * Main UI to define the list of info
+ * in the wallet account
+*/
 module.exports = compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
@@ -27,7 +31,12 @@ WalletView.contextTypes = {
   t: PropTypes.func,
 }
 
+// Add chains and selectedChainAddress
 function mapStateToProps (state) {
+
+  // selectedAddress: the address displayed 
+  // selectedAccount: the account with selectedAddress
+  // selectedTokenAddress: ERC20 token 
 
   return {
     network: state.metamask.network,
@@ -39,6 +48,8 @@ function mapStateToProps (state) {
     selectedAddress: selectors.getSelectedAddress(state),
     selectedAccount: selectors.getSelectedAccount(state),
     selectedTokenAddress: state.metamask.selectedTokenAddress,
+    microchains: state.metamask.microchains,
+    selectedChainAddress: selectors.getSelectedChainAddress(state),
   }
 }
 
@@ -52,6 +63,7 @@ function mapDispatchToProps (dispatch) {
       dispatch(actions.showModal({ name: 'ACCOUNT_DETAILS' }))
     },
     showAddTokenPage: () => dispatch(actions.showAddTokenPage()),
+    unsetSelectedChain: () => dispatch(actions.setSelectedChain()),
     showAddChainPage: () => dispatch(actions.showAddChainPage()),
   }
 }
@@ -65,11 +77,14 @@ function WalletView () {
   }
 }
 
+// Display the wallet Balance with major tokens
 WalletView.prototype.renderWalletBalance = function () {
   const {
     selectedTokenAddress,
     selectedAccount,
     unsetSelectedToken,
+    // selectedChainAddress,
+    // unsetSelectedChain,
     hideSidebar,
     sidebarOpen,
   } = this.props
@@ -82,9 +97,12 @@ WalletView.prototype.renderWalletBalance = function () {
   return h('div', { className }, [
     h('div.wallet-balance',
       {
+        // Added selectedChainAddress and unsetSelectedChain
         onClick: () => {
           unsetSelectedToken()
           selectedTokenAddress && sidebarOpen && hideSidebar()
+          // selectedTokenAddress && selectedChainAddress && sidebarOpen && hideSidebar()
+          // unsetSelectedChain()
         },
       },
       [
@@ -185,6 +203,7 @@ WalletView.prototype.render = function () {
 
     this.renderWalletBalance(),
 
+    // Display the ERC20/ERC721 tokens
     h(TokenList),
 
     h('button.btn-primary.wallet-view__add-token-button', {
@@ -194,6 +213,7 @@ WalletView.prototype.render = function () {
       },
     }, this.context.t('addToken')),
 
+    // Display MicroChain Token List
     h(ChainList),
     
     h('button.btn-primary.wallet-view__add-chain-button', {

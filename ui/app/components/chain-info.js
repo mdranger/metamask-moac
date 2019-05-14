@@ -1,5 +1,7 @@
 /*
  * handle the info for MicroChain
+ * Note the MicroChain tokens need to be swapped with MotherChain tokens or moac.
+ * 
 */
 const Component = require('react').Component
 const h = require('react-hyperscript')
@@ -10,8 +12,7 @@ const Identicon = require('./identicon')
 const selectors = require('../selectors')
 const actions = require('../actions')
 const { conversionUtil, multiplyCurrencies } = require('../conversion-util')
-// Need to update with MicroChain
-// const TokenMenuDropdown = require('./dropdowns/token-menu-dropdown.js')
+// Update with MicroChain
 const ChainMenuDropdown = require('./dropdowns/chain-menu-dropdown.js')
 
 
@@ -20,7 +21,7 @@ function mapStateToProps (state) {
   return {
     network: state.metamask.network,
     currentCurrency: state.metamask.currentCurrency,
-    selectedChainAddress: state.metamask.selectedChainAddress,
+    selectedChainAddress: state.metamask.selectedChainInfo.address,
     userAddress: selectors.getSelectedAddress(state),
     contractExchangeRates: state.metamask.contractExchangeRates,
     conversionRate: state.metamask.conversionRate,
@@ -46,6 +47,7 @@ function ChainInfo () {
   }
 }
 
+// Set the value of the component with the state variables
 ChainInfo.prototype.render = function () {
   const { chainMenuOpen } = this.state
   const props = this.props

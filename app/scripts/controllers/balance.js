@@ -45,7 +45,7 @@ class BalanceController {
   }
 
   /**
-   * Updates the ethBalance property to the current pending balance
+   * Updates the mcBalance property to the current pending balance
    *
    * @returns {Promise<void>} Promises undefined
    */

@@ -17,17 +17,20 @@ const CUSTOM_CHAIN_TAB = 'CUSTOM_CHAIN'
 
 // Each MicroChain should have chainAddress, name or symbol
 // and monitor url to access.
+// The microchains is an array of objects:
+
 class AddChain extends Component {
   static contextTypes = {
     t: PropTypes.func,
   }
 
+  // 
   static propTypes = {
     history: PropTypes.object,
     setPendingChains: PropTypes.func,
     pendingChains: PropTypes.object,
     clearPendingChains: PropTypes.func,
-    chains: PropTypes.array,
+    microchains: PropTypes.array,
     identities: PropTypes.object,
   }
 
@@ -182,10 +185,11 @@ class AddChain extends Component {
         })
 
         break
-      case checkExistingAddresses(customAddress, this.props.chains):
-        this.setState({
-          customAddressError: this.context.t('chainAlreadyAdded'),
-        })
+      case checkExistingAddresses(customAddress, this.props.microchains):
+      // For debugging only removed
+        // this.setState({
+        //   customAddressError: this.context.t('chainAlreadyAdded'),
+        // })
 
         break
       default:

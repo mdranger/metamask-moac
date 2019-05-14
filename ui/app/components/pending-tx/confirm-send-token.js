@@ -442,7 +442,7 @@ ConfirmSendToken.prototype.convertToRenderableCurrency = function (value, curren
 }
 
 ConfirmSendToken.prototype.renderHeaderRow = function (isTxReprice) {
-  const windowType = window.METAMASK_UI_TYPE
+  const windowType = window.MOACMASK_UI_TYPE
   const isFullScreen = windowType !== ENVIRONMENT_TYPE_NOTIFICATION &&
     windowType !== ENVIRONMENT_TYPE_POPUP
 

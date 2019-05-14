@@ -5,11 +5,15 @@ const {
   multiplyCurrencies,
 } = require('./conversion-util')
 
+//added getSelectedChain
 const selectors = {
   getSelectedAddress,
   getSelectedIdentity,
   getSelectedAccount,
   getSelectedToken,
+  getMicroChainAddressList,
+  getSelectedChainAddress,
+  getSelectedChainUrl,
   getSelectedTokenExchangeRate,
   getTokenExchangeRate,
   conversionRateSelector,
@@ -32,6 +36,7 @@ const selectors = {
 
 module.exports = selectors
 
+// Return a single Address or the 1st account in the account list 
 function getSelectedAddress (state) {
   const selectedAddress = state.metamask.selectedAddress || Object.keys(state.metamask.accounts)[0]
 
@@ -45,6 +50,7 @@ function getSelectedIdentity (state) {
   return identities[selectedAddress]
 }
 
+// Return the account object with input address
 function getSelectedAccount (state) {
   const accounts = state.metamask.accounts
   const selectedAddress = getSelectedAddress(state)
@@ -59,6 +65,44 @@ function getSelectedToken (state) {
   const sendToken = state.metamask.send.token
 
   return selectedToken || sendToken || null
+}
+
+// Return the microChain address
+// if it is selected
+function getSelectedChainAddress (state) {
+  // const chains = state.metamask.microchains || []
+  // const selectedChainAddress = state.metamask.selectedChainAddress
+  const selectedChainAddress = state.metamask.selectedChainInfo.address
+  // const selectedChain = chains.filter(({ address }) => address === selectedChainAddress)[0]
+  const sendChainToken = state.metamask.send.token
+
+  // return selectedChain.address || sendChainToken || null
+  return selectedChainAddress || sendChainToken || null
+}
+
+// Return the selected Chain url
+function getSelectedChainUrl (state) {
+  // const chains = state.metamask.microchains || []
+  const selectedChainUrl = state.metamask.selectedChainInfo.url
+  // const selectedChain = chains.filter(({ address }) => address === selectedChainAddress)[0]
+
+  return selectedChainUrl || null
+}
+
+// Added to be used in chain-list.js
+// to display the address of the microChains only
+// called by:
+function getMicroChainAddressList (state) {
+  const chains = state.metamask.microchains || []
+  const chainAddressList = []
+
+  //Extract the address of MicroChains and saved in
+  // the returned list
+  for (const cn in chains){
+    chainAddressList[cn] = chains[cn].address
+  }
+
+  return chainAddressList || null
 }
 
 function getSelectedTokenExchangeRate (state) {

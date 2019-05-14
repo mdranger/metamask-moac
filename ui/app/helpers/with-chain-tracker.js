@@ -1,12 +1,21 @@
+/*
+ * The component to track all MicroChains
+*/
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import TokenTracker from 'eth-token-tracker'
+import ChainTracker from '../components/moac-chain-tracker.js'
 
+// MicroChain only has one address
+// 
 const withChainTracker = WrappedComponent => {
-  return class TokenTrackerWrappedComponent extends Component {
+  return class ChainTrackerWrappedComponent extends Component {
+    // Require 
+    // userAddress: account address of the MicroChain
+    // microChain: Microchain object as defined in moackmask.js
+    // 
     static propTypes = {
       userAddress: PropTypes.string.isRequired,
-      token: PropTypes.object.isRequired,
+      microChain: PropTypes.object.isRequired,
     }
 
     constructor (props) {
@@ -24,14 +33,16 @@ const withChainTracker = WrappedComponent => {
     }
 
     componentDidMount () {
-      this.createFreshTokenTracker()
+      this.createFreshChainTracker()
     }
 
+    // Update the chain-tracker when any properties changed
     componentDidUpdate (prevProps) {
-      const { userAddress: newAddress, token: { address: newTokenAddress } } = this.props
-      const { userAddress: oldAddress, token: { address: oldTokenAddress } } = prevProps
+      const { userAddress: newAddress, microChain: { address: newTokenAddress, url: newUrl } } = this.props
+      const { userAddress: oldAddress, microChain: { address: oldTokenAddress, url: oldUrl } } = prevProps
 
-      if ((oldAddress === newAddress) && (oldTokenAddress === newTokenAddress)) {
+      if ((oldAddress === newAddress) && (oldTokenAddress === newTokenAddress)
+        && (oldUrl == newUrl)) {
         return
       }
 
@@ -39,26 +50,30 @@ const withChainTracker = WrappedComponent => {
         return
       }
 
-      this.createFreshTokenTracker()
+      this.createFreshChainTracker()
     }
 
     componentWillUnmount () {
       this.removeListeners()
     }
 
-    createFreshTokenTracker () {
+    //Generate the new Chain tracker
+    //using input url and info
+    createFreshChainTracker () {
       this.removeListeners()
 
-      if (!global.ethereumProvider) {
+      // This may not need if we have url
+      // but it's good to check the MotherChain monitor
+      if (!global.moacProvider) {
         return
       }
 
-      const { userAddress, token } = this.props
+      // for a single MicroChain
+      const { userAddress, microChain } = this.props
 
-      this.tracker = new TokenTracker({
+      this.tracker = new ChainTracker({
         userAddress,
-        provider: global.ethereumProvider,
-        tokens: [token],
+        chains:[microChain],
         pollingInterval: 8000,
       })
 
@@ -74,8 +89,11 @@ const withChainTracker = WrappedComponent => {
       this.setState({ error })
     }
 
-    updateBalance (tokens = []) {
-      const [{ string, symbol }] = tokens
+    // Update the microChain balances
+    // using the micro-chain-tracker
+    // string is the balance returned from micro-chain-tracker serialize method
+    updateBalance (microChains = []) {
+      const [{ string, symbol }] = microChains
       this.setState({ string, symbol, error: null })
     }
 

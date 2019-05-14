@@ -5,20 +5,24 @@ const { getEnvironmentType } = require('../../../app/scripts/lib/util')
 const { ENVIRONMENT_TYPE_POPUP } = require('../../../app/scripts/lib/enums')
 const { OLD_UI_NETWORK_TYPE } = require('../../../app/scripts/controllers/network/enums')
 
-module.exports = reduceMetamask
+module.exports = reduceMoacmask
 
-function reduceMetamask (state, action) {
+// MOAC chain can store MicroChain info in the state
+// 
+function reduceMoacmask (state, action) {
   let newState
 
   // clone + defaults
   // Added chains for Microchains
+  // selectedChainAddress
+  // chains[]
   var metamaskState = extend({
     isInitialized: false,
     isUnlocked: false,
     isAccountMenuOpen: false,
     isMascara: window.platform instanceof MetamascaraPlatform,
     isPopup: getEnvironmentType(window.location.href) === ENVIRONMENT_TYPE_POPUP,
-    rpcTarget: 'https://rawtestrpc.metamask.io/',
+    rpcTarget: 'https://rawtestrpc.moac.io/',
     identities: {},
     unapprovedTxs: {},
     noActiveNotices: true,
@@ -29,8 +33,12 @@ function reduceMetamask (state, action) {
     contractExchangeRates: {},
     tokenExchangeRates: {},
     tokens: [],
-    selectedChainAddress: null,
-    chains: [],
+    selectedChainInfo:{
+      address: null,
+      url: null,
+      symbol: null,
+    },
+    microchains: [],
     pendingTokens: {},
     pendingChains: {},
     send: {

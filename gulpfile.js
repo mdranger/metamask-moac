@@ -595,14 +595,14 @@ function bundleTask(opts) {
 
     // Removed to avoid chrome check
     // Minification
-    if (opts.minifyBuild) {
-      buildStream = buildStream
-      .pipe(uglify({
-        mangle: {
-          reserved: [ 'MoacmaskInpageProvider' ]
-        },
-      }))
-    }
+    // if (opts.minifyBuild) {
+    //   buildStream = buildStream
+    //   .pipe(uglify({
+    //     mangle: {
+    //       reserved: [ 'MoacmaskInpageProvider' ]
+    //     },
+    //   }))
+    // }
 
     // Finalize Source Maps (writes .map file)
     if (opts.buildSourceMaps) {

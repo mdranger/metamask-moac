@@ -4,9 +4,12 @@ import withChainTracker from '../../../../helpers/with-chain-tracker'
 import ChainBalance from './chain-balance.component'
 import selectors from '../../../../selectors'
 
+// Only return the user address
 const mapStateToProps = state => {
   return {
     userAddress: selectors.getSelectedAddress(state),
+    microChain: selectors.getSelectedChainInfo(),
+    // url:selectors.getSelectedChainUrl(state),
   }
 }
 

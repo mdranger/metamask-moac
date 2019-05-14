@@ -6,7 +6,7 @@ import { compose } from 'recompose'
 import { createNewVaultAndKeychain } from '../../../../ui/app/actions'
 import Breadcrumbs from './breadcrumbs'
 import EventEmitter from 'events'
-import Mascot from '../../../../ui/app/components/mascot'
+// import Mascot from '../../../../ui/app/components/mascot'
 import classnames from 'classnames'
 import {
   INITIALIZE_UNIQUE_IMAGE_ROUTE,
@@ -115,11 +115,6 @@ class CreatePasswordScreen extends Component {
           'first-view-main__mascara': isMascara,
         })}>
           {isMascara && <div className="mascara-info first-view-phone-invisible">
-            <Mascot
-              animationEventEmitter={this.animationEventEmitter}
-              width="225"
-              height="225"
-            />
             <div className="info">
               MetaMask is a secure identity vault for Ethereum.
             </div>

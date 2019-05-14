@@ -51,12 +51,12 @@ TokenBalance.prototype.createFreshTokenTracker = function () {
     this.tracker.removeListener('error', this.showError)
   }
 
-  if (!global.ethereumProvider) return
+  if (!global.moacProvider) return
   const { userAddress, token } = this.props
 
   this.tracker = new TokenTracker({
     userAddress,
-    provider: global.ethereumProvider,
+    provider: global.moacProvider,
     tokens: [token],
     pollingInterval: 8000,
   })

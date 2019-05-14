@@ -28,7 +28,7 @@ const CurrencyController = require('./controllers/currency')
 const NoticeController = require('./notice-controller')
 const MicrochainController = require('./controllers/microchain')
 const AddressBookController = require('./controllers/address-book')
-const InfuraController = require('./controllers/infura')
+// const InfuraController = require('./controllers/infura')
 const BlacklistController = require('./controllers/blacklist')
 const RecentBlocksController = require('./controllers/recent-blocks')
 const MessageManager = require('./lib/message-manager')
@@ -105,10 +105,10 @@ module.exports = class MoacMaskController extends EventEmitter {
     this.currencyController.scheduleConversionInterval()
 
     // infura controller
-    this.infuraController = new InfuraController({
-      initState: initState.InfuraController,
-    })
-    this.infuraController.scheduleInfuraNetworkCheck()
+    // this.infuraController = new InfuraController({
+    //   initState: initState.InfuraController,
+    // })
+    // this.infuraController.scheduleInfuraNetworkCheck()
 
     this.blacklistController = new BlacklistController()
     this.blacklistController.scheduleUpdates()
@@ -215,7 +215,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       NoticeController: this.noticeController.store,
       MicrochainController: this.MicrochainController.store,
       NetworkController: this.networkController.store,
-      InfuraController: this.infuraController.store,
+      // InfuraController: this.infuraController.store,
     })
 
     // Data stored in the Memory
@@ -235,7 +235,7 @@ module.exports = class MoacMaskController extends EventEmitter {
       CurrencyController: this.currencyController.store,
       NoticeController: this.noticeController.memStore,
       MicrochainController: this.MicrochainController.store,
-      InfuraController: this.infuraController.store,
+      // InfuraController: this.infuraController.store,
     })
     this.memStore.subscribe(this.sendUpdate.bind(this))
   }

@@ -62,9 +62,6 @@ let versionedData
 // initialization flow
 initialize().catch(log.error)
 
-// setup metamask mesh testing container， removed in v0.1.3
-// setupMetamaskMeshMetrics()
-
 /**
  * An object representing a transaction, in whatever state it is in.
  * @typedef TransactionMeta
@@ -210,7 +207,7 @@ async function loadStateFromPersistence () {
   // migrate data
   versionedData = await migrator.migrateData(versionedData)
   if (!versionedData) {
-    throw new Error('MetaMask - migrator returned undefined')
+    throw new Error('MOACMask - migrator returned undefined')
   }
 
   // write to disk
@@ -219,7 +216,7 @@ async function loadStateFromPersistence () {
   } else {
     // throw in setTimeout so as to not block boot
     setTimeout(() => {
-      throw new Error('MetaMask - Localstore not supported')
+      throw new Error('MOACMask - Localstore not supported')
     })
   }
 
@@ -228,7 +225,7 @@ async function loadStateFromPersistence () {
 }
 
 /**
- * Initializes the MetaMask Controller with any initial state and default language.
+ * Initializes the MOACMask Controller with any initial state and default language.
  * Configures platform-specific error reporting strategy.
  * Streams emitted state updates to platform-specific storage strategy.
  * Creates platform listeners for new Dapps/Contexts, and sets up their data connections to the controller.
@@ -278,7 +275,7 @@ function setupController (initState, initLangCode) {
     storeTransform(versionifyData),
     storeTransform(persistData),
     (error) => {
-      log.error('MetaMask - Persistence pipeline failed', error)
+      log.error('MOACMask - Persistence pipeline failed', error)
     }
   )
 
@@ -294,10 +291,10 @@ function setupController (initState, initLangCode) {
 
   function persistData (state) {
     if (!state) {
-      throw new Error('MetaMask - updated state is missing', state)
+      throw new Error('MOACMask - updated state is missing', state)
     }
     if (!state.data) {
-      throw new Error('MetaMask - updated state does not have data', state)
+      throw new Error('MOACMask - updated state does not have data', state)
     }
     if (localStore.isSupported) {
       localStore.set(state)

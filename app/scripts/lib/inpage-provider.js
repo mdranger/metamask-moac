@@ -18,7 +18,7 @@ function MetamaskInpageProvider (connectionStream) {
     connectionStream,
     mux,
     connectionStream,
-    (err) => logStreamDisconnectWarning('MetaMask', err)
+    (err) => logStreamDisconnectWarning('MOACMask', err)
   )
 
   // subscribe to metamask public config (one-way)
@@ -27,7 +27,7 @@ function MetamaskInpageProvider (connectionStream) {
   pump(
     mux.createStream('publicConfig'),
     asStream(self.publicConfigStore),
-    (err) => logStreamDisconnectWarning('MetaMask PublicConfigStore', err)
+    (err) => logStreamDisconnectWarning('MOACMask PublicConfigStore', err)
   )
 
   // ignore phishing warning message (handled elsewhere)
@@ -39,7 +39,7 @@ function MetamaskInpageProvider (connectionStream) {
     streamMiddleware.stream,
     mux.createStream('provider'),
     streamMiddleware.stream,
-    (err) => logStreamDisconnectWarning('MetaMask RpcProvider', err)
+    (err) => logStreamDisconnectWarning('MOACMask RpcProvider', err)
   )
 
   // handle sendAsync requests via dapp-side rpc engine

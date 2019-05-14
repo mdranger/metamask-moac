@@ -48,7 +48,7 @@ function setupWeb3Connection (connectionStream) {
   providerStream.pipe(connectionStream).pipe(providerStream)
   connectionStream.on('error', console.error.bind(console))
   providerStream.on('error', console.error.bind(console))
-  global.ethereumProvider = providerStream
+  global.moacProvider = providerStream
   global.ethQuery = new EthQuery(providerStream)
   global.eth = new Eth(providerStream)
 }

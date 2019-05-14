@@ -503,6 +503,9 @@
   "loadingTokens": {
     "message": "Loading Tokens..."
   },
+  "loadingMicroChainInfo": {
+    "message": "Loading MicroChain Info..."
+  },
   "localhost": {
     "message": "Localhost 8545"
   },
@@ -911,6 +914,9 @@
   "chain": {
     "message": "MicroChain Token"
   },
+  "chainAlreadyAdded": {
+    "message": "MicroChain has already been added."
+  },  
   "tokenAddress": {
     "message": "Token Address"
   },
@@ -950,6 +956,10 @@
   "troubleTokenBalances": {
     "message": "We had trouble loading your token balances. You can view them ",
     "description": "Followed by a link (here) to view token balances"
+  },
+  "troubleChainBalances": {
+    "message": "We had trouble loading the MicroChain token balances. You can view them ",
+    "description": "Followed by a link (here) to view MicroChain token balances"
   },
   "twelveWords": {
     "message": "These 12 words are the only way to restore your MoacMask accounts.\nSave them somewhere safe and secret."

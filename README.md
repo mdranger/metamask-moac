@@ -7,7 +7,7 @@ If you're a user seeking support, [leave your feedbacks at our GIT site](https:/
 
 ## Introduction
 
-In order to help users and developers access MOAC blockchain, we modified the [MetaMask Project](https://metamask.io/) to make it work with MOAC blockchain. MOAC blockchain JSON-RPC is compatiable with Ethereum WEB3 in many methods but is quite different in Transaction Format. Major changes are as the followings:
+In order to help users and developers access MOAC blockchain, we adopted the [MetaMask Project](https://metamask.io/) to make it work with MOAC blockchain. MOAC blockchain JSON-RPC is compatiable with Ethereum WEB3 in many methods but is quite different in Transaction Format. Major changes are as the followings:
 - Use moac-tx to replace the ethereumjs-tx for sign a raw transaction object;
 - Use moac-provider-engine to replace the web3-provider-enginer for sending a signed Transaction to MOAC network;
 - Use moac-link to provide outside link with MOAC explorer for displaying account info.

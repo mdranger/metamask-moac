@@ -30,7 +30,7 @@ if (typeof window.web3 !== 'undefined') {
   throw new Error(`MoacMask detected another web3.
   MoacMask will not work reliably with another web3 extension.
      This usually happens if you have two MoacMasks installed,
-     or MoacMask and another web3 extension. Please remove one
+     or MoacMask and MetaMask/another web3 extension. Please remove one
      and try again.`)
 }
 var web3 = new Web3(inpageProvider)

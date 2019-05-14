@@ -53,6 +53,7 @@ module.exports = {
   getTxFeeBn,
   shortenBalance,
   getContractAtAddress,
+  // getChainInfoAtAddress,
   exportAsFile: exportAsFile,
   isInvalidChecksumAddress,
   allNull,
@@ -261,6 +262,14 @@ function getTxFeeBn (gas, gasPrice = MIN_GAS_PRICE_BN.toString(16), blockGasLimi
 
   return txFeeBn.toString(16)
 }
+
+// Need to extract the MicroChain
+// function getChainInfoAtAddress (inAddress) {
+//   //Check the instate variable to return the Chain info 
+//   //as the a structure
+//   const outChain = {}
+//   return outChain
+// }
 
 function getContractAtAddress (tokenAddress) {
   return global.eth.contract(abi).at(tokenAddress)

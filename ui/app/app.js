@@ -15,6 +15,9 @@ const SendTransactionScreen = require('./components/send_/send.container')
 const ConfirmTxScreen = require('./conf-tx')
 
 // slideout menu
+// Contains token-list-item
+// add-token-button
+//
 const WalletView = require('./components/wallet-view')
 
 // other views

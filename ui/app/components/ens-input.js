@@ -65,7 +65,7 @@ EnsInput.prototype.componentDidMount = function () {
   this.setState({ ensResolution: ZERO_ADDRESS })
 
   if (networkHasEnsSupport) {
-    const provider = global.ethereumProvider
+    const provider = global.moacProvider
     this.ens = new ENS({ provider, network })
     this.checkName = debounce(this.lookupEnsName.bind(this), 200)
   }
